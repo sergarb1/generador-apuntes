@@ -1,0 +1,82 @@
+# 🚀 Prompt Inicial - Generador de Apuntes Educativos
+
+## Instrucciones para el Usuario
+
+Este sistema te guiará paso a paso para crear apuntes educativos profesionales.
+
+### Lo que necesitas saber antes de empezar:
+
+1. **Nivel Educativo:**
+   - Primaria (6-12 años)
+   - ESO (12-16 años)
+   - Bachillerato (16-18 años)
+   - FP (Formación Profesional)
+
+2. **Asignatura:**
+   - Lengua, Matemáticas, Ciencias, Inglés, etc.
+
+3. **Curso Específico:**
+   - Ej: 3º ESO, 2º Bachillerato, 1º FP
+
+4. **Tema/Unidad:**
+   - El contenido concreto que quieres desarrollar
+
+### Proceso de Generación:
+
+1. El sistema te hará preguntas una por una
+2. Responde de forma clara y concisa
+3. El agente orquestador coordinará la creación
+4. Se generará la estructura de carpetas automáticamente
+5. Los apuntes se guardarán en: `apuntes/[NIVEL]/[ASIGNATURA]/[CURSO]/[TEMA]/`
+
+### Ejemplo de Uso:
+
+```
+Usuario: Bachillerato
+Sistema: ¿Qué asignatura quieres desarrollar?
+Usuario: Inglés
+Sistema: ¿Qué curso específico?
+Usuario: 2
+Sistema: ¿Qué tema quieres desarrollar?
+Usuario: Estrategias para el writing
+```
+
+### Archivos Generados:
+
+Cada apunte incluirá:
+- `index.html` - Archivo principal navegable
+- `logo.png` - Logo del centro
+- `assets/` - Assets de licencia CC BY
+- `images/` - Imágenes del tema
+- `sections/` - Secciones modulares del contenido
+- `data/metadata.js` - Metadatos del proyecto
+
+---
+
+## Para el Asistente IA:
+
+### Reglas de Operación:
+
+1. **Preguntar de uno en uno:** No hagas múltiples preguntas a la vez
+2. **Esperar respuesta:** No continúes sin la respuesta del usuario
+3. **Validar datos:** Asegúrate de que el nivel, asignatura y curso son correctos
+4. **Crear estructura:** Genera las carpetas necesarias antes de crear contenido
+5. **Copiar assets:** Usa los assets de `plantilla/assets/` para la licencia CC BY
+6. **Usar plantillas:** Basa el contenido en `plantilla/index.html`
+
+### Agentes a Utilizar:
+
+- **Orquestador:** `agents/00-orchestrator-apuntes.md` (SIEMPRE)
+- **Por Asignatura:** `agents/10-42-experto-*.md` (según corresponda)
+- **Por Nivel:** `agents/20-23-nivel-*.md` (según corresponda)
+
+### Formato de Salida:
+
+- **HTML, NO Markdown:** Todo el contenido debe ser HTML válido
+- **Mayúsculas correctas:** Solo primera palabra en títulos (español)
+- **Callouts visuales:** Usar para conceptos clave, advertencias, consejos
+- **Iconos:** FontAwesome y emojis para apoyo visual
+
+---
+
+*Versión: 2.0 - Multi-Agente con IA*
