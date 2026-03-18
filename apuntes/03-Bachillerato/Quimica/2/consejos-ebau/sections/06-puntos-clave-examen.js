@@ -39,35 +39,35 @@ window.sectionsContent['puntos-clave-examen'] = {
     <table class="my-6">
         <thead>
             <tr>
-                <th>orden</th>
-                <th>tipo de pregunta</th>
-                <th>tiempo sugerido</th>
+                <th>Orden</th>
+                <th>Tipo de pregunta</th>
+                <th>Tiempo sugerido</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td><strong>1º</strong></td>
-                <td>estequiometría (la más mecánica)</td>
+                <td>Estequiometría (la más mecánica)</td>
                 <td>12-15 min</td>
             </tr>
             <tr>
                 <td><strong>2º</strong></td>
-                <td>equilibrio o ácido-base (cuando estás fresco)</td>
+                <td>Equilibrio o ácido-base (cuando estás fresco)</td>
                 <td>15-18 min</td>
             </tr>
             <tr>
                 <td><strong>3º</strong></td>
-                <td>cuestiones teóricas (definiciones, conceptos)</td>
+                <td>Cuestiones teóricas (definiciones, conceptos)</td>
                 <td>10-12 min</td>
             </tr>
             <tr>
                 <td><strong>4º</strong></td>
-                <td>orgánica (nomenclatura, reacciones)</td>
+                <td>Orgánica (nomenclatura, reacciones)</td>
                 <td>12-15 min</td>
             </tr>
             <tr>
                 <td><strong>5º</strong></td>
-                <td>redox o la más difícil (déjala para cuando estés caliente)</td>
+                <td>Redox o la más difícil (déjala para cuando estés caliente)</td>
                 <td>15-18 min</td>
             </tr>
         </tbody>
@@ -156,16 +156,16 @@ window.sectionsContent['puntos-clave-examen'] = {
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div class="bg-white p-3 rounded-lg border border-green-200">
-                <p class="text-sm text-green-800"><em>"he estudiado lo suficiente. estoy preparado/a."</em></p>
+                <p class="text-sm text-green-800"><em>"He estudiado lo suficiente. Estoy preparado/a."</em></p>
             </div>
             <div class="bg-white p-3 rounded-lg border border-green-200">
-                <p class="text-sm text-green-800"><em>"los nervios son normales. me ayudan a estar alerta."</em></p>
+                <p class="text-sm text-green-800"><em>"Los nervios son normales. Me ayudan a estar alerta."</em></p>
             </div>
             <div class="bg-white p-3 rounded-lg border border-green-200">
-                <p class="text-sm text-green-800"><em>"si me atasco, respiro y paso a otra. volveré después."</em></p>
+                <p class="text-sm text-green-800"><em>"Si me atasco, respiro y paso a otra. Volveré después."</em></p>
             </div>
             <div class="bg-white p-3 rounded-lg border border-green-200">
-                <p class="text-sm text-green-800"><em>"no necesito sacar un 10. solo hacer lo que sé."</em></p>
+                <p class="text-sm text-green-800"><em>"No necesito sacar un 10. Solo hacer lo que sé."</em></p>
             </div>
         </div>
     </div>

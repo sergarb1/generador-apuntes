@@ -20,19 +20,19 @@ window.sectionsContent['tecnica-examen'] = {
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>lectura inicial</strong></td>
+                    <td><strong>Lectura inicial</strong></td>
                     <td>5-10 min</td>
-                    <td>leer TODAS las preguntas, elegir opción</td>
+                    <td>Leer TODAS las preguntas, elegir opción</td>
                 </tr>
                 <tr>
-                    <td><strong>resolución</strong></td>
+                    <td><strong>Resolución</strong></td>
                     <td>60-70 min</td>
-                    <td>resolver cuestiones (12-15 min por pregunta)</td>
+                    <td>Resolver cuestiones (12-15 min por pregunta)</td>
                 </tr>
                 <tr>
-                    <td><strong>revisión</strong></td>
+                    <td><strong>Revisión</strong></td>
                     <td>10-15 min</td>
-                    <td>repasar cálculos, unidades, fórmulas químicas</td>
+                    <td>Repasar cálculos, unidades, fórmulas químicas</td>
                 </tr>
             </tbody>
         </table>

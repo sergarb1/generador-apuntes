@@ -45,28 +45,28 @@ window.sectionsContent['recursos'] = {
         <tbody>
             <tr>
                 <td><strong>Quimitube</strong></td>
-                <td>vídeos de Química de Bachillerato</td>
-                <td>explicaciones detalladas por temas</td>
+                <td>Vídeos de Química de Bachillerato</td>
+                <td>Explicaciones detalladas por temas</td>
             </tr>
             <tr>
-                <td><strong>la Web de Física</strong></td>
-                <td>foro y apuntes de Física y Química</td>
-                <td>resolver dudas concretas</td>
+                <td><strong>La Web de Física</strong></td>
+                <td>Foro y apuntes de Física y Química</td>
+                <td>Resolver dudas concretas</td>
             </tr>
             <tr>
-                <td><strong>profesor10demates</strong></td>
-                <td>ejercicios resueltos en vídeo</td>
-                <td>práctica de problemas tipo EBAU</td>
+                <td><strong>Profesor10demates</strong></td>
+                <td>Ejercicios resueltos en vídeo</td>
+                <td>Práctica de problemas tipo EBAU</td>
             </tr>
             <tr>
-                <td><strong>amplía tu Ciencia</strong></td>
-                <td>apuntes y ejercicios de Química</td>
-                <td>material específico para EBAU</td>
+                <td><strong>Amplía tu Ciencia</strong></td>
+                <td>Apuntes y ejercicios de Química</td>
+                <td>Material específico para EBAU</td>
             </tr>
             <tr>
                 <td><strong>Khan Academy</strong></td>
-                <td>vídeos y ejercicios de Química</td>
-                <td>repaso de conceptos básicos</td>
+                <td>Vídeos y ejercicios de Química</td>
+                <td>Repaso de conceptos básicos</td>
             </tr>
         </tbody>
     </table>
