@@ -18,7 +18,7 @@
 
 ## ⚠️ REGLA CRÍTICA: USO CORRECTO DE MAYÚSCULAS EN TÍTULOS (PARA TODAS LAS ASIGNATURAS)
 
-**En español, los títulos y subtítulos usan SOLO la primera letra en mayúscula. Esta regla aplica a TODOS los apuntes, sin importar la asignatura.**
+**En español, los títulos y subtítulos usan SOLO la primera letra en mayúscula (solo la primera palabra). Esta regla aplica a TODOS los apuntes, sin importar la asignatura.**
 
 ### Regla general para títulos en español
 
@@ -34,6 +34,10 @@
 | `<h3>Páginas Web Recomendadas</h3>` | `<h3>Páginas web recomendadas</h3>` |
 | `<h3>Libros Recomendados</h3>` | `<h3>Libros recomendados</h3>` |
 | `<h3>Consejos Finales de Estudio</h3>` | `<h3>Consejos finales de estudio</h3>` |
+| `<h2>1. Introducción a la Macroeconomía</h2>` | `<h2>1. Introducción a la macroeconomía</h2>` |
+| `<h3>2.1. Planificación Temporal</h3>` | `<h3>2.1. Planificación temporal</h3>` |
+| `<h4>📅 Cronograma Recomendado</h4>` | `<h4>📅 Cronograma recomendado</h4>` |
+| `<h4>✅ Lo que SÍ Funciona</h4>` | `<h4>✅ Lo que sí funciona</h4>` |
 
 ### Excepciones (SÍ van en mayúscula)
 
@@ -48,6 +52,8 @@
 |----------|-------|---------|
 | **Título principal (h2)** | Solo primera palabra | `<h2>Estructura del ensayo académico</h2>` |
 | **Subtítulo (h3)** | Solo primera palabra | `<h3>La introducción perfecta</h3>` |
+| **Subtítulo con número (h3)** | Solo primera palabra después del número | `<h3>2.1. Planificación temporal</h3>` |
+| **Títulos h4 con emoji** | Solo primera palabra | `<h4>📅 Cronograma recomendado</h4>` |
 | **Después de dos puntos** | Minúscula | `Tema: los tipos de texto` |
 | **En tablas (cabeceras)** | Solo primera palabra | `| Tipo de texto \| Ejemplo \|` |
 
@@ -61,6 +67,18 @@ Esta regla aplica a **TODAS las asignaturas**:
 - **Historia:** "La Edad Media", "Los Reyes Católicos" (nombres propios SÍ)
 - **Física:** "Leyes de Newton", "Movimiento rectilíneo"
 - **Informática:** "Tipos de datos", "Estructuras de control"
+- **Química:** "Equilibrio químico", "Reacciones redox"
+
+---
+
+## ⚠️ VERIFICACIÓN OBLIGATORIA ANTES DE GENERAR
+
+Antes de crear cualquier contenido, verifica:
+
+- [ ] ¿Todos los h2, h3, h4 usan solo la primera palabra en mayúscula?
+- [ ] ¿Las siglas (EBAU, ESO, FP) están en mayúscula?
+- [ ] ¿Los nombres propios están en mayúscula?
+- [ ] ¿Los títulos de secciones numeradas siguen la regla? Ej: `<h3>2.1. Planificación temporal</h3>`
 
 ---
 

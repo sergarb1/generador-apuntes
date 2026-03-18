@@ -92,9 +92,15 @@ REM Ambos/Tres disponibles o ninguno configurado
 if defined HAS_QWEN (
     if defined HAS_GEMINI (
         if defined HAS_COPILOT (
-            echo Herramientas detectadas: Qwen Code, Gemini CLI y GitHub Copilot CLI
             echo.
-            choice /C QGC /N /M "Que herramienta quieres usar? (Q=Qwen, G=Gemini, C=Copilot) [Qwen]: "
+            echo   Herramientas detectadas:
+            echo   ─────────────────────────────────
+            echo   [1] Qwen Code
+            echo   [2] Gemini CLI
+            echo   [3] GitHub Copilot CLI
+            echo   ─────────────────────────────────
+            echo.
+            choice /C 123 /N /M "   Selecciona una opcion [1]: "
             if errorlevel 3 (
                 set "TOOL=copilot"
             ) else if errorlevel 2 (
@@ -104,12 +110,15 @@ if defined HAS_QWEN (
             )
             goto :SELECTED
         )
-        echo Herramientas detectadas: Qwen Code y Gemini CLI
         echo.
-        choice /C QGC /N /M "Que herramienta quieres usar? (Q=Qwen, G=Gemini, C=Copilot) [Qwen]: "
-        if errorlevel 3 (
-            set "TOOL=copilot"
-        ) else if errorlevel 2 (
+        echo   Herramientas detectadas:
+        echo   ─────────────────────────────────
+        echo   [1] Qwen Code
+        echo   [2] Gemini CLI
+        echo   ─────────────────────────────────
+        echo.
+        choice /C 12 /N /M "   Selecciona una opcion [1]: "
+        if errorlevel 2 (
             set "TOOL=gemini"
         ) else (
             set "TOOL=qwen"
@@ -117,44 +126,50 @@ if defined HAS_QWEN (
         goto :SELECTED
     )
     if defined HAS_COPILOT (
-        echo Herramientas detectadas: Qwen Code y GitHub Copilot CLI
         echo.
-        choice /C QGC /N /M "Que herramienta quieres usar? (Q=Qwen, G=Gemini, C=Copilot) [Qwen]: "
-        if errorlevel 3 (
+        echo   Herramientas detectadas:
+        echo   ─────────────────────────────────
+        echo   [1] Qwen Code
+        echo   [2] GitHub Copilot CLI
+        echo   ─────────────────────────────────
+        echo.
+        choice /C 12 /N /M "   Selecciona una opcion [1]: "
+        if errorlevel 2 (
             set "TOOL=copilot"
-        ) else if errorlevel 2 (
-            set "TOOL=gemini"
         ) else (
             set "TOOL=qwen"
         )
         goto :SELECTED
     )
-    echo Qwen Code detectado
+    echo   Qwen Code detectado
     set "TOOL=qwen"
     goto :SELECTED
 )
 
 if defined HAS_GEMINI (
     if defined HAS_COPILOT (
-        echo Herramientas detectadas: Gemini CLI y GitHub Copilot CLI
         echo.
-        choice /C QGC /N /M "Que herramienta quieres usar? (Q=Qwen, G=Gemini, C=Copilot) [Gemini]: "
-        if errorlevel 3 (
+        echo   Herramientas detectadas:
+        echo   ─────────────────────────────────
+        echo   [1] Gemini CLI
+        echo   [2] GitHub Copilot CLI
+        echo   ─────────────────────────────────
+        echo.
+        choice /C 12 /N /M "   Selecciona una opcion [1]: "
+        if errorlevel 2 (
             set "TOOL=copilot"
-        ) else if errorlevel 2 (
-            set "TOOL=gemini"
         ) else (
-            set "TOOL=qwen"
+            set "TOOL=gemini"
         )
         goto :SELECTED
     )
-    echo Gemini CLI detectado
+    echo   Gemini CLI detectado
     set "TOOL=gemini"
     goto :SELECTED
 )
 
 if defined HAS_COPILOT (
-    echo GitHub Copilot CLI detectado
+    echo   GitHub Copilot CLI detectado
     set "TOOL=copilot"
     goto :SELECTED
 )
@@ -175,47 +190,17 @@ exit /b 1
 REM Guardar la seleccion
 echo tool=%TOOL% > "%CONFIG_PATH%"
 
-REM Leer el prompt inicial
-setlocal enabledelayedexpansion
-set "INITIAL_PROMPT="
-if exist "%PROMPT_PATH%" (
-    for /f "delims=" %%a in ('type "%PROMPT_PATH%"') do (
-        if defined INITIAL_PROMPT (
-            set "INITIAL_PROMPT=!INITIAL_PROMPT! %%a"
-        ) else (
-            set "INITIAL_PROMPT=%%a"
-        )
-    )
-)
-
-if not defined INITIAL_PROMPT (
-    set "INITIAL_PROMPT=Hola! Soy el asistente de generacion de apuntes educativos de mejoratudocencia.es. Por favor, ayudame a generar apuntes educativos profesionales."
-)
-
-REM Informacion del interprete
-set "INTERPRETER_INFO=^
-
----^
-INFORMACION DEL INTERPRETE:^
-Este script se esta ejecutando en CMD.exe.^
-Los comandos de shell deben usar sintaxis PowerShell (no bash).^
----^
-^"
-
-REM Combinar prompts
-set "FULL_PROMPT=!INITIAL_PROMPT!!INTERPRETER_INFO!"
-
 echo.
 echo Iniciando %TOOL% con prompt interactivo...
 echo.
 
-REM Iniciar la herramienta seleccionada
+REM Iniciar la herramienta seleccionada con prompt inicial
 if "%TOOL%"=="qwen" (
-    qwen -i "!FULL_PROMPT!" -y
+    qwen -i "Hola! Soy el asistente de generacion de apuntes educativos de mejoratudocencia.es. Lee el archivo prompt-inicial.txt para conocer las instrucciones completas. Por favor, ayudame a generar apuntes educativos profesionales siguiendo ese flujo. - INFORMACION DEL INTERPRETE: Este script se ejecuta en CMD.exe. Los comandos de shell deben usar sintaxis PowerShell (no bash)." -y
 ) else if "%TOOL%"=="gemini" (
-    gemini -i "!FULL_PROMPT!" -y
+    gemini -i "Hola! Soy el asistente de generacion de apuntes educativos de mejoratudocencia.es. Lee el archivo prompt-inicial.txt para conocer las instrucciones completas. Por favor, ayudame a generar apuntes educativos profesionales siguiendo ese flujo. - INFORMACION DEL INTERPRETE: Este script se ejecuta en CMD.exe. Los comandos de shell deben usar sintaxis PowerShell (no bash)." -y
 ) else if "%TOOL%"=="copilot" (
-    copilot -i "!FULL_PROMPT!" --yolo
+    copilot -i "Hola! Soy el asistente de generacion de apuntes educativos de mejoratudocencia.es. Lee el archivo prompt-inicial.txt para conocer las instrucciones completas. Por favor, ayudame a generar apuntes educativos profesionales siguiendo ese flujo. - INFORMACION DEL INTERPRETE: Este script se ejecuta en CMD.exe. Los comandos de shell deben usar sintaxis PowerShell (no bash)." --yolo
 )
 
 endlocal

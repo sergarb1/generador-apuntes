@@ -6,70 +6,49 @@
     <title>Generador de Apuntes Educativos - mejoratudocencia.es</title>
     <meta name="description" content="Sistema para crear apuntes educativos profesionales para Primaria, ESO, Bachillerato y FP. Un proyecto de mejoratudocencia.es">
 
-    <!-- Librerías Externas (CDNs) -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Tipografías -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        [v-cloak] { display: none; }
-
-        :root {
-            --primary: #2563eb;
-            --primary-hover: #1d4ed8;
-            --bg-main: #ffffff;
-            --bg-subtle: #f8fafc;
-            --border: #e2e8f0;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-        }
-
-        * { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-main);
-            line-height: 1.7;
         }
 
-        h1, h2, h3, h4, h5, h6 { font-weight: 800 !important; color: #0f172a; letter-spacing: -0.02em; }
-        h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 0.5rem; }
-        h2 { font-size: 1.75rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--primary); }
+        .gradient-bg {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(20px, -20px) scale(1.1); }
+        }
 
         .apuntes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
-        }
-
-        .apunte-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .apunte-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.15);
-            border-color: var(--primary);
-        }
-
-        .apunte-card-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 1rem;
         }
 
         .apunte-icon {
@@ -105,380 +84,461 @@
         .nivel-fp { background-color: #fef3c7; color: #92400e; }
         .nivel-primaria { background-color: #fce7f3; color: #9d174d; }
 
-        .apunte-asignatura {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-        }
-
-        .apunte-tema {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-
-        .apunte-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-            font-size: 0.75rem;
-            color: var(--text-muted);
-        }
-
         .badge {
             display: inline-flex;
             align-items: center;
             gap: 0.25rem;
             padding: 0.25rem 0.5rem;
-            background-color: var(--bg-subtle);
+            background-color: #f1f5f9;
             border-radius: 0.375rem;
+            font-size: 0.75rem;
         }
     </style>
 </head>
-<body>
-    <div id="app" v-cloak>
-        <!-- Header -->
-        <header class="bg-white border-b border-slate-200 py-8">
-            <div class="max-w-6xl mx-auto px-8">
-                <div class="flex items-center gap-8">
-                    <a href="https://mejoratudocencia.es" target="_blank" class="logo-box" style="height: 100px; background: linear-gradient(135deg, #ffffff, #f8fafc); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15), 0 2px 8px rgba(0,0,0,0.08); padding: 16px; border: 1px solid #e2e8f0; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 40px rgba(37, 99, 235, 0.2), 0 4px 12px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(37, 99, 235, 0.15), 0 2px 8px rgba(0,0,0,0.08)'">
-                        <img src="./logo.png" alt="Logo" style="height: 100%; width: auto; object-fit: contain;">
-                    </a>
+<body class="bg-slate-50">
+    <!-- Hero Section -->
+    <header class="gradient-bg text-white relative overflow-hidden">
+        <div class="blob bg-purple-400 w-96 h-96 rounded-full top-0 left-0"></div>
+        <div class="blob bg-blue-400 w-80 h-80 rounded-full bottom-0 right-0" style="animation-delay: 2s;"></div>
+
+        <nav class="container mx-auto px-6 py-4 relative z-10">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center">
+                        <span class="text-2xl">🎓</span>
+                    </div>
                     <div>
-                        <h1 style="margin: 0; font-size: 2rem;">Generador de apuntes educativos</h1>
-                        <p style="color: var(--text-muted); margin: 0.25rem 0 0 0; font-size: 1rem;">
-                            Un proyecto de <a href="https://mejoratudocencia.es" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;">mejoratudocencia.es</a>
-                        </p>
-                        <p style="color: var(--text-muted); margin: 0.5rem 0 0 0; font-size: 0.875rem; max-width: 600px;">
-                            Sistema impulsado por IA con agentes especializados para crear apuntes profesionales para Primaria, ESO, Bachillerato y FP.
-                        </p>
+                        <h1 class="font-bold text-lg">mejoratudocencia.es</h1>
+                        <p class="text-xs text-blue-100">Generador de Apuntes</p>
                     </div>
                 </div>
-                <!-- Quick Access -->
-                <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="#apuntes-bachillerato" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; padding: 0.625rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                        📚 Ver Apuntes
-                    </a>
-                    <a href="#como-funciona" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #f1f5f9; color: #475569; padding: 0.625rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                        ⚙️ Cómo funciona
-                    </a>
-                    <a href="#agentes" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #f1f5f9; color: #475569; padding: 0.625rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                        🤖 Agentes
-                    </a>
-                    <a href="https://github.com/sergarb1/generador-apuntes" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #f1f5f9; color: #475569; padding: 0.625rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                        💻 GitHub
+                <div class="hidden md:flex items-center gap-6 text-sm">
+                    <a href="#apuntes-bachillerato" class="hover:text-blue-200 transition">Apuntes</a>
+                    <a href="#como-funciona" class="hover:text-blue-200 transition">Cómo Funciona</a>
+                    <a href="#agentes" class="hover:text-blue-200 transition">Agentes</a>
+                    <a href="https://github.com/sergarb1/generador-apuntes" target="_blank" class="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white/30 transition">
+                        <span>💻</span> GitHub
                     </a>
                 </div>
             </div>
-        </header>
+        </nav>
 
-        <!-- Main Content -->
-        <main class="max-w-6xl mx-auto px-8 py-12">
-            <!-- Intro Banner -->
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-8 mb-8">
-                <div class="flex items-start gap-6">
-                    <div style="font-size: 3rem; line-height: 1;">🎓</div>
-                    <div>
-                        <h2 style="margin: 0 0 0.5rem 0; font-size: 1.5rem; color: #1e40af;">Genera apuntes profesionales para tu aula</h2>
-                        <p style="color: #1e3a8a; margin: 0 0 1rem 0; font-size: 1rem; line-height: 1.6;">
-                            Este sistema crea material didáctico profesional para <strong>Primaria</strong>, <strong>ESO</strong>, <strong>Bachillerato</strong> y <strong>Formación Profesional</strong>. 
-                            Cada apunte incluye objetivos de aprendizaje, contenido estructurado, ejemplos resueltos, ejercicios graduados y autoevaluación.
-                        </p>
-                        <p style="color: #1e3a8a; margin: 0; font-size: 0.875rem;">
-                            <strong>🌐 Descubre más proyectos en</strong> <a href="https://mejoratudocencia.es" target="_blank" style="color: #2563eb; text-decoration: none; font-weight: 600;">mejoratudocencia.es</a>
-                        </p>
+        <div class="container mx-auto px-6 py-20 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm mb-6">
+                    <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                    Generador con IA para Primaria, ESO, Bachillerato y FP
+                </div>
+
+                <h2 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+                    Generador de Apuntes<br/>Educativos
+                </h2>
+
+                <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
+                    Sistema impulsado por agentes de IA especializados para crear apuntes profesionales
+                    para Primaria, ESO, Bachillerato y Formación Profesional.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#apuntes-bachillerato" class="bg-white text-blue-600 font-bold px-8 py-4 rounded-xl hover:bg-blue-50 transition shadow-lg flex items-center justify-center gap-2">
+                        <span>📚</span> Ver Apuntes
+                    </a>
+                    <a href="#como-funciona" class="bg-white/20 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-xl hover:bg-white/30 transition">
+                        ⚙️ Cómo Funciona
+                    </a>
+                    <a href="https://github.com/sergarb1/generador-apuntes" target="_blank" class="bg-white/20 backdrop-blur-sm text-white font-bold px-8 py-4 rounded-xl hover:bg-white/30 transition flex items-center justify-center gap-2">
+                        <span>💻</span> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Intro Banner -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-8">
+                    <div class="flex items-start gap-6">
+                        <div class="text-5xl">🎓</div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-slate-800 mb-3">Genera apuntes profesionales para tu aula</h3>
+                            <p class="text-slate-600 mb-4 leading-relaxed">
+                                Este sistema crea material didáctico profesional para <strong>Primaria</strong>, <strong>ESO</strong>, <strong>Bachillerato</strong> y <strong>Formación Profesional</strong>.
+                                Cada apunte incluye objetivos de aprendizaje, contenido estructurado, ejemplos resueltos, ejercicios graduados y autoevaluación.
+                            </p>
+                            <p class="text-slate-600">
+                                <strong>🌐 Descubre más proyectos en</strong> <a href="https://mejoratudocencia.es" target="_blank" class="text-blue-600 hover:underline font-semibold">mejoratudocencia.es</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Banner CC BY -->
-            <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6 mb-8">
-                <div class="flex items-center gap-4">
-                    <img src="./apuntes/03-Bachillerato/Economia/2/macroeconomia/assets/cc-by-88x31.png" alt="CC BY 4.0" style="height: 40px;">
-                    <div>
-                        <p style="font-weight: 700; color: #166534; margin: 0;">Licencia Creative Commons CC BY 4.0</p>
-                        <p style="font-size: 0.875rem; color: #15803d; margin: 0.25rem 0 0 0;">Todos los apuntes están bajo licencia abierta. Puedes compartir y adaptar con atribución.</p>
+    <!-- Banner CC BY -->
+    <section class="py-8 bg-white border-t border-slate-200">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6">
+                    <div class="flex items-center gap-4">
+                        <img src="./apuntes/03-Bachillerato/Economia/2/macroeconomia/assets/cc-by-88x31.png" alt="CC BY 4.0" class="h-10">
+                        <div>
+                            <p class="font-bold text-green-800">Licencia Creative Commons CC BY 4.0</p>
+                            <p class="text-sm text-green-600">Todos los apuntes están bajo licencia abierta. Puedes compartir y adaptar con atribución.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Cómo funciona -->
-            <section id="como-funciona" style="margin-top: 2rem;">
-                <h2>⚙️ Cómo funciona</h2>
-                <div class="bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-2xl p-8">
-                    <div class="bg-white border-2 border-blue-300 rounded-xl p-6 mb-6" style="background: linear-gradient(135deg, #eff6ff, #dbeafe);">
-                        <p style="font-size: 1.1rem; line-height: 1.6; color: #1e40af; margin: 0;">
-                            <strong>💻 Descarga los agentes para Gemini CLI, Qwen Code o Copilot CLI</strong> en el 
-                            <a href="https://github.com/sergarb1/generador-apuntes" target="_blank" style="color: #2563eb; text-decoration: none; font-weight: 700; text-decoration: underline;">repositorio GitHub</a>.
-                            Encuentra instrucciones detalladas de instalación y uso.
-                        </p>
-                    </div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
-                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">1️⃣</div>
-                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Descarga los agentes</h3>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Clona el repositorio de GitHub con todos los agentes especializados para tu CLI preferido.</p>
-                        </div>
-                        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
-                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">2️⃣</div>
-                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Configura el entorno</h3>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Sigue las instrucciones para configurar Gemini CLI, Qwen Code o Copilot CLI.</p>
-                        </div>
-                        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
-                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">3️⃣</div>
-                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Solicita el apunte</h3>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Indica el nivel educativo (Primaria, ESO, Bachillerato o FP), asignatura, curso y tema.</p>
-                        </div>
-                        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
-                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">4️⃣</div>
-                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Agentes especializados</h3>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Los agentes de IA analizan y estructuran el material pedagógicamente.</p>
-                        </div>
-                        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
-                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">5️⃣</div>
-                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Recibe tu apunte</h3>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Obtén un apunte profesional en HTML con objetivos, contenido, ejemplos y ejercicios.</p>
-                        </div>
-                        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
-                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">6️⃣</div>
-                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Usa en tu aula</h3>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Imprime en PDF, exporta a Word o comparte directamente con tus estudiantes.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <!-- Cómo Funciona Section -->
+    <section id="como-funciona" class="py-20 bg-slate-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-4xl mb-4 block">⚙️</span>
+                <h3 class="text-3xl font-bold text-slate-800 mb-4">¿Cómo Funciona?</h3>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                    El proceso de generación sigue un flujo estructurado con agentes especializados.
+                </p>
+            </div>
 
-            <!-- Agentes -->
-            <section id="agentes" style="margin-top: 3rem;">
-                <h2>🤖 Agentes Especializados</h2>
-                <div class="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-2xl p-8">
-                    <p style="margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; color: #5b21b6;">
-                        El sistema utiliza múltiples agentes de IA que trabajan de forma coordinada para crear apuntes de alta calidad:
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white border-2 border-blue-300 rounded-xl p-6 mb-8" style="background: linear-gradient(135deg, #eff6ff, #dbeafe);">
+                    <p class="text-lg leading-relaxed text-blue-800 font-semibold">
+                        💻 <strong>Descarga los agentes para Gemini CLI, Qwen Code o Copilot CLI</strong> en el
+                        <a href="https://github.com/sergarb1/generador-apuntes" target="_blank" class="text-blue-600 underline font-bold">repositorio GitHub</a>.
+                        Encuentra instrucciones detalladas de instalación y uso.
                     </p>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                        <div style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
-                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-                                <span style="font-size: 1.5rem;">🎯</span>
-                                <h4 style="margin: 0; font-size: 1rem; color: #1e40af;">Agente Orquestador</h4>
-                            </div>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Coordina todo el proceso y distribuye las tareas entre los agentes especializados.</p>
+                </div>
+
+                <div class="relative">
+                    <!-- Línea conectora -->
+                    <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 to-green-500 hidden md:block"></div>
+
+                    <!-- Paso 1 -->
+                    <div class="relative flex gap-6 mb-8">
+                        <div class="flex-shrink-0 w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">1</div>
+                        <div class="flex-1 bg-white rounded-2xl p-6 shadow-md">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Descarga los agentes</h4>
+                            <p class="text-slate-600">Clona el repositorio de GitHub con todos los agentes especializados para tu CLI preferido.</p>
                         </div>
-                        <div style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
-                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-                                <span style="font-size: 1.5rem;">📖</span>
-                                <h4 style="margin: 0; font-size: 1rem; color: #1e40af;">Agente Experto en Proyectos</h4>
-                            </div>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Diseña la estructura pedagógica y los objetivos de aprendizaje del tema.</p>
+                    </div>
+
+                    <!-- Paso 2 -->
+                    <div class="relative flex gap-6 mb-8">
+                        <div class="flex-shrink-0 w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">2</div>
+                        <div class="flex-1 bg-white rounded-2xl p-6 shadow-md">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Configura el entorno</h4>
+                            <p class="text-slate-600">Sigue las instrucciones para configurar Gemini CLI, Qwen Code o Copilot CLI.</p>
                         </div>
-                        <div style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
-                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-                                <span style="font-size: 1.5rem;">✍️</span>
-                                <h4 style="margin: 0; font-size: 1rem; color: #1e40af;">Agente Generador de Contenido</h4>
-                            </div>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Redacta el contenido principal con ejemplos, explicaciones y casos prácticos.</p>
+                    </div>
+
+                    <!-- Paso 3 -->
+                    <div class="relative flex gap-6 mb-8">
+                        <div class="flex-shrink-0 w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">3</div>
+                        <div class="flex-1 bg-white rounded-2xl p-6 shadow-md">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Solicita el apunte</h4>
+                            <p class="text-slate-600">Indica el nivel educativo (Primaria, ESO, Bachillerato o FP), asignatura, curso y tema.</p>
                         </div>
-                        <div style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
-                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-                                <span style="font-size: 1.5rem;">✅</span>
-                                <h4 style="margin: 0; font-size: 1rem; color: #1e40af;">Agente de Evaluación</h4>
-                            </div>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Crea ejercicios graduados, actividades de autoevaluación y rúbricas.</p>
+                    </div>
+
+                    <!-- Paso 4 -->
+                    <div class="relative flex gap-6 mb-8">
+                        <div class="flex-shrink-0 w-16 h-16 bg-orange-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">4</div>
+                        <div class="flex-1 bg-white rounded-2xl p-6 shadow-md">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Agentes especializados</h4>
+                            <p class="text-slate-600">Los agentes de IA analizan y estructuran el material pedagógicamente.</p>
                         </div>
-                        <div style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
-                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-                                <span style="font-size: 1.5rem;">🎨</span>
-                                <h4 style="margin: 0; font-size: 1rem; color: #1e40af;">Agente de Formato</h4>
-                            </div>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Da formato HTML profesional, responsive y accesible al contenido.</p>
+                    </div>
+
+                    <!-- Paso 5 -->
+                    <div class="relative flex gap-6 mb-8">
+                        <div class="flex-shrink-0 w-16 h-16 bg-pink-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">5</div>
+                        <div class="flex-1 bg-white rounded-2xl p-6 shadow-md">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Recibe tu apunte</h4>
+                            <p class="text-slate-600">Obtén un apunte profesional en HTML con objetivos, contenido, ejemplos y ejercicios.</p>
                         </div>
-                        <div style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
-                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
-                                <span style="font-size: 1.5rem;">🔍</span>
-                                <h4 style="margin: 0; font-size: 1rem; color: #1e40af;">Agente Revisor</h4>
-                            </div>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Verifica la calidad pedagógica, ortografía y coherencia del material.</p>
+                    </div>
+
+                    <!-- Paso 6 -->
+                    <div class="relative flex gap-6">
+                        <div class="flex-shrink-0 w-16 h-16 bg-teal-500 rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg">6</div>
+                        <div class="flex-1 bg-white rounded-2xl p-6 shadow-md">
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Usa en tu aula</h4>
+                            <p class="text-slate-600">Imprime en PDF, exporta a Word o comparte directamente con tus estudiantes.</p>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Apuntes de Bachillerato -->
-            <section id="apuntes-bachillerato">
-                <h2>📚 Bachillerato</h2>
-                <div class="apuntes-grid">
-                    <!-- Macroeconomía -->
-                    <a href="./apuntes/03-Bachillerato/Economia/2/macroeconomia/index.html" class="apunte-card">
-                        <div class="apunte-card-header">
-                            <div class="apunte-icon icon-economia">📊</div>
-                            <div>
-                                <h3 style="margin: 0; font-size: 1.125rem;">Macroeconomía</h3>
-                                <span class="apunte-nivel nivel-bachillerato">2º Bachillerato</span>
-                                <p class="apunte-asignatura">Economía</p>
-                                <p class="apunte-tema">Indicadores, Política Fiscal y Monetaria</p>
-                            </div>
-                        </div>
-                        <div class="apunte-meta">
-                            <span class="badge">📄 10 secciones</span>
-                            <span class="badge">✅ Autoevaluación</span>
-                            <span class="badge">📚 Glosario</span>
-                        </div>
-                    </a>
+    <!-- Agentes Section -->
+    <section id="agentes" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-4xl mb-4 block">🤖</span>
+                <h3 class="text-3xl font-bold text-slate-800 mb-4">Agentes de IA</h3>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                    El sistema utiliza múltiples agentes de IA que trabajan de forma coordinada para crear apuntes de alta calidad.
+                </p>
+            </div>
 
-                    <!-- Writing Strategies (Inglés) -->
-                    <a href="./apuntes/03-Bachillerato/Ingles/2-Bach/WRITING-STRATEGIES/index.html" class="apunte-card">
-                        <div class="apunte-card-header">
-                            <div class="apunte-icon icon-ingles">✍️</div>
-                            <div>
-                                <h3 style="margin: 0; font-size: 1.125rem;">Writing Strategies</h3>
-                                <span class="apunte-nivel nivel-bachillerato">2º Bachillerato</span>
-                                <p class="apunte-asignatura">Inglés</p>
-                                <p class="apunte-tema">Estrategias para el writing académico</p>
-                            </div>
-                        </div>
-                        <div class="apunte-meta">
-                            <span class="badge">📄 9 secciones</span>
-                            <span class="badge">✅ Ejercicios</span>
-                            <span class="badge">📚 Modelos</span>
-                        </div>
-                    </a>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Agente Orquestador -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border-2 border-blue-200 card-hover">
+                    <div class="w-14 h-14 bg-blue-500 rounded-xl flex items-center justify-center text-white text-2xl mb-4">🎯</div>
+                    <h4 class="font-bold text-xl text-blue-800 mb-2">Orquestador</h4>
+                    <p class="text-sm text-blue-600 mb-4">agents/00-orchestrator-apuntes.md</p>
+                    <p class="text-slate-600 text-sm">
+                        Coordina todo el proceso y distribuye las tareas entre los agentes especializados.
+                    </p>
                 </div>
-            </section>
 
-            <!-- Próximos apuntes -->
-            <section style="margin-top: 3rem;">
-                <h2>🚀 Próximos apuntes</h2>
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 text-center">
-                    <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 1rem;">
+                <!-- Agente Experto en Proyectos -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border-2 border-green-200 card-hover">
+                    <div class="w-14 h-14 bg-green-500 rounded-xl flex items-center justify-center text-white text-2xl mb-4">📖</div>
+                    <h4 class="font-bold text-xl text-green-800 mb-2">Experto en Proyectos</h4>
+                    <p class="text-sm text-green-600 mb-4">agents/01-experto-proyectos.md</p>
+                    <p class="text-slate-600 text-sm">
+                        Diseña la estructura pedagógica y los objetivos de aprendizaje del tema.
+                    </p>
+                </div>
+
+                <!-- Agente Generador de Contenido -->
+                <div class="bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-6 border-2 border-purple-200 card-hover">
+                    <div class="w-14 h-14 bg-purple-500 rounded-xl flex items-center justify-center text-white text-2xl mb-4">✍️</div>
+                    <h4 class="font-bold text-xl text-purple-800 mb-2">Generador de Contenido</h4>
+                    <p class="text-sm text-purple-600 mb-4">agents/*-experto-*.md</p>
+                    <p class="text-slate-600 text-sm">
+                        Redacta el contenido principal con ejemplos, explicaciones y casos prácticos.
+                    </p>
+                </div>
+
+                <!-- Agente de Evaluación -->
+                <div class="bg-gradient-to-br from-orange-50 to-amber-50 rounded-2xl p-6 border-2 border-orange-200 card-hover">
+                    <div class="w-14 h-14 bg-orange-500 rounded-xl flex items-center justify-center text-white text-2xl mb-4">✅</div>
+                    <h4 class="font-bold text-xl text-orange-800 mb-2">Evaluación</h4>
+                    <p class="text-sm text-orange-600 mb-4">agents/*-experto-*.md</p>
+                    <p class="text-slate-600 text-sm">
+                        Crea ejercicios graduados, actividades de autoevaluación y rúbricas.
+                    </p>
+                </div>
+
+                <!-- Agente de Formato -->
+                <div class="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-6 border-2 border-pink-200 card-hover">
+                    <div class="w-14 h-14 bg-pink-500 rounded-xl flex items-center justify-center text-white text-2xl mb-4">🎨</div>
+                    <h4 class="font-bold text-xl text-pink-800 mb-2">Formato</h4>
+                    <p class="text-sm text-pink-600 mb-4">plantilla/index.html</p>
+                    <p class="text-slate-600 text-sm">
+                        Da formato HTML profesional, responsive y accesible al contenido.
+                    </p>
+                </div>
+
+                <!-- Agente Revisor -->
+                <div class="bg-gradient-to-br from-teal-50 to-cyan-50 rounded-2xl p-6 border-2 border-teal-200 card-hover">
+                    <div class="w-14 h-14 bg-teal-500 rounded-xl flex items-center justify-center text-white text-2xl mb-4">🔍</div>
+                    <h4 class="font-bold text-xl text-teal-800 mb-2">Revisor</h4>
+                    <p class="text-sm text-teal-600 mb-4">agents/00-orchestrator-apuntes.md</p>
+                    <p class="text-slate-600 text-sm">
+                        Verifica la calidad pedagógica, ortografía y coherencia del material.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Apuntes de Bachillerato -->
+    <section id="apuntes-bachillerato" class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-4xl mb-4 block">📚</span>
+                <h3 class="text-3xl font-bold text-slate-800 mb-4">Apuntes Disponibles</h3>
+                <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                    Explora los apuntes generados con nuestro sistema.
+                </p>
+            </div>
+
+            <div class="apuntes-grid max-w-6xl mx-auto">
+                <!-- Macroeconomía -->
+                <a href="./apuntes/03-Bachillerato/Economia/2/macroeconomia/index.html" class="bg-white rounded-2xl p-6 shadow-lg card-hover border-2 border-slate-200 block">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="apunte-icon icon-economia">📊</div>
+                        <div>
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Macroeconomía</h4>
+                            <span class="apunte-nivel nivel-bachillerato">2º Bachillerato</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-2"><strong class="text-slate-800">Asignatura:</strong> Economía</p>
+                    <p class="text-sm text-slate-600 mb-4"><strong class="text-slate-800">Tema:</strong> Indicadores, Política Fiscal y Monetaria</p>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-200">
+                        <span class="badge">📄 10 secciones</span>
+                        <span class="badge">✅ Autoevaluación</span>
+                        <span class="badge">📚 Glosario</span>
+                    </div>
+                </a>
+
+                <!-- Writing Strategies (Inglés) -->
+                <a href="./apuntes/03-Bachillerato/Ingles/2-Bach/WRITING-STRATEGIES/index.html" class="bg-white rounded-2xl p-6 shadow-lg card-hover border-2 border-slate-200 block">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="apunte-icon icon-ingles">✍️</div>
+                        <div>
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Writing Strategies</h4>
+                            <span class="apunte-nivel nivel-bachillerato">2º Bachillerato</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-2"><strong class="text-slate-800">Asignatura:</strong> Inglés</p>
+                    <p class="text-sm text-slate-600 mb-4"><strong class="text-slate-800">Tema:</strong> Estrategias para el writing académico</p>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-200">
+                        <span class="badge">📄 9 secciones</span>
+                        <span class="badge">✅ Ejercicios</span>
+                        <span class="badge">📚 Modelos</span>
+                    </div>
+                </a>
+
+                <!-- Consejos para repasar la EBAU (Química) -->
+                <a href="./apuntes/03-Bachillerato/Quimica/2/consejos-ebau/index.html" class="bg-white rounded-2xl p-6 shadow-lg card-hover border-2 border-slate-200 block">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="apunte-icon icon-ciencias">⚗️</div>
+                        <div>
+                            <h4 class="font-bold text-lg text-slate-800 mb-2">Consejos para repasar la EBAU</h4>
+                            <span class="apunte-nivel nivel-bachillerato">2º Bachillerato</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-2"><strong class="text-slate-800">Asignatura:</strong> Química</p>
+                    <p class="text-sm text-slate-600 mb-4"><strong class="text-slate-800">Tema:</strong> Estrategias, contenidos y técnica de examen</p>
+                    <div class="flex flex-wrap gap-2 pt-4 border-t border-slate-200">
+                        <span class="badge">📄 8 secciones</span>
+                        <span class="badge">📋 Cronograma</span>
+                        <span class="badge">📚 Glosario</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Próximos apuntes -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-4xl mb-4 block">🚀</span>
+                <h3 class="text-3xl font-bold text-slate-800 mb-4">Próximos Apuntes</h3>
+            </div>
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-12 text-center">
+                    <p class="text-xl text-slate-600 mb-4">
                         Más apuntes están en desarrollo...
                     </p>
-                    <p style="font-size: 0.875rem; color: var(--text-muted);">
+                    <p class="text-slate-500">
                         Solicita nuevos apuntes indicando: nivel educativo, asignatura, curso y tema.
                     </p>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Información -->
-            <section style="margin-top: 3rem;">
-                <h2>ℹ️ Sobre este proyecto</h2>
-                <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
-                    <p style="margin-bottom: 1rem;">
+    <!-- Información -->
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-4xl mb-4 block">ℹ️</span>
+                <h3 class="text-3xl font-bold text-slate-800 mb-4">Sobre este proyecto</h3>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white border border-blue-200 rounded-2xl p-8">
+                    <p class="text-lg text-slate-700 mb-6 leading-relaxed">
                         Este generador de apuntes educativos crea material didáctico profesional para
                         <strong>Primaria</strong>, <strong>ESO</strong>, <strong>Bachillerato</strong> y <strong>FP</strong>.
                     </p>
-                    <ul style="margin: 0; padding-left: 1.5rem;">
-                        <li style="margin-bottom: 0.5rem;">✅ Apuntes en formato HTML navegable</li>
-                        <li style="margin-bottom: 0.5rem;">✅ Exportación a PDF (Ctrl+P) y Word</li>
-                        <li style="margin-bottom: 0.5rem;">✅ Diseño responsive y accesible</li>
-                        <li style="margin-bottom: 0.5rem;">✅ Licencia CC BY 4.0 (uso libre con atribución)</li>
-                    </ul>
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">✅</span>
+                            <span class="text-slate-700">Apuntes en formato HTML navegable</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">✅</span>
+                            <span class="text-slate-700">Exportación a PDF (Ctrl+P) y Word</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">✅</span>
+                            <span class="text-slate-700">Diseño responsive y accesible</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">✅</span>
+                            <span class="text-slate-700">Licencia CC BY 4.0</span>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </div>
+        </div>
+    </section>
 
-            <!-- Sobre mejoratudocencia.es -->
-            <section style="margin-top: 3rem;">
-                <h2>🌐 Sobre mejoratudocencia.es</h2>
-                <div class="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-2xl p-6">
-                    <p style="margin-bottom: 1rem; font-size: 1rem; line-height: 1.6;">
-                        <strong>mejoratudocencia.es</strong> es una plataforma educativa dedicada a proporcionar recursos, 
+    <!-- Sobre mejoratudocencia.es -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-4xl mb-4 block">🌐</span>
+                <h3 class="text-3xl font-bold text-slate-800 mb-4">Sobre mejoratudocencia.es</h3>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 border border-purple-200 rounded-2xl p-8">
+                    <p class="text-lg text-slate-700 mb-6 leading-relaxed">
+                        <strong>mejoratudocencia.es</strong> es una plataforma educativa dedicada a proporcionar recursos,
                         ideas y herramientas para ayudar a los docentes a mejorar su práctica educativa en el aula.
                         Este generador de apuntes es <strong>uno de los muchos proyectos</strong> disponibles en la plataforma.
                     </p>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
-                        <div style="background: white; padding: 1rem; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
-                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎯</div>
-                            <p style="font-weight: 600; margin: 0 0 0.25rem 0; color: #1e3a8a;">Recursos</p>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Material didáctico listo para usar</p>
+                    <div class="grid sm:grid-cols-3 gap-6 mt-8">
+                        <div class="bg-white p-6 rounded-xl border border-purple-200 text-center">
+                            <div class="text-4xl mb-3">🎯</div>
+                            <h4 class="font-bold text-purple-800 mb-2">Recursos</h4>
+                            <p class="text-sm text-slate-600">Material didáctico listo para usar</p>
                         </div>
-                        <div style="background: white; padding: 1rem; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
-                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">💡</div>
-                            <p style="font-weight: 600; margin: 0 0 0.25rem 0; color: #1e3a8a;">Ideas</p>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Estrategias y propuestas para el aula</p>
+                        <div class="bg-white p-6 rounded-xl border border-purple-200 text-center">
+                            <div class="text-4xl mb-3">💡</div>
+                            <h4 class="font-bold text-purple-800 mb-2">Ideas</h4>
+                            <p class="text-sm text-slate-600">Estrategias y propuestas para el aula</p>
                         </div>
-                        <div style="background: white; padding: 1rem; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
-                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📚</div>
-                            <p style="font-weight: 600; margin: 0 0 0.25rem 0; color: #1e3a8a;">Plantillas</p>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Modelos editables para docentes</p>
-                        </div>
-                        <div style="background: white; padding: 1rem; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
-                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">👥</div>
-                            <p style="font-weight: 600; margin: 0 0 0.25rem 0; color: #1e3a8a;">Comunidad</p>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Docentes innovadores en España</p>
+                        <div class="bg-white p-6 rounded-xl border border-purple-200 text-center">
+                            <div class="text-4xl mb-3">🛠️</div>
+                            <h4 class="font-bold text-purple-800 mb-2">Herramientas</h4>
+                            <p class="text-sm text-slate-600">Generadores y utilidades para docentes</p>
                         </div>
                     </div>
-                    <div style="text-align: center; margin-top: 1.5rem;">
-                        <a href="https://mejoratudocencia.es" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; padding: 0.75rem 2rem; border-radius: 9999px; text-decoration: none; font-weight: 600; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                            🌐 Visita mejoratudocencia.es
-                        </a>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="bg-slate-50 border-t border-slate-200 py-12 mt-12">
-            <div class="max-w-6xl mx-auto px-8">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div class="flex items-center gap-4">
-                        <img src="./logo.png" alt="Logo" style="height: 40px; filter: grayscale(100%); opacity: 0.5;">
-                        <div style="font-size: 0.875rem; color: var(--text-muted);">
-                            <p><strong>Generador de Apuntes Educativos</strong></p>
-                            <p>&copy; {{ new Date().getFullYear() }} — Un proyecto de <a href="https://mejoratudocencia.es" target="_blank" style="color: var(--primary); text-decoration: none;">mejoratudocencia.es</a></p>
-                            <p style="font-size: 0.75rem; margin-top: 0.25rem;">Valencia, España 🇪🇸</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" style="text-decoration: none;">
-                            <img src="./apuntes/03-Bachillerato/Economia/2/macroeconomia/assets/cc-by-80x15.png" alt="CC BY 4.0" style="height: 24px;">
-                        </a>
-                        <a href="https://mejoratudocencia.es" target="_blank" style="font-size: 0.875rem; color: var(--primary); text-decoration: none; font-weight: 600;">
-                            mejoratudocencia.es →
+                    <div class="text-center mt-8">
+                        <a href="https://mejoratudocencia.es" target="_blank" class="inline-flex items-center gap-2 bg-purple-600 text-white font-bold px-6 py-3 rounded-xl hover:bg-purple-700 transition">
+                            Visitar mejoratudocencia.es <span>→</span>
                         </a>
                     </div>
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </section>
 
-    <script>
-        const { createApp } = Vue;
-
-        createApp({
-            data() {
-                return {
-                    apuntes: [
-                        {
-                            titulo: 'Macroeconomía',
-                            nivel: '2º Bachillerato',
-                            asignatura: 'Economía',
-                            tema: 'Indicadores, Política Fiscal y Monetaria',
-                            icono: '📊',
-                            secciones: 10,
-                            ruta: './apuntes/03-Bachillerato/Economia/2/macroeconomia/index.html'
-                        },
-                        {
-                            titulo: 'Writing Strategies',
-                            nivel: '2º Bachillerato',
-                            asignatura: 'Inglés',
-                            tema: 'Estrategias para el writing académico',
-                            icono: '✍️',
-                            secciones: 9,
-                            ruta: './apuntes/03-Bachillerato/Ingles/2-Bach/WRITING-STRATEGIES/index.html'
-                        }
-                    ]
-                }
-            },
-            methods: {
-                getNivelClass(nivel) {
-                    if (nivel.includes('Bachillerato')) return 'nivel-bachillerato';
-                    if (nivel.includes('ESO')) return 'nivel-eso';
-                    if (nivel.includes('FP')) return 'nivel-fp';
-                    return 'nivel-primaria';
-                }
-            }
-        }).mount('#app');
-    </script>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                        <span class="text-xl">🎓</span>
+                    </div>
+                    <div>
+                        <p class="font-bold">Generador de Apuntes</p>
+                        <p class="text-xs text-slate-400">Un proyecto de mejoratudocencia.es</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-6 text-sm text-slate-400">
+                    <a href="https://github.com/sergarb1/generador-apuntes" target="_blank" class="hover:text-white transition">GitHub</a>
+                    <span>•</span>
+                    <a href="https://mejoratudocencia.es" target="_blank" class="hover:text-white transition">mejoratudocencia.es</a>
+                    <span>•</span>
+                    <span>© 2024</span>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

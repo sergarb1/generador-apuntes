@@ -459,7 +459,12 @@ Antes de terminar, verifica ESTO:
 ### Formato de Salida:
 
 - **HTML, NO Markdown:** Todo el contenido debe ser HTML válido
-- **Mayúsculas correctas:** Solo primera palabra en títulos (español)
+- **Mayúsculas correctas (REGLA CRÍTICA):** Solo primera letra en títulos y subtítulos (español)
+  - ✅ CORRECTO: `<h2>Estructura del ensayo académico</h2>`
+  - ❌ INCORRECTO: `<h2>Estructura del Ensayo Académico</h2>`
+  - ✅ CORRECTO: `<h3>Errores comunes y cómo evitarlos</h3>`
+  - ❌ INCORRECTO: `<h3>Errores Comunes y Cómo Evitarlos</h3>`
+  - **Excepciones:** EBAU, FP, ESO, nombres propios (García Márquez, España)
 - **Callouts visuales:** Usar para conceptos clave, advertencias, consejos
 - **Iconos:** FontAwesome y emojis para apoyo visual
 - **Portada optimizada:** Título, logo, imagen hero, **profesor/a autor**, nivel, fecha y licencia CC BY en una página
