@@ -143,12 +143,12 @@
         <!-- Header -->
         <header class="bg-white border-b border-slate-200 py-8">
             <div class="max-w-6xl mx-auto px-8">
-                <div class="flex items-center gap-6">
-                    <div class="logo-box" style="width: 96px; height: 96px; background: white; border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 12px;">
-                        <img src="./logo.png" alt="Logo" style="max-height: 100%;">
-                    </div>
+                <div class="flex items-center gap-8">
+                    <a href="https://mejoratudocencia.es" target="_blank" class="logo-box" style="height: 100px; background: linear-gradient(135deg, #ffffff, #f8fafc); border-radius: 20px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15), 0 2px 8px rgba(0,0,0,0.08); padding: 16px; border: 1px solid #e2e8f0; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 40px rgba(37, 99, 235, 0.2), 0 4px 12px rgba(0,0,0,0.1)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 32px rgba(37, 99, 235, 0.15), 0 2px 8px rgba(0,0,0,0.08)'">
+                        <img src="./logo.png" alt="Logo" style="height: 100%; width: auto; object-fit: contain;">
+                    </a>
                     <div>
-                        <h1 style="margin: 0; font-size: 2rem;">Generador de Apuntes Educativos</h1>
+                        <h1 style="margin: 0; font-size: 2rem;">Generador de apuntes educativos</h1>
                         <p style="color: var(--text-muted); margin: 0.25rem 0 0 0; font-size: 1rem;">
                             Un proyecto de <a href="https://mejoratudocencia.es" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;">mejoratudocencia.es</a>
                         </p>
@@ -163,10 +163,13 @@
                         📚 Ver Apuntes
                     </a>
                     <a href="#como-funciona" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #f1f5f9; color: #475569; padding: 0.625rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                        ⚙️ Cómo Funciona
+                        ⚙️ Cómo funciona
                     </a>
                     <a href="#agentes" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #f1f5f9; color: #475569; padding: 0.625rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
                         🤖 Agentes
+                    </a>
+                    <a href="https://github.com/sergarb1/generador-apuntes" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #f1f5f9; color: #475569; padding: 0.625rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        💻 GitHub
                     </a>
                 </div>
             </div>
@@ -202,28 +205,45 @@
                 </div>
             </div>
 
-            <!-- Cómo Funciona -->
+            <!-- Cómo funciona -->
             <section id="como-funciona" style="margin-top: 2rem;">
-                <h2>⚙️ Cómo Funciona</h2>
+                <h2>⚙️ Cómo funciona</h2>
                 <div class="bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-2xl p-8">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div class="bg-white border-2 border-blue-300 rounded-xl p-6 mb-6" style="background: linear-gradient(135deg, #eff6ff, #dbeafe);">
+                        <p style="font-size: 1.1rem; line-height: 1.6; color: #1e40af; margin: 0;">
+                            <strong>💻 Descarga los agentes para Gemini CLI, Qwen Code o Copilot CLI</strong> en el 
+                            <a href="https://github.com/sergarb1/generador-apuntes" target="_blank" style="color: #2563eb; text-decoration: none; font-weight: 700; text-decoration: underline;">repositorio GitHub</a>.
+                            Encuentra instrucciones detalladas de instalación y uso.
+                        </p>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
                         <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
                             <div style="font-size: 2rem; margin-bottom: 0.75rem;">1️⃣</div>
-                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Solicita el apunte</h3>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Indica el nivel educativo (Primaria, ESO, Bachillerato o FP), asignatura, curso y tema que necesitas.</p>
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Descarga los agentes</h3>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Clona el repositorio de GitHub con todos los agentes especializados para tu CLI preferido.</p>
                         </div>
                         <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
                             <div style="font-size: 2rem; margin-bottom: 0.75rem;">2️⃣</div>
-                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Agentes especializados</h3>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Nuestros agentes de IA analizan el contenido y estructuran el material pedagógicamente.</p>
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Configura el entorno</h3>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Sigue las instrucciones para configurar Gemini CLI, Qwen Code o Copilot CLI.</p>
                         </div>
                         <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
                             <div style="font-size: 2rem; margin-bottom: 0.75rem;">3️⃣</div>
-                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Recibe tu apunte</h3>
-                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Obtén un apunte profesional en HTML con objetivos, contenido, ejemplos, ejercicios y autoevaluación.</p>
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Solicita el apunte</h3>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Indica el nivel educativo (Primaria, ESO, Bachillerato o FP), asignatura, curso y tema.</p>
                         </div>
                         <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
                             <div style="font-size: 2rem; margin-bottom: 0.75rem;">4️⃣</div>
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Agentes especializados</h3>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Los agentes de IA analizan y estructuran el material pedagógicamente.</p>
+                        </div>
+                        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
+                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">5️⃣</div>
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Recibe tu apunte</h3>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Obtén un apunte profesional en HTML con objetivos, contenido, ejemplos y ejercicios.</p>
+                        </div>
+                        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
+                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">6️⃣</div>
                             <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Usa en tu aula</h3>
                             <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Imprime en PDF, exporta a Word o comparte directamente con tus estudiantes.</p>
                         </div>
