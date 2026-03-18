@@ -1,12 +1,14 @@
-# 🎓 Generador de Apuntes Educativos con IA
+# 🎓 Generador de Apuntes Educativos
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-blue)](https://sergarb1.github.io/generador-apuntes-agentes/)
 [![Web](https://img.shields.io/badge/Web-mejoratudocencia.es-blue)](https://mejoratudocencia.es)
 
-Sistema multi-agente para crear **apuntes educativos profesionales** para **Primaria, ESO, Bachillerato y Formación Profesional** usando IA.
+> **Un proyecto de [mejoratudocencia.es](https://mejoratudocencia.es)** — Plataforma de recursos, ideas y herramientas para docentes.
 
-**🌐 Visita:** [mejoratudocencia.es](https://mejoratudocencia.es)
+Sistema para crear **apuntes educativos profesionales** para **Primaria, ESO, Bachillerato y Formación Profesional**.
+
+**🌐 Proyecto oficial:** [mejoratudocencia.es](https://mejoratudocencia.es)
 
 ---
 
@@ -33,6 +35,26 @@ Sistema multi-agente para crear **apuntes educativos profesionales** para **Prim
 - **Agentes por asignatura** (40+ especialistas)
 - **Agentes por nivel** (Primaria, ESO, Bachillerato, FP)
 - **Agentes especializados** (podcast, presentaciones, infografías)
+
+---
+
+## 📖 ¿Qué es mejoratudocencia.es?
+
+**mejoratudocencia.es** es una plataforma educativa dedicada a proporcionar recursos, ideas y herramientas para ayudar a los docentes a mejorar su práctica educativa en el aula.
+
+### Misión
+- 🎯 **Facilitar** la creación de material didáctico de calidad
+- 💡 **Compartir** recursos e ideas bajo licencias abiertas (CC BY 4.0)
+- 📚 **Apoyar** a docentes de Primaria, ESO, Bachillerato y FP
+- 👥 **Comunidad** de docentes innovadores en Valencia y España
+
+### Proyectos de mejoratudocencia.es
+| Proyecto | Descripción |
+|----------|-------------|
+| **Generador de Apuntes** | Este repositorio — crea apuntes en formato HTML |
+| **Recursos Didácticos** | Materiales listos para usar en el aula |
+| **Ideas y Estrategias** | Propuestas metodológicas para el aula |
+| **Plantillas** | Modelos editables para docentes |
 
 ---
 
@@ -381,7 +403,15 @@ Bajo la condición de:
 
 ## 👨‍💻 Autor
 
-**mejoratudocencia.es** — Plantilla de uso general para centros educativos (Valencia, España).
+**mejoratudocencia.es** — Plataforma de recursos, ideas y herramientas para centros educativos (Valencia, España).
+
+Este proyecto es **uno de los muchos proyectos** de **mejoratudocencia.es**, dedicado a proporcionar recursos educativos innovadores y apoyar a docentes en su práctica diaria.
+
+### 🌐 Enlaces de interés
+- **Web oficial:** [mejoratudocencia.es](https://mejoratudocencia.es)
+- **Recursos gratuitos:** Materiales bajo licencia CC BY 4.0
+- **Ideas y estrategias:** Propuestas para el aula
+- **Comunidad:** Únete a otros docentes innovadores
 
 **Contribuciones:** ¡Bienvenidas! Abre un issue o PR.
 
