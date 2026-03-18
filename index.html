@@ -143,16 +143,31 @@
         <!-- Header -->
         <header class="bg-white border-b border-slate-200 py-8">
             <div class="max-w-6xl mx-auto px-8">
-                <div class="flex items-center gap-4">
-                    <div class="logo-box" style="width: 56px; height: 56px; background: white; border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 8px;">
+                <div class="flex items-center gap-6">
+                    <div class="logo-box" style="width: 96px; height: 96px; background: white; border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.12); padding: 12px;">
                         <img src="./logo.png" alt="Logo" style="max-height: 100%;">
                     </div>
                     <div>
-                        <h1 style="margin: 0;">Generador de Apuntes Educativos</h1>
-                        <p style="color: var(--text-muted); margin: 0;">
+                        <h1 style="margin: 0; font-size: 2rem;">Generador de Apuntes Educativos</h1>
+                        <p style="color: var(--text-muted); margin: 0.25rem 0 0 0; font-size: 1rem;">
                             Un proyecto de <a href="https://mejoratudocencia.es" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;">mejoratudocencia.es</a>
                         </p>
+                        <p style="color: var(--text-muted); margin: 0.5rem 0 0 0; font-size: 0.875rem; max-width: 600px;">
+                            Sistema impulsado por IA con agentes especializados para crear apuntes profesionales para Primaria, ESO, Bachillerato y FP.
+                        </p>
                     </div>
+                </div>
+                <!-- Quick Access -->
+                <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#apuntes-bachillerato" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #2563eb, #1d4ed8); color: white; padding: 0.625rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        📚 Ver Apuntes
+                    </a>
+                    <a href="#como-funciona" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #f1f5f9; color: #475569; padding: 0.625rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        ⚙️ Cómo Funciona
+                    </a>
+                    <a href="#agentes" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #f1f5f9; color: #475569; padding: 0.625rem 1.25rem; border-radius: 9999px; text-decoration: none; font-weight: 600; font-size: 0.875rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+                        🤖 Agentes
+                    </a>
                 </div>
             </div>
         </header>
@@ -187,8 +202,91 @@
                 </div>
             </div>
 
+            <!-- Cómo Funciona -->
+            <section id="como-funciona" style="margin-top: 2rem;">
+                <h2>⚙️ Cómo Funciona</h2>
+                <div class="bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-2xl p-8">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
+                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">1️⃣</div>
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Solicita el apunte</h3>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Indica el nivel educativo (Primaria, ESO, Bachillerato o FP), asignatura, curso y tema que necesitas.</p>
+                        </div>
+                        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
+                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">2️⃣</div>
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Agentes especializados</h3>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Nuestros agentes de IA analizan el contenido y estructuran el material pedagógicamente.</p>
+                        </div>
+                        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
+                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">3️⃣</div>
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Recibe tu apunte</h3>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Obtén un apunte profesional en HTML con objetivos, contenido, ejemplos, ejercicios y autoevaluación.</p>
+                        </div>
+                        <div style="background: white; padding: 1.5rem; border-radius: 1rem; border: 1px solid #e2e8f0;">
+                            <div style="font-size: 2rem; margin-bottom: 0.75rem;">4️⃣</div>
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.125rem; color: #1e40af;">Usa en tu aula</h3>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Imprime en PDF, exporta a Word o comparte directamente con tus estudiantes.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Agentes -->
+            <section id="agentes" style="margin-top: 3rem;">
+                <h2>🤖 Agentes Especializados</h2>
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 border border-purple-200 rounded-2xl p-8">
+                    <p style="margin-bottom: 1.5rem; font-size: 1rem; line-height: 1.6; color: #5b21b6;">
+                        El sistema utiliza múltiples agentes de IA que trabajan de forma coordinada para crear apuntes de alta calidad:
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                        <div style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                                <span style="font-size: 1.5rem;">🎯</span>
+                                <h4 style="margin: 0; font-size: 1rem; color: #1e40af;">Agente Orquestador</h4>
+                            </div>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Coordina todo el proceso y distribuye las tareas entre los agentes especializados.</p>
+                        </div>
+                        <div style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                                <span style="font-size: 1.5rem;">📖</span>
+                                <h4 style="margin: 0; font-size: 1rem; color: #1e40af;">Agente Experto en Proyectos</h4>
+                            </div>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Diseña la estructura pedagógica y los objetivos de aprendizaje del tema.</p>
+                        </div>
+                        <div style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                                <span style="font-size: 1.5rem;">✍️</span>
+                                <h4 style="margin: 0; font-size: 1rem; color: #1e40af;">Agente Generador de Contenido</h4>
+                            </div>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Redacta el contenido principal con ejemplos, explicaciones y casos prácticos.</p>
+                        </div>
+                        <div style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                                <span style="font-size: 1.5rem;">✅</span>
+                                <h4 style="margin: 0; font-size: 1rem; color: #1e40af;">Agente de Evaluación</h4>
+                            </div>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Crea ejercicios graduados, actividades de autoevaluación y rúbricas.</p>
+                        </div>
+                        <div style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                                <span style="font-size: 1.5rem;">🎨</span>
+                                <h4 style="margin: 0; font-size: 1rem; color: #1e40af;">Agente de Formato</h4>
+                            </div>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Da formato HTML profesional, responsive y accesible al contenido.</p>
+                        </div>
+                        <div style="background: white; padding: 1.25rem; border-radius: 0.75rem; border: 1px solid #e2e8f0;">
+                            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem;">
+                                <span style="font-size: 1.5rem;">🔍</span>
+                                <h4 style="margin: 0; font-size: 1rem; color: #1e40af;">Agente Revisor</h4>
+                            </div>
+                            <p style="font-size: 0.875rem; color: #64748b; margin: 0;">Verifica la calidad pedagógica, ortografía y coherencia del material.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Apuntes de Bachillerato -->
-            <section>
+            <section id="apuntes-bachillerato">
                 <h2>📚 Bachillerato</h2>
                 <div class="apuntes-grid">
                     <!-- Macroeconomía -->
