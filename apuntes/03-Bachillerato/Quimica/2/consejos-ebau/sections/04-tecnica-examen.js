@@ -13,9 +13,9 @@ window.sectionsContent['tecnica-examen'] = {
         <table>
             <thead>
                 <tr>
-                    <th>fase</th>
-                    <th>tiempo</th>
-                    <th>actividad</th>
+                    <th>Fase</th>
+                    <th>Tiempo</th>
+                    <th>Actividad</th>
                 </tr>
             </thead>
             <tbody>
@@ -68,11 +68,11 @@ window.sectionsContent['tecnica-examen'] = {
         <div class="bg-red-50 p-5 rounded-xl border border-red-200">
             <h4 class="font-bold text-red-800 mb-3">❌ Lo que penaliza</h4>
             <ul class="space-y-2">
-                <li><span class="text-red-600">✗</span> fórmulas <strong>mal escritas</strong> (subíndices incorrectos)</li>
-                <li><span class="text-red-600">✗</span> resultados <strong>sin unidades</strong></li>
-                <li><span class="text-red-600">✗</span> <strong>ecuaciones sin ajustar</strong></li>
-                <li><span class="text-red-600">✗</span> <strong>saltarse pasos</strong> intermedios</li>
-                <li><span class="text-red-600">✗</span> <strong>tachones y desorden</strong></li>
+                <li><span class="text-red-600">✗</span> Fórmulas <strong>mal escritas</strong> (subíndices incorrectos)</li>
+                <li><span class="text-red-600">✗</span> Resultados <strong>sin unidades</strong></li>
+                <li><span class="text-red-600">✗</span> <strong>Ecuaciones sin ajustar</strong></li>
+                <li><span class="text-red-600">✗</span> <strong>Saltarse pasos</strong> intermedios</li>
+                <li><span class="text-red-600">✗</span> <strong>Tachones y desorden</strong></li>
             </ul>
         </div>
     </div>
