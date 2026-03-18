@@ -37,7 +37,7 @@ window.sectionsContent['errores-comunes'] = {
 
     <h3>5.2. Errores en equilibrio</h3>
 
-    <table class="my-6">
+    <table>
         <thead>
             <tr>
                 <th>Error</th>

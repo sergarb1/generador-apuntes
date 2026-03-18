@@ -46,7 +46,7 @@ window.sectionsContent['contenidos-frecuentes'] = {
 
     <h3>3.2. Equilibrio químico</h3>
 
-    <table class="my-6">
+    <table>
         <thead>
             <tr>
                 <th>Concepto</th>
@@ -137,7 +137,7 @@ window.sectionsContent['contenidos-frecuentes'] = {
 
     <h3>3.5. Química orgánica</h3>
 
-    <table class="my-6">
+    <table>
         <thead>
             <tr>
                 <th>Grupo funcional</th>

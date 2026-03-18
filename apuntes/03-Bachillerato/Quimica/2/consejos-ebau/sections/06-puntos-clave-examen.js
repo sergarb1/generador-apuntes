@@ -36,7 +36,7 @@ window.sectionsContent['puntos-clave-examen'] = {
 
     <h3>6.2. Orden recomendado de resolución en Química</h3>
 
-    <table class="my-6">
+    <table>
         <thead>
             <tr>
                 <th>Orden</th>

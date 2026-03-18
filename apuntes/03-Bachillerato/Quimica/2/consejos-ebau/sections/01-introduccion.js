@@ -23,7 +23,7 @@ window.sectionsContent['introduccion'] = {
     
     <p>La prueba de Química consta de <strong>dos opciones (A y B)</strong>, cada una con 5 cuestiones o problemas. Debes elegir una opción completa y desarrollar todas sus preguntas en 90 minutos.</p>
 
-    <table class="my-6">
+    <table>
         <thead>
             <tr>
                 <th>Bloque</th>

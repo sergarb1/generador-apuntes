@@ -34,7 +34,7 @@ window.sectionsContent['recursos'] = {
 
     <h3>7.2. Páginas web recomendadas para Química</h3>
 
-    <table class="my-6">
+    <table>
         <thead>
             <tr>
                 <th>recurso</th>

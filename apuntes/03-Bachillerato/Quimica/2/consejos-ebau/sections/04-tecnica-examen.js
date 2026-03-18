@@ -58,11 +58,11 @@ window.sectionsContent['tecnica-examen'] = {
         <div class="bg-green-50 p-5 rounded-xl border border-green-200">
             <h4 class="font-bold text-green-800 mb-3">✅ Lo que valoran los correctores</h4>
             <ul class="space-y-2">
-                <li><span class="text-green-600">✓</span> <strong>fórmulas químicas bien escritas</strong> (H₂O, no H20)</li>
-                <li><span class="text-green-600">✓</span> <strong>unidades en todos los resultados</strong></li>
-                <li><span class="text-green-600">✓</span> <strong>proceso bien explicado</strong> (no solo el resultado)</li>
-                <li><span class="text-green-600">✓</span> <strong>ecuaciones químicas ajustadas</strong></li>
-                <li><span class="text-green-600">✓</span> <strong>letra clara y orden</strong></li>
+                <li><span class="text-green-600">✓</span> Fórmulas químicas bien escritas (H₂O, no H20)</li>
+                <li><span class="text-green-600">✓</span> Unidades en todos los resultados</li>
+                <li><span class="text-green-600">✓</span> Proceso bien explicado (no solo el resultado)</li>
+                <li><span class="text-green-600">✓</span> Ecuaciones químicas ajustadas</li>
+                <li><span class="text-green-600">✓</span> Letra clara y orden</li>
             </ul>
         </div>
         <div class="bg-red-50 p-5 rounded-xl border border-red-200">
