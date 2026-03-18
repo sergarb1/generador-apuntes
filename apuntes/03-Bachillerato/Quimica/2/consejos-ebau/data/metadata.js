@@ -1,5 +1,5 @@
 window.metadata = {
-    projectTitle: 'Consejos para repasar la EBAU - Química',
+    projectTitle: 'Consejos para repasar la EBAU de Química',
     teacherName: 'No asignado',
     cycle: 'Bachillerato',
     cycleName: 'Bachillerato - Ciencias',

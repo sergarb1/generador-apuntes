@@ -4,59 +4,51 @@ window.sectionsContent['introduccion'] = {
   content: `
     <h2>1. Introducción</h2>
     
-    <p>La <strong>EBAU (Evaluación de Bachillerato para el Acceso a la Universidad)</strong> es la prueba definitiva que determina tu acceso a los estudios universitarios. En Química, es fundamental demostrar no solo conocimientos teóricos, sino también capacidad para resolver problemas y aplicar conceptos a situaciones prácticas.</p>
+    <p>La <strong>EBAU de Química</strong> es la prueba que determina tu acceso a los estudios universitarios de ciencias. Esta asignatura requiere no solo conocimientos teóricos, sino también capacidad para resolver problemas prácticos y aplicar conceptos a situaciones reales.</p>
 
     <div class="callout callout-info my-6">
         <div class="callout-title">
             <span>🎯</span>
-            <span>Objetivos de estos Apuntes</span>
+            <span>Objetivos de estos apuntes</span>
         </div>
         <ul>
-            <li>Proporcionar <strong>estrategias efectivas</strong> de repaso para la EBAU de Química</li>
-            <li>Identificar los <strong>contenidos más frecuentes</strong> en las pruebas</li>
-            <li>Ofrecer <strong>técnicas de resolución</strong> de problemas y cuestiones</li>
-            <li>Maximizar tu <strong>rendimiento el día del examen</strong></li>
+            <li>Identificar los <strong>contenidos específicos de Química</strong> que más caen en la EBAU</li>
+            <li>Proporcionar <strong>estrategias de resolución</strong> de problemas químicos</li>
+            <li>Ofrecer <strong>técnicas de examen</strong> aplicadas a Química</li>
+            <li>Maximizar tu <strong>rendimiento el día de la prueba</strong></li>
         </ul>
-    </div>
-
-    <div class="callout callout-success my-6">
-        <div class="callout-title">
-            <span>✅</span>
-            <span>Consejo Clave</span>
-        </div>
-        <p>La clave del éxito en la EBAU de Química no es estudiar más horas, sino estudiar de forma <strong>inteligente y estratégica</strong>. Estos apuntes te guiarán en ese proceso.</p>
     </div>
 
     <h3>1.1. Estructura de la prueba EBAU de Química</h3>
     
-    <p>La prueba de Química suele constar de <strong>dos opciones (A y B)</strong>, cada una con 5-6 cuestiones o problemas. Debes elegir una opción completa y desarrollar todas sus preguntas.</p>
+    <p>La prueba de Química consta de <strong>dos opciones (A y B)</strong>, cada una con 5 cuestiones o problemas. Debes elegir una opción completa y desarrollar todas sus preguntas en 90 minutos.</p>
 
     <table class="my-6">
         <thead>
             <tr>
                 <th>Bloque</th>
-                <th>Contenidos</th>
+                <th>Contenidos específicos</th>
                 <th>Puntuación típica</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><strong>Química General</strong></td>
+                <td><strong>Química general</strong></td>
                 <td>Estructura atómica, enlace, estequiometría</td>
                 <td>2-3 puntos</td>
             </tr>
             <tr>
-                <td><strong>Química Física</strong></td>
+                <td><strong>Química física</strong></td>
                 <td>Termodinámica, cinética, equilibrio</td>
                 <td>2-3 puntos</td>
             </tr>
             <tr>
-                <td><strong>Química Orgánica</strong></td>
+                <td><strong>Química orgánica</strong></td>
                 <td>Hidrocarburos, grupos funcionales, reacciones</td>
                 <td>2-3 puntos</td>
             </tr>
             <tr>
-                <td><strong>Análisis Químico</strong></td>
+                <td><strong>Análisis químico</strong></td>
                 <td>Ácido-base, redox, precipitación</td>
                 <td>2-3 puntos</td>
             </tr>
@@ -68,7 +60,7 @@ window.sectionsContent['introduccion'] = {
             <span>⚠️</span>
             <span>¡Atención!</span>
         </div>
-        <p>La estructura exacta puede variar ligeramente entre comunidades autónomas. Consulta siempre las <strong>instrucciones específicas</strong> de tu convocatoria.</p>
+        <p>La estructura exacta puede variar entre comunidades autónomas. Consulta siempre las <strong>instrucciones específicas</strong> de tu convocatoria.</p>
     </div>
   `
 };

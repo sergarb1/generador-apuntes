@@ -2,27 +2,28 @@ window.sectionsContent = window.sectionsContent || {};
 window.sectionsContent['contenidos-frecuentes'] = {
   title: "3. Contenidos más frecuentes",
   content: `
-    <h2>3. Contenidos más frecuentes en la EBAU</h2>
+    <h2>3. Contenidos más frecuentes en la EBAU de Química</h2>
 
-    <p>Analizando exámenes de años anteriores, ciertos temas aparecen <strong>de forma recurrente</strong>. Dominarlos te asegurará una base sólida de puntos.</p>
+    <p>Analizando exámenes de años anteriores, ciertos temas de Química aparecen <strong>de forma recurrente</strong>. Dominarlos te asegurará una base sólida de puntos.</p>
 
-    <h3>3.1. Estequiometría y Disoluciones</h3>
+    <h3>3.1. Estequiometría y disoluciones</h3>
 
     <div class="callout callout-info my-6">
         <div class="callout-title">
             <span>🧮</span>
-            <span>Tipos de Problemas Típicos</span>
+            <span>Tipos de problemas típicos</span>
         </div>
         <ul>
             <li><strong>Cálculo de moles</strong> a partir de masa, volumen o número de partículas</li>
             <li><strong>Reactivo limitante</strong> y rendimiento de la reacción</li>
             <li><strong>Concentración</strong>: molaridad, molalidad, % en masa, ppm</li>
             <li><strong>Diluciones</strong>: fórmula M₁V₁ = M₂V₂</li>
+            <li><strong>Ley de los gases ideales</strong>: PV = nRT</li>
         </ul>
     </div>
 
     <div class="bg-blue-50 p-6 rounded-2xl border border-blue-200 my-6">
-        <h4 class="font-bold text-blue-800 mb-3">📐 Fórmulas Imprescindibles</h4>
+        <h4 class="font-bold text-blue-800 mb-3">📐 Fórmulas imprescindibles</h4>
         <div class="space-y-3 text-sm">
             <div class="bg-white p-3 rounded-lg border">
                 <code class="block font-bold">n = m / M</code>
@@ -34,7 +35,7 @@ window.sectionsContent['contenidos-frecuentes'] = {
             </div>
             <div class="bg-white p-3 rounded-lg border">
                 <code class="block font-bold">PV = nRT</code>
-                <span class="text-slate-600">ecuación de gases ideales</span>
+                <span class="text-slate-600">ecuación de gases ideales (R = 0,082 atm·L/mol·K)</span>
             </div>
             <div class="bg-white p-3 rounded-lg border">
                 <code class="block font-bold">N = n · Nₐ</code>
@@ -49,7 +50,7 @@ window.sectionsContent['contenidos-frecuentes'] = {
         <thead>
             <tr>
                 <th>Concepto</th>
-                <th>Fórmula / Expresión</th>
+                <th>Fórmula / expresión</th>
                 <th>Clave</th>
             </tr>
         </thead>
@@ -80,21 +81,21 @@ window.sectionsContent['contenidos-frecuentes'] = {
     <div class="callout callout-warning my-6">
         <div class="callout-title">
             <span>⚠️</span>
-            <span>Errores Comunes en Equilibrio</span>
+            <span>Errores comunes en equilibrio</span>
         </div>
         <ul>
-            <li>Olvidar elevar las concentraciones a sus <strong>coeficientes estequiométricos</strong></li>
-            <li>Incluir <strong>sólidos y líquidos puros</strong> en la expresión de K</li>
-            <li>Confundir <strong>Q (cociente de reacción)</strong> con K</li>
-            <li>No usar <strong>unidades de presión consistentes</strong> en Kp</li>
+            <li>olvidar elevar las concentraciones a sus <strong>coeficientes estequiométricos</strong></li>
+            <li>incluir <strong>sólidos y líquidos puros</strong> en la expresión de K</li>
+            <li>confundir <strong>Q (cociente de reacción)</strong> con K</li>
+            <li>no usar <strong>unidades de presión consistentes</strong> en Kp</li>
         </ul>
     </div>
 
-    <h3>3.3. Ácido-Base</h3>
+    <h3>3.3. Ácido-base</h3>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
         <div class="bg-purple-50 p-5 rounded-xl border border-purple-200">
-            <h4 class="font-bold text-purple-800 mb-3">📊 Conceptos Clave</h4>
+            <h4 class="font-bold text-purple-800 mb-3">📊 Conceptos clave</h4>
             <ul class="space-y-2 text-sm">
                 <li><strong>pH = -log[H⁺]</strong></li>
                 <li><strong>pOH = -log[OH⁻]</strong></li>
@@ -104,13 +105,13 @@ window.sectionsContent['contenidos-frecuentes'] = {
             </ul>
         </div>
         <div class="bg-orange-50 p-5 rounded-xl border border-orange-200">
-            <h4 class="font-bold text-orange-800 mb-3">🧪 Problemas Típicos</h4>
+            <h4 class="font-bold text-orange-800 mb-3">🧪 Problemas típicos</h4>
             <ul class="space-y-2">
-                <li>Cálculo de pH de ácidos/bases fuertes</li>
-                <li>Cálculo de pH de ácidos/bases débiles</li>
-                <li>Valoraciones ácido-base</li>
-                <li>Indicadores y zona de viraje</li>
-                <li>Disoluciones reguladoras (tampón)</li>
+                <li>cálculo de pH de ácidos/bases fuertes</li>
+                <li>cálculo de pH de ácidos/bases débiles</li>
+                <li>valoraciones ácido-base</li>
+                <li>indicadores y zona de viraje</li>
+                <li>disoluciones reguladoras (tampón)</li>
             </ul>
         </div>
     </div>
@@ -120,29 +121,29 @@ window.sectionsContent['contenidos-frecuentes'] = {
     <div class="callout callout-success my-6">
         <div class="callout-title">
             <span>⚡</span>
-            <span>Método del Ion-Electrón</span>
+            <span>Método del ion-electrón</span>
         </div>
         <ol class="list-decimal list-inside space-y-2">
-            <li>Identificar especies que se <strong>oxidan y reducen</strong></li>
-            <li>Escribir las <strong>semirreacciones</strong> por separado</li>
+            <li><strong>Identificar especies</strong> que se oxidan y reducen</li>
+            <li><strong>Escribir las semirreacciones</strong> por separado</li>
             <li><strong>Igualar átomos</strong> (excepto H y O)</li>
-            <li>Igualar <strong>oxígenos</strong> añadiendo H₂O</li>
-            <li>Igualar <strong>hidrógenos</strong> añadiendo H⁺</li>
-            <li>Igualar <strong>cargas</strong> añadiendo electrones</li>
+            <li><strong>Igualar oxígenos</strong> añadiendo H₂O</li>
+            <li><strong>Igualar hidrógenos</strong> añadiendo H⁺</li>
+            <li><strong>Igualar cargas</strong> añadiendo electrones</li>
             <li><strong>Multiplicar</strong> para igualar electrones</li>
             <li><strong>Sumar</strong> y simplificar</li>
         </ol>
     </div>
 
-    <h3>3.5. Química Orgánica</h3>
+    <h3>3.5. Química orgánica</h3>
 
     <table class="my-6">
         <thead>
             <tr>
-                <th>Grupo Funcional</th>
-                <th>Fórmula General</th>
+                <th>Grupo funcional</th>
+                <th>Fórmula general</th>
                 <th>Sufijo</th>
-                <th>Reacciones Típicas</th>
+                <th>Reacciones típicas</th>
             </tr>
         </thead>
         <tbody>
