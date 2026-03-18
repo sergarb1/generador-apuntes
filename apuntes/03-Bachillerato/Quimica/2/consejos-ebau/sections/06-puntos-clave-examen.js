@@ -9,12 +9,12 @@ window.sectionsContent['puntos-clave-examen'] = {
     <div class="bg-blue-50 p-6 rounded-2xl border border-blue-200 my-6">
         <h4 class="font-bold text-blue-800 mb-3">📋 Checklist final (5 minutos antes)</h4>
         <ul class="space-y-2">
-            <li><span class="text-green-600">✓</span> ¿tienes el <strong>DNI</strong> a mano?</li>
-            <li><span class="text-green-600">✓</span> ¿llevas <strong>varios bolígrafos</strong> (azul o negro)?</li>
-            <li><span class="text-green-600">✓</span> ¿la <strong>calculadora científica</strong> funciona correctamente?</li>
-            <li><span class="text-green-600">✓</span> ¿tienes la <strong>tabla periódica oficial</strong>?</li>
-            <li><span class="text-green-600">✓</span> ¿has ido al <strong>baño</strong>?</li>
-            <li><span class="text-green-600">✓</span> ¿llevas <strong>agua</strong> en botella transparente?</li>
+            <li><span class="text-green-600">✓</span> ¿Tienes el <strong>DNI</strong> a mano?</li>
+            <li><span class="text-green-600">✓</span> ¿Llevas <strong>varios bolígrafos</strong> (azul o negro)?</li>
+            <li><span class="text-green-600">✓</span> ¿La <strong>calculadora científica</strong> funciona correctamente?</li>
+            <li><span class="text-green-600">✓</span> ¿Tienes la <strong>tabla periódica oficial</strong>?</li>
+            <li><span class="text-green-600">✓</span> ¿Has ido al <strong>baño</strong>?</li>
+            <li><span class="text-green-600">✓</span> ¿Llevas <strong>agua</strong> en botella transparente?</li>
         </ul>
     </div>
 
