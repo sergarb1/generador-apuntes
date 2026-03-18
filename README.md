@@ -2,8 +2,11 @@
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-blue)](https://sergarb1.github.io/generador-apuntes-agentes/)
+[![Web](https://img.shields.io/badge/Web-mejoratudocencia.es-blue)](https://mejoratudocencia.es)
 
 Sistema multi-agente para crear **apuntes educativos profesionales** para **Primaria, ESO, Bachillerato y Formación Profesional** usando IA.
+
+**🌐 Visita:** [mejoratudocencia.es](https://mejoratudocencia.es)
 
 ---
 
@@ -354,6 +357,7 @@ Tema: La Célula y sus Orgánulos
 
 ## 🔗 Enlaces Relacionados
 
+- **Web Oficial:** [mejoratudocencia.es](https://mejoratudocencia.es)
 - **GitHub Pages:** [sergarb1.github.io/generador-apuntes-agentes/](https://sergarb1.github.io/generador-apuntes-agentes/)
 - **Creative Commons:** [creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)
 - **Tailwind CSS:** [tailwindcss.com](https://tailwindcss.com)
@@ -377,7 +381,7 @@ Bajo la condición de:
 
 ## 👨‍💻 Autor
 
-Desarrollado para el **IES Serra Perenxisa** (Valencia, España).
+**mejoratudocencia.es** — Plantilla de uso general para centros educativos (Valencia, España).
 
 **Contribuciones:** ¡Bienvenidas! Abre un issue o PR.
 

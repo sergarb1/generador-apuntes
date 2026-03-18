@@ -5,7 +5,9 @@
  */
 
 window.sectionsContent = window.sectionsContent || {};
-window.sectionsContent["modelos-ensayos"] = `
+window.sectionsContent['modelos-ensayos'] = {
+  title: "5. Modelos de ensayos",
+  content: `
 
 <h2>5. Modelos de essays resueltos</h2>
 
@@ -202,4 +204,5 @@ window.sectionsContent["modelos-ensayos"] = `
     </ol>
 </div>
 
-`;
+`
+};

@@ -5,7 +5,9 @@
  */
 
 window.sectionsContent = window.sectionsContent || {};
-window.sectionsContent["autoevaluacion"] = `
+window.sectionsContent['autoevaluacion'] = {
+  title: "7. Autoevaluación",
+  content: `
 
 <h2>7. Autoevaluación - Test de Conocimientos</h2>
 
@@ -202,4 +204,5 @@ window.sectionsContent["autoevaluacion"] = `
     <p class="text-sm mt-2"><strong>Ejemplo:</strong> 4+3+4+3+4 = 18 → 18÷2 = <strong>9 puntos</strong></p>
 </div>
 
-`;
+`
+};

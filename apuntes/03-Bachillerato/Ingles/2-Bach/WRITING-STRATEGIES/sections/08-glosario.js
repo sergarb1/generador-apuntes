@@ -5,7 +5,9 @@
  */
 
 window.sectionsContent = window.sectionsContent || {};
-window.sectionsContent["glosario"] = `
+window.sectionsContent['glosario'] = {
+  title: "8. Glosario",
+  content: `
 
 <h2>8. Glosario de términos de writing</h2>
 
@@ -165,4 +167,5 @@ window.sectionsContent["glosario"] = `
     <p class="text-sm">Crea flashcards con estos términos en inglés en un lado y la definición en español en el otro. Repasa 5 minutos al día.</p>
 </div>
 
-`;
+`
+};

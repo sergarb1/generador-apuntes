@@ -3,391 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Apuntes Educativos con IA</title>
-    <meta name="description" content="Sistema multi-agente para crear apuntes educativos profesionales para Primaria, ESO, Bachillerato y FP">
-    
-    <!-- Tailwind CSS -->
+    <title>Generador de Apuntes Educativos - Índice</title>
+
+    <!-- Librerías Externas (CDNs) -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
+
+    <!-- Tipografías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%); }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); }
         [v-cloak] { display: none; }
+
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-main: #ffffff;
+            --bg-subtle: #f8fafc;
+            --border: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        * { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 { font-weight: 800 !important; color: #0f172a; letter-spacing: -0.02em; }
+        h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.75rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--primary); }
+
+        .apuntes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .apunte-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .apunte-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.15);
+            border-color: var(--primary);
+        }
+
+        .apunte-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .apunte-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .icon-economia { background: linear-gradient(135deg, #dbeafe, #bfdbfe); }
+        .icon-ingles { background: linear-gradient(135deg, #fef3c7, #fde68a); }
+        .icon-matematicas { background: linear-gradient(135deg, #d1fae5, #a7f3d0); }
+        .icon-lengua { background: linear-gradient(135deg, #fce7f3, #fbcfe8); }
+        .icon-ciencias { background: linear-gradient(135deg, #e0e7ff, #c7d2fe); }
+        .icon-historia { background: linear-gradient(135deg, #fed7aa, #fdba74); }
+
+        .apunte-nivel {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nivel-bachillerato { background-color: #dbeafe; color: #1e40af; }
+        .nivel-eso { background-color: #d1fae5; color: #065f46; }
+        .nivel-fp { background-color: #fef3c7; color: #92400e; }
+        .nivel-primaria { background-color: #fce7f3; color: #9d174d; }
+
+        .apunte-asignatura {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .apunte-tema {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .apunte-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.5rem;
+            background-color: var(--bg-subtle);
+            border-radius: 0.375rem;
+        }
     </style>
 </head>
-<body class="bg-slate-50">
+<body>
     <div id="app" v-cloak>
-        <!-- Hero Section -->
-        <header class="gradient-bg text-white py-20">
+        <!-- Header -->
+        <header class="bg-white border-b border-slate-200 py-8">
             <div class="max-w-6xl mx-auto px-8">
-                <div class="text-center">
-                    <div class="inline-block bg-white/20 backdrop-blur px-6 py-3 rounded-full text-sm mb-6">
-                        <i class="fas fa-robot mr-2"></i>Multi-Agent AI System
+                <div class="flex items-center gap-4">
+                    <div class="logo-box" style="width: 56px; height: 56px; background: white; border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 8px;">
+                        <img src="./logo.png" alt="Logo" style="max-height: 100%;">
                     </div>
-                    <h1 class="text-6xl font-extrabold mb-6">
-                        🎓 Generador de Apuntes Educativos
-                    </h1>
-                    <p class="text-2xl opacity-90 mb-8 max-w-3xl mx-auto">
-                        Sistema multi-agente para crear <strong>apuntes profesionales</strong> para Primaria, ESO, Bachillerato y Formación Profesional
-                    </p>
-                    <div class="flex gap-4 justify-center">
-                        <a href="#agents" class="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition shadow-lg">
-                            <i class="fas fa-users mr-2"></i>Ver Agentes
-                        </a>
-                        <a href="#examples" class="bg-blue-700 text-white px-8 py-4 rounded-xl font-bold hover:bg-blue-600 transition shadow-lg">
-                            <i class="fas fa-book mr-2"></i>Ejemplos
-                        </a>
+                    <div>
+                        <h1 style="margin: 0;">Generador de Apuntes Educativos</h1>
+                        <p style="color: var(--text-muted); margin: 0;">
+                            <a href="https://mejoratudocencia.es" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;">mejoratudocencia.es</a>
+                        </p>
                     </div>
                 </div>
             </div>
         </header>
 
-        <!-- Features -->
-        <section class="py-20 bg-white">
-            <div class="max-w-6xl mx-auto px-8">
-                <h2 class="text-4xl font-bold text-center mb-16 text-slate-800">
-                    ✨ Características Principales
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="bg-slate-50 p-8 rounded-2xl card-hover">
-                        <div class="text-5xl mb-4">🎯</div>
-                        <h3 class="text-xl font-bold mb-3 text-slate-800">Enfoque Pedagógico</h3>
-                        <p class="text-slate-600">Objetivos claros, contenido estructurado, ejemplos resueltos, ejercicios graduados y autoevaluación.</p>
-                    </div>
-                    <div class="bg-slate-50 p-8 rounded-2xl card-hover">
-                        <div class="text-5xl mb-4">🎨</div>
-                        <h3 class="text-xl font-bold mb-3 text-slate-800">Diseño Premium</h3>
-                        <p class="text-slate-600">Plantillas HTML con Tailwind CSS, callouts visuales, tablas comparativas y diseño print-ready.</p>
-                    </div>
-                    <div class="bg-slate-50 p-8 rounded-2xl card-hover">
-                        <div class="text-5xl mb-4">🤖</div>
-                        <h3 class="text-xl font-bold mb-3 text-slate-800">Multi-Agente</h3>
-                        <p class="text-slate-600">40+ agentes especializados por asignatura, nivel y tipo de contenido (podcast, presentaciones).</p>
+        <!-- Main Content -->
+        <main class="max-w-6xl mx-auto px-8 py-12">
+            <!-- Banner CC BY -->
+            <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6 mb-8">
+                <div class="flex items-center gap-4">
+                    <img src="./apuntes/03-Bachillerato/Economia/2/macroeconomia/assets/cc-by-88x31.png" alt="CC BY 4.0" style="height: 40px;">
+                    <div>
+                        <p style="font-weight: 700; color: #166534; margin: 0;">Licencia Creative Commons CC BY 4.0</p>
+                        <p style="font-size: 0.875rem; color: #15803d; margin: 0.25rem 0 0 0;">Todos los apuntes están bajo licencia abierta. Puedes compartir y adaptar con atribución.</p>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Agents -->
-        <section id="agents" class="py-20 bg-slate-50">
-            <div class="max-w-6xl mx-auto px-8">
-                <h2 class="text-4xl font-bold text-center mb-4 text-slate-800">
-                    🤖 Agentes Disponibles
-                </h2>
-                <p class="text-center text-slate-600 mb-16 text-lg">
-                    Especialistas por asignatura, nivel educativo y tipo de contenido
-                </p>
-                
-                <!-- Asignaturas -->
-                <div class="mb-16">
-                    <h3 class="text-2xl font-bold mb-8 text-slate-800 flex items-center gap-3">
-                        <i class="fas fa-book text-blue-600"></i>
-                        Asignaturas Principales
-                    </h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div v-for="subject in subjects" :key="subject.name" 
-                             class="bg-white p-6 rounded-xl card-hover border-2 border-slate-100">
-                            <div class="text-4xl mb-3">{{ subject.icon }}</div>
-                            <h4 class="font-bold text-slate-800">{{ subject.name }}</h4>
-                            <p class="text-sm text-slate-500 mt-1">{{ subject.agent }}</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Niveles -->
-                <div class="mb-16">
-                    <h3 class="text-2xl font-bold mb-8 text-slate-800 flex items-center gap-3">
-                        <i class="fas fa-graduation-cap text-green-600"></i>
-                        Niveles Educativos
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                        <div v-for="level in levels" :key="level.name"
-                             class="bg-gradient-to-br p-8 rounded-2xl card-hover text-white"
-                             :class="level.gradient">
-                            <div class="text-4xl mb-3">{{ level.icon }}</div>
-                            <h4 class="text-xl font-bold mb-2">{{ level.name }}</h4>
-                            <p class="text-sm opacity-90">{{ level.age }}</p>
-                            <ul class="mt-4 space-y-1 text-sm">
-                                <li v-for="curso in level.cursos" :key="curso">• {{ curso }}</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Especializados -->
-                <div>
-                    <h3 class="text-2xl font-bold mb-8 text-slate-800 flex items-center gap-3">
-                        <i class="fas fa-star text-amber-600"></i>
-                        Agentes Especializados
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-white p-8 rounded-2xl card-hover border-2 border-amber-200">
-                            <div class="flex items-start gap-4">
-                                <div class="text-5xl">🎙️</div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-slate-800 mb-2">Podcast Educativo</h4>
-                                    <p class="text-slate-600 mb-3">Guiones multivocales de 4-10 minutos con efectos de sonido y música.</p>
-                                    <div class="flex gap-2">
-                                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">edge-tts</span>
-                                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-bold">kokoro-onnx</span>
-                                    </div>
-                                </div>
+            <!-- Apuntes de Bachillerato -->
+            <section>
+                <h2>📚 Bachillerato</h2>
+                <div class="apuntes-grid">
+                    <!-- Macroeconomía -->
+                    <a href="./apuntes/03-Bachillerato/Economia/2/macroeconomia/index.html" class="apunte-card">
+                        <div class="apunte-card-header">
+                            <div class="apunte-icon icon-economia">📊</div>
+                            <div>
+                                <h3 style="margin: 0; font-size: 1.125rem;">Macroeconomía</h3>
+                                <span class="apunte-nivel nivel-bachillerato">2º Bachillerato</span>
+                                <p class="apunte-asignatura">Economía</p>
+                                <p class="apunte-tema">Indicadores, Política Fiscal y Monetaria</p>
                             </div>
                         </div>
-                        <div class="bg-white p-8 rounded-2xl card-hover border-2 border-purple-200">
-                            <div class="flex items-start gap-4">
-                                <div class="text-5xl">🎬</div>
-                                <div>
-                                    <h4 class="text-xl font-bold text-slate-800 mb-2">Presentaciones Narradas</h4>
-                                    <p class="text-slate-600 mb-3">Reveal.js + audio sincronizado con controles de reproducción y transcript.</p>
-                                    <div class="flex gap-2">
-                                        <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-bold">Reveal.js</span>
-                                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">Tailwind</span>
-                                    </div>
-                                </div>
+                        <div class="apunte-meta">
+                            <span class="badge">📄 10 secciones</span>
+                            <span class="badge">✅ Autoevaluación</span>
+                            <span class="badge">📚 Glosario</span>
+                        </div>
+                    </a>
+
+                    <!-- Writing Strategies (Inglés) -->
+                    <a href="./apuntes/03-Bachillerato/Ingles/2-Bach/WRITING-STRATEGIES/index.html" class="apunte-card">
+                        <div class="apunte-card-header">
+                            <div class="apunte-icon icon-ingles">✍️</div>
+                            <div>
+                                <h3 style="margin: 0; font-size: 1.125rem;">Writing Strategies</h3>
+                                <span class="apunte-nivel nivel-bachillerato">2º Bachillerato</span>
+                                <p class="apunte-asignatura">Inglés</p>
+                                <p class="apunte-tema">Estrategias para el writing académico</p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Examples -->
-        <section id="examples" class="py-20 bg-white">
-            <div class="max-w-6xl mx-auto px-8">
-                <h2 class="text-4xl font-bold text-center mb-4 text-slate-800">
-                    📚 Ejemplos de Apuntes
-                </h2>
-                <p class="text-center text-slate-600 mb-16 text-lg">
-                    Materiales generados automáticamente con el sistema
-                </p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div v-for="example in examples" :key="example.title"
-                         class="bg-slate-50 rounded-2xl overflow-hidden card-hover border-2 border-slate-100">
-                        <div class="p-8">
-                            <div class="flex items-center gap-3 mb-4">
-                                <span class="text-4xl">{{ example.icon }}</span>
-                                <div>
-                                    <h3 class="text-xl font-bold text-slate-800">{{ example.title }}</h3>
-                                    <p class="text-sm text-slate-500">{{ example.level }} • {{ example.course }}</p>
-                                </div>
-                            </div>
-                            <ul class="space-y-2 mb-6">
-                                <li v-for="topic in example.topics" :key="topic" class="flex items-start gap-2 text-sm text-slate-600">
-                                    <i class="fas fa-check text-green-500 mt-1"></i>
-                                    <span>{{ topic }}</span>
-                                </li>
-                            </ul>
-                            <a :href="example.path" target="_blank" 
-                               class="inline-block bg-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 transition">
-                                <i class="fas fa-external-link-alt mr-2"></i>Ver Apuntes
-                            </a>
+                        <div class="apunte-meta">
+                            <span class="badge">📄 9 secciones</span>
+                            <span class="badge">✅ Ejercicios</span>
+                            <span class="badge">📚 Modelos</span>
                         </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Structure -->
-        <section class="py-20 bg-slate-50">
-            <div class="max-w-6xl mx-auto px-8">
-                <h2 class="text-4xl font-bold text-center mb-16 text-slate-800">
-                    📁 Estructura de Apuntes
-                </h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white p-8 rounded-2xl border-2 border-slate-200">
-                        <h3 class="text-xl font-bold mb-6 text-slate-800 flex items-center gap-3">
-                            <i class="fas fa-folder-tree text-blue-600"></i>
-                            Estructura de Carpetas
-                        </h3>
-                        <div class="font-mono text-sm space-y-2 text-slate-700">
-                            <div class="flex items-center gap-2">
-                                <i class="fas fa-folder text-amber-500"></i>
-                                <span>apuntes/</span>
-                            </div>
-                            <div class="flex items-center gap-2 pl-6">
-                                <i class="fas fa-folder text-amber-500"></i>
-                                <span>03-Bachillerato/</span>
-                            </div>
-                            <div class="flex items-center gap-2 pl-12">
-                                <i class="fas fa-folder text-amber-500"></i>
-                                <span>Ingles/</span>
-                            </div>
-                            <div class="flex items-center gap-2 pl-16">
-                                <i class="fas fa-folder text-amber-500"></i>
-                                <span>2-Bach/</span>
-                            </div>
-                            <div class="flex items-center gap-2 pl-20">
-                                <i class="fas fa-folder text-amber-500"></i>
-                                <span>WRITING-STRATEGIES/</span>
-                            </div>
-                            <div class="flex items-center gap-2 pl-24 text-green-600">
-                                <i class="fas fa-file-code"></i>
-                                <span>index.html</span>
-                            </div>
-                            <div class="flex items-center gap-2 pl-24 text-green-600">
-                                <i class="fas fa-file-image"></i>
-                                <span>logo.png</span>
-                            </div>
-                            <div class="flex items-center gap-2 pl-24">
-                                <i class="fas fa-folder text-amber-500"></i>
-                                <span>sections/</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white p-8 rounded-2xl border-2 border-slate-200">
-                        <h3 class="text-xl font-bold mb-6 text-slate-800 flex items-center gap-3">
-                            <i class="fas fa-list-check text-green-600"></i>
-                            Secciones Incluidas
-                        </h3>
-                        <ul class="space-y-3">
-                            <li v-for="(section, index) in sections" :key="index"
-                                class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
-                                <span class="text-blue-600 font-bold">{{ section.icon }}</span>
-                                <span class="text-slate-700">{{ section.name }}</span>
-                            </li>
-                        </ul>
-                    </div>
+            <!-- Próximos apuntes -->
+            <section style="margin-top: 3rem;">
+                <h2>🚀 Próximos apuntes</h2>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-8 text-center">
+                    <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 1rem;">
+                        Más apuntes están en desarrollo...
+                    </p>
+                    <p style="font-size: 0.875rem; color: var(--text-muted);">
+                        Solicita nuevos apuntes indicando: nivel educativo, asignatura, curso y tema.
+                    </p>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- License -->
-        <section class="py-20 bg-gradient-to-r from-green-50 to-emerald-50">
-            <div class="max-w-4xl mx-auto px-8 text-center">
-                <div class="inline-block bg-white px-6 py-3 rounded-full mb-6">
-                    <img src="https://i.creativecommons.org/l/by/4.0/88x31.png" alt="CC BY 4.0" class="h-8">
+            <!-- Información -->
+            <section style="margin-top: 3rem;">
+                <h2>ℹ️ Sobre este proyecto</h2>
+                <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+                    <p style="margin-bottom: 1rem;">
+                        Este generador de apuntes educativos crea material didáctico profesional para 
+                        <strong>Primaria</strong>, <strong>ESO</strong>, <strong>Bachillerato</strong> y <strong>FP</strong>.
+                    </p>
+                    <ul style="margin: 0; padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;">✅ Apuntes en formato HTML navegable</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Exportación a PDF (Ctrl+P) y Word</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Diseño responsive y accesible</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Licencia CC BY 4.0 (uso libre con atribución)</li>
+                    </ul>
                 </div>
-                <h2 class="text-3xl font-bold mb-6 text-green-800">
-                    📄 Licencia Creative Commons
-                </h2>
-                <p class="text-lg text-green-700 mb-8">
-                    Todo el material generado está bajo licencia <strong>CC BY 4.0</strong>
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-xl">
-                        <div class="text-4xl mb-3">✅</div>
-                        <h3 class="font-bold text-green-800 mb-2">Compartir</h3>
-                        <p class="text-sm text-green-600">Copiar y redistribuir el material</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl">
-                        <div class="text-4xl mb-3">🔧</div>
-                        <h3 class="font-bold text-green-800 mb-2">Adaptar</h3>
-                        <p class="text-sm text-green-600">Remezclar, transformar y crear</p>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl">
-                        <div class="text-4xl mb-3">⚠️</div>
-                        <h3 class="font-bold text-green-800 mb-2">Atribuir</h3>
-                        <p class="text-sm text-green-600">Dar crédito apropiado</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </main>
 
         <!-- Footer -->
-        <footer class="bg-slate-900 text-white py-12">
+        <footer class="bg-slate-50 border-t border-slate-200 py-12 mt-12">
             <div class="max-w-6xl mx-auto px-8">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-6">
-                    <div class="text-center md:text-left">
-                        <h3 class="text-xl font-bold mb-2">🎓 Generador de Apuntes Educativos</h3>
-                        <p class="text-slate-400 text-sm">IES Serra Perenxisa • Valencia, España</p>
+                    <div class="flex items-center gap-4">
+                        <img src="./logo.png" alt="Logo" style="height: 40px; filter: grayscale(100%); opacity: 0.5;">
+                        <div style="font-size: 0.875rem; color: var(--text-muted);">
+                            <p><strong>Generador de Apuntes Educativos</strong></p>
+                            <p>&copy; {{ new Date().getFullYear() }} — <a href="https://mejoratudocencia.es" target="_blank" style="color: var(--primary); text-decoration: none;">mejoratudocencia.es</a></p>
+                        </div>
                     </div>
-                    <div class="flex gap-6">
-                        <a href="https://github.com/sergarb1/generador-apuntes-agentes" 
-                           class="text-slate-400 hover:text-white transition">
-                            <i class="fab fa-github text-2xl"></i>
-                        </a>
-                        <a href="https://creativecommons.org/licenses/by/4.0/" 
-                           class="text-slate-400 hover:text-white transition">
-                            <i class="fab fa-creative-commons text-2xl"></i>
+                    <div class="flex items-center gap-4">
+                        <a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" style="text-decoration: none;">
+                            <img src="./apuntes/03-Bachillerato/Economia/2/macroeconomia/assets/cc-by-80x15.png" alt="CC BY 4.0" style="height: 24px;">
                         </a>
                     </div>
-                </div>
-                <div class="border-t border-slate-800 mt-8 pt-8 text-center text-sm text-slate-400">
-                    <p>Última actualización: Marzo 2026</p>
                 </div>
             </div>
         </footer>
     </div>
 
-    <!-- Vue.js -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-    
     <script>
         const { createApp } = Vue;
-        
+
         createApp({
             data() {
                 return {
-                    subjects: [
-                        { name: 'Lengua', icon: '📖', agent: '10-experto-lengua' },
-                        { name: 'Matemáticas', icon: '📐', agent: '11-experto-matematicas' },
-                        { name: 'Biología', icon: '🧬', agent: '12-experto-biologia' },
-                        { name: 'Física y Química', icon: '⚗️', agent: '13-experto-fisica-quimica' },
-                        { name: 'Historia', icon: '🏛️', agent: '14-experto-historia-geografia' },
-                        { name: 'Inglés', icon: '🇬🇧', agent: '15-experto-ingles' },
-                        { name: 'Tecnología', icon: '💻', agent: '26-experto-tecnologia' },
-                        { name: 'Informática', icon: '🖥️', agent: '02-experto-informatica' }
-                    ],
-                    levels: [
-                        { name: 'Primaria', age: '6-12 años', icon: '🌟', gradient: 'from-blue-400 to-blue-600', cursos: ['1º', '2º', '3º', '4º', '5º', '6º'] },
-                        { name: 'ESO', age: '12-16 años', icon: '🚀', gradient: 'from-green-400 to-green-600', cursos: ['1º', '2º', '3º', '4º'] },
-                        { name: 'Bachillerato', age: '16-18 años', icon: '🎓', gradient: 'from-purple-400 to-purple-600', cursos: ['1º', '2º'] },
-                        { name: 'FP', age: '16+ años', icon: '🔧', gradient: 'from-amber-400 to-amber-600', cursos: ['Grado Medio', 'Grado Superior'] }
-                    ],
-                    examples: [
+                    apuntes: [
                         {
-                            title: 'Writing Strategies - Inglés',
-                            level: 'Bachillerato',
-                            course: '2º Bachillerato',
-                            icon: '📝',
-                            topics: [
-                                'Estructura del ensayo académico (4 párrafos)',
-                                'Conectores y linking words esenciales',
-                                'Registro formal e informal',
-                                'Modelos de essays resueltos',
-                                'Ejercicios prácticos tipo EBAU'
-                            ],
-                            path: 'apuntes/03-Bachillerato/Ingles/2-Bach/WRITING-STRATEGIES/'
+                            titulo: 'Macroeconomía',
+                            nivel: '2º Bachillerato',
+                            asignatura: 'Economía',
+                            tema: 'Indicadores, Política Fiscal y Monetaria',
+                            icono: '📊',
+                            secciones: 10,
+                            ruta: './apuntes/03-Bachillerato/Economia/2/macroeconomia/index.html'
                         },
                         {
-                            title: 'La Célula - Biología',
-                            level: 'ESO',
-                            course: '3º ESO',
-                            icon: '🔬',
-                            topics: [
-                                '¿Qué es una célula?',
-                                'Partes de la célula',
-                                'Célula animal vs vegetal',
-                                'Orgánulos y funciones',
-                                'Microscopio y observación'
-                            ],
-                            path: '#'
+                            titulo: 'Writing Strategies',
+                            nivel: '2º Bachillerato',
+                            asignatura: 'Inglés',
+                            tema: 'Estrategias para el writing académico',
+                            icono: '✍️',
+                            secciones: 9,
+                            ruta: './apuntes/03-Bachillerato/Ingles/2-Bach/WRITING-STRATEGIES/index.html'
                         }
-                    ],
-                    sections: [
-                        { name: 'Portada e Introducción', icon: '🏠' },
-                        { name: 'Objetivos de Aprendizaje', icon: '🎯' },
-                        { name: 'Contenido Teórico', icon: '📚' },
-                        { name: 'Ejemplos Resueltos', icon: '💡' },
-                        { name: 'Ejercicios Propuestos', icon: '✏️' },
-                        { name: 'Autoevaluación', icon: '✅' },
-                        { name: 'Glosario', icon: '📖' },
-                        { name: 'Recursos Adicionales', icon: '🔗' }
                     ]
+                }
+            },
+            methods: {
+                getNivelClass(nivel) {
+                    if (nivel.includes('Bachillerato')) return 'nivel-bachillerato';
+                    if (nivel.includes('ESO')) return 'nivel-eso';
+                    if (nivel.includes('FP')) return 'nivel-fp';
+                    return 'nivel-primaria';
                 }
             }
         }).mount('#app');

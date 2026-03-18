@@ -117,7 +117,7 @@ Los logos de Creative Commons son marcas registradas. Úsalos solo para indicar 
 
 ---
 
-**Plantilla desarrollada para el IES Serra Perenxisa**
+**Plantilla de uso general para centros educativos**
 
 Versión: 4.0 (CC BY 4.0)
 

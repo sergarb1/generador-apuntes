@@ -1,7 +1,6 @@
 window.metadata = {
     projectTitle: 'Título del Tema',
-    studentName: 'Nombre del Alumno/a',
-    tutorName: 'Nombre del Profesor/a',
+    teacherName: 'Nombre del Profesor/a',
     cycle: 'ESO',
     cycleName: 'Educación Secundaria Obligatoria',
     cycleLevel: 'ESO',

@@ -5,7 +5,9 @@
  */
 
 window.sectionsContent = window.sectionsContent || {};
-window.sectionsContent["registro-formal-informal"] = `
+window.sectionsContent['registro-formal-informal'] = {
+  title: "4. Registro formal e informal",
+  content: `
 
 <h2>4. Formal vs Informal Register</h2>
 
@@ -234,4 +236,5 @@ window.sectionsContent["registro-formal-informal"] = `
     </div>
 </div>
 
-`;
+`
+};

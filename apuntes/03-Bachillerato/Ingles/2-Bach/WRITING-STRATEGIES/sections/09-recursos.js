@@ -5,7 +5,9 @@
  */
 
 window.sectionsContent = window.sectionsContent || {};
-window.sectionsContent["recursos"] = `
+window.sectionsContent['recursos'] = {
+  title: "9. Recursos",
+  content: `
 
 <h2>9. Recursos adicionales y bibliografía</h2>
 
@@ -251,4 +253,5 @@ window.sectionsContent["recursos"] = `
     <p class="text-sm">La clave del éxito en writing es la <strong>constancia</strong>. Escribe al menos 2 veces por semana, pide correcciones a tu profesor, y guarda todos tus writings para ver tu progreso. ¡Mucho ánimo en tu preparación para la EBAU!</p>
 </div>
 
-`;
+`
+};

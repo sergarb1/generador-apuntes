@@ -1,0 +1,64 @@
+# Node dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+
+# Temporals
+tmp/
+temp/
+*.tmp
+
+# Credentials
+*.key
+*.pem
+credentials.json
+*.secret
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Config personal
+config.ini
+.config.ini
+
+# Archivos de Gemini CLI (si no se usan)
+# GEMINI.md
+# .gemini/
+
+# Scripts de trabajo temporal (opcional)
+# scripts/

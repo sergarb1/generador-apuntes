@@ -5,7 +5,9 @@
  */
 
 window.sectionsContent = window.sectionsContent || {};
-window.sectionsContent["estructura-ensayo"] = `
+window.sectionsContent['estructura-ensayo'] = {
+  title: "2. Estructura del ensayo",
+  content: `
 
 <h2>2. Estructura del ensayo académico (opinion essay)</h2>
 
@@ -169,11 +171,12 @@ window.sectionsContent["estructura-ensayo"] = `
     </div>
     <div class="bg-white p-5 rounded-xl border border-green-200">
         <p class="text-sm leading-relaxed">
-            <strong class="text-green-700">[Restate thesis]</strong> To conclude, I firmly maintain that learning a foreign language should be compulsory for all students. 
-            <strong class="text-green-700">[Summarize]</strong> As discussed, it not only enhances cognitive abilities and career prospects but also promotes cultural understanding. 
+            <strong class="text-green-700">[Restate thesis]</strong> To conclude, I firmly maintain that learning a foreign language should be compulsory for all students.
+            <strong class="text-green-700">[Summarize]</strong> As discussed, it not only enhances cognitive abilities and career prospects but also promotes cultural understanding.
             <strong class="text-green-700">[Final thought]</strong> In an increasingly globalized world, being multilingual is no longer a luxury but a necessity for future generations.
         </p>
     </div>
 </div>
 
-`;
+`
+};

@@ -1,5 +1,5 @@
 /**
- * Plantilla de Apuntes Educativos - IES Serra Perenxisa
+ * Plantilla de Apuntes Educativos
  *
  * 🚀 Versión Pedagógica con Soporte TDAH y Estructura Modular
  *

@@ -5,7 +5,9 @@
  */
 
 window.sectionsContent = window.sectionsContent || {};
-window.sectionsContent["portada-introduccion"] = `
+window.sectionsContent['portada-introduccion'] = {
+  title: "1. Introducción",
+  content: `
 
 <div class="callout callout-info">
     <div class="callout-title">
@@ -14,7 +16,7 @@ window.sectionsContent["portada-introduccion"] = `
     </div>
     <p class="text-sm">En esta unidad aprenderás las estrategias esenciales para triunfar en el writing de la EBAU y en tu futuro académico.</p>
 </div>
-
+<h2>1. Introducción</h2>
 <h3>1.1. Introduction to Academic Writing</h3>
 <p>El <strong>writing</strong> es una de las cuatro habilidades lingüísticas fundamentales (junto con reading, listening y speaking) y representa el <strong>25-30% de la nota</strong> en la prueba de inglés de la Ebau. Dominar las estrategias de escritura académica no solo te ayudará a aprobar el examen, sino que te preparará para los estudios universitarios.</p>
 
@@ -119,4 +121,5 @@ window.sectionsContent["portada-introduccion"] = `
     </div>
 </div>
 
-`;
+`
+};

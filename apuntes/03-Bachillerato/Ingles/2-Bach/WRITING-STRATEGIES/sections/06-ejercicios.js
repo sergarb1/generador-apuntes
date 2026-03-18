@@ -5,7 +5,9 @@
  */
 
 window.sectionsContent = window.sectionsContent || {};
-window.sectionsContent["ejercicios"] = `
+window.sectionsContent['ejercicios'] = {
+  title: "6. Ejercicios",
+  content: `
 
 <h2>6. Ejercicios propuestos</h2>
 
@@ -178,4 +180,5 @@ window.sectionsContent["ejercicios"] = `
     <p class="text-sm">Practica al menos <strong>2 writings por semana</strong>. Pide a tu profesor/a que los corrija y guarda las correcciones para aprender de tus errores.</p>
 </div>
 
-`;
+`
+};

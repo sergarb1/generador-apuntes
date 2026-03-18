@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Writing Strategies - IES Serra Perenxisa</title>
+    <title>Proyecto Intermodular - IES Serra Perenxisa</title>
 
     <!-- Librerías Externas (CDNs) -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <!-- Tipografías -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +17,7 @@
     <style>
         /* Ocultar contenido hasta que Vue se cargue */
         [v-cloak] { display: none; }
-
+        
         :root {
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
@@ -45,20 +44,20 @@
             overflow-x: hidden;
         }
 
-        /* Tipografía Pro */
+        /* Tipografía Pro (espaciado reducido para PDF) */
         h1, h2, h3, h4, h5, h6 { font-weight: 800 !important; color: #0f172a; letter-spacing: -0.02em; }
-        h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 2rem; }
-        h2 { font-size: 2rem; margin-top: 5rem; margin-bottom: 1.5rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 1rem; color: var(--primary); }
-        h3 { font-size: 1.5rem; margin-top: 3rem; margin-bottom: 1.25rem; color: #1e293b; display: flex; align-items: center; gap: 0.75rem; }
-        h3::before { content: ''; width: 4px; height: 1.5rem; background: var(--primary); border-radius: 4px; display: inline-block; }
-
-        p { margin-bottom: 1.5rem; color: #475569; text-align: justify; }
+        h1 { font-size: 2.5rem; line-height: 1.1; margin-bottom: 0.5rem; }
+        h2 { font-size: 1.75rem; margin-top: 0.75rem; margin-bottom: 0.5rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem; color: var(--primary); }
+        h3 { font-size: 1.25rem; margin-top: 0.5rem; margin-bottom: 0.5rem; color: #1e293b; display: flex; align-items: center; gap: 0.5rem; }
+        h3::before { content: ''; width: 4px; height: 1rem; background: var(--primary); border-radius: 4px; display: inline-block; }
+        
+        p { margin-bottom: 0.5rem; color: #475569; text-align: justify; }
 
         /* Callouts Premium */
         .callout {
-            padding: 1.5rem;
+            padding: 1rem;
             border-radius: 1rem;
-            margin: 2rem 0;
+            margin: 0.75rem 0;
             border: 1px solid transparent;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
@@ -85,12 +84,13 @@
             z-index: 40;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             left: 0;
+            overflow-y: auto;
         }
-
+        
         .sidebar-collapsed {
             transform: translateX(-100%);
         }
-
+        
         .nav-item {
             display: flex;
             align-items: center;
@@ -166,10 +166,13 @@
 
         /* Content Area */
         .content-area {
-            max-width: 900px;
+            max-width: 880px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 1rem 1.5rem;
         }
+
+        /* Menos espacio entre secciones para versiones PDF y web compacta */
+        section { margin-bottom: 0.5rem; padding-top: 0; }
 
         /* Print Improvements */
         @media print {
@@ -203,18 +206,19 @@
                 print-color-adjust: exact !important;
             }
 
-            h1 { font-size: 28pt; margin-bottom: 3rem; page-break-after: avoid; }
+            h1 { font-size: 28pt; margin-bottom: 0.5rem; page-break-after: avoid; }
             h2 {
                 font-size: 20pt;
-                page-break-before: always;
-                margin-top: 0;
-                padding-top: 1cm;
+                page-break-before: avoid;
+                margin-top: 0.25rem;
+                margin-bottom: 0.25rem;
+                padding-top: 0.2cm;
                 border-bottom: 2px solid #eee !important;
                 page-break-after: avoid;
             }
-            h3 { font-size: 16pt; margin-top: 2rem; page-break-after: avoid; }
+            h3 { font-size: 16pt; margin-top: 0.25rem; margin-bottom: 0.25rem; page-break-after: avoid; }
 
-            p, li { orphans: 3; widows: 3; }
+            p, li { orphans: 3; widows: 3; margin-bottom: 0.25rem; }
 
             .callout {
                 break-inside: avoid;
@@ -306,7 +310,7 @@
                         <img :src="logoUrl" alt="Logo" class="max-h-full">
                     </div>
                     <div>
-                        <div class="font-extrabold text-sm leading-none">IES Serra</div>
+                        <div class="font-extrabold text-sm leading-none">{{ projectTitle || 'Plantilla Apuntes' }}</div>
                         <div class="text-[10px] text-slate-400 mt-1 uppercase tracking-wider font-bold">{{ cycle }}</div>
                     </div>
                 </div>
@@ -321,16 +325,16 @@
                 <div class="my-6 border-t border-slate-100 mx-6"></div>
                 <div v-for="section in sections" :key="section.id">
                     <a :href="'#' + section.id" class="nav-item" :class="{ active: activeSection === section.id }" @click="activeSection = section.id">
-                        <span class="text-lg">{{ getSectionIcon(section.id) }}</span>
+                        <span class="text-lg">{{ getSectionIcon(section.id) }}</span> 
                         <span class="ml-3">{{ section.title }}</span>
                     </a>
                 </div>
                 <div class="my-6 border-t border-slate-100 mx-6"></div>
-                <a href="#glosario" class="nav-item" :class="{ active: activeSection === 'glosario' }" @click="activeSection = 'glosario'">
-                    <span class="text-lg">📖</span> <span class="ml-3">Glosario</span>
+                <a href="#bibliografia" class="nav-item" :class="{ active: activeSection === 'bibliografia' }" @click="activeSection = 'bibliografia'">
+                    <span class="text-lg">📚</span> <span class="ml-3">Bibliografía</span>
                 </a>
-                <a href="#recursos" class="nav-item" :class="{ active: activeSection === 'recursos' }" @click="activeSection = 'recursos'">
-                    <span class="text-lg">🔗</span> <span class="ml-3">Recursos</span>
+                <a href="#anexos" class="nav-item" :class="{ active: activeSection === 'anexos' }" @click="activeSection = 'anexos'">
+                    <span class="text-lg">📎</span> <span class="ml-3">Anexos</span>
                 </a>
             </nav>
         </aside>
@@ -366,11 +370,11 @@
                     <h1 class="text-lg font-bold m-0 border-none truncate max-w-md" :title="projectTitle">{{ projectTitle || 'Apuntes Educativos' }}</h1>
                 </div>
                 <div class="flex gap-3">
-                    <button @click="printProject" class="btn btn-secondary text-slate-600">
+                    <button @click="printProject" class="btn btn-secondary text-slate-600" title="Imprimir (Ctrl+P)">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
                         Imprimir
                     </button>
-                    <button @click="exportWord" class="btn btn-primary">
+                    <button @click="exportWord" class="btn btn-primary" title="Exportar a Word">
                         Word
                     </button>
                 </div>
@@ -378,104 +382,49 @@
 
             <main class="content-area" id="export-content">
                 <!-- Portada Premium -->
-                <section id="inicio" class="text-center py-20 mb-32 min-h-[85vh] flex flex-col justify-center">
-                    <div class="mb-12">
-                        <img :src="logoUrl" alt="Logo Centro" class="h-24 mx-auto drop-shadow-sm">
+                <section id="inicio" class="text-center py-2 mb-2 flex flex-col justify-center">
+                    <div class="mb-2">
+                        <img :src="logoUrl" alt="Logo Centro" class="h-16 mx-auto drop-shadow-sm">
                     </div>
-                    <h1 class="text-6xl text-slate-900 leading-tight mb-8">{{ projectTitle }}</h1>
-                    <p class="text-2xl text-slate-400 font-medium max-w-3xl mx-auto italic mb-16">
+                    <h1 class="text-4xl text-slate-900 leading-tight mb-1">{{ projectTitle }}</h1>
+                    <p class="text-lg text-slate-400 font-medium max-w-3xl mx-auto italic mb-2">
                         <span v-if="subject">{{ subject }} — </span>
                         <span v-if="cycle">{{ cycle }} — {{ courseYear }}</span>
                         <span v-else>Apuntes Educativos</span>
                     </p>
 
-                    <div v-if="projectImage" class="relative max-w-5xl mx-auto mb-20 group">
-                        <div class="absolute -inset-4 bg-gradient-to-tr from-blue-100 to-indigo-100 rounded-[2rem] blur-2xl opacity-50"></div>
-                        <img :src="projectImage" alt="Hero" class="relative rounded-[1.5rem] shadow-2xl w-full border border-slate-100">
+                    <div v-if="projectImage" class="relative max-w-2xl mx-auto mb-2 group">
+                        <img :src="projectImage" alt="Hero" class="rounded-[0.75rem] shadow-md w-full border border-slate-100 h-64 object-cover">
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left mt-12">
-                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Autor/a</span>
-                            <span class="text-lg font-bold text-slate-800">{{ studentName || 'Por definir' }}</span>
+                    <div class="grid grid-cols-2 gap-2 text-left mt-2 max-w-2xl mx-auto">
+                        <div class="p-2 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="text-[7px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Autor/a (Profesor)</span>
+                            <span class="text-xs font-bold text-slate-800">{{ teacherName || 'Por definir' }}</span>
                         </div>
-                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Tutor/a</span>
-                            <span class="text-lg font-bold text-slate-800">{{ tutorName || 'Por definir' }}</span>
-                        </div>
-                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Nivel / Curso</span>
-                            <span class="text-lg font-bold text-slate-800">{{ cycleLevel || cycle }} - {{ courseYear }}</span>
-                        </div>
-                        <div class="p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-2">Fecha</span>
-                            <span class="text-lg font-bold text-slate-800">{{ currentDate }}</span>
+                        <div class="p-2 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="text-[7px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Fecha</span>
+                            <span class="text-xs font-bold text-slate-800">{{ currentDate }}</span>
                         </div>
                     </div>
-
+                    
                     <!-- Licencia CC BY en portada -->
-                    <div class="mt-12 p-6 bg-green-50 rounded-2xl border-2 border-green-200 inline-block">
-                        <div class="flex items-center gap-4">
-                            <img src="./assets/cc-by-88x31.png" alt="CC BY 4.0" class="h-8">
-                            <div class="text-left">
-                                <p class="text-sm font-bold text-green-800">Licencia CC BY 4.0</p>
-                                <p class="text-xs text-green-600">Material educativo abierto</p>
+                    <div class="mt-2 p-2 bg-green-50 rounded-lg border-2 border-green-200 inline-block text-center">
+                        <div class="flex items-center gap-1 justify-center">
+                            <img src="./assets/cc-by-88x31.png" alt="CC BY 4.0" class="h-4">
+                            <div>
+                                <p class="text-[10px] font-bold text-green-800">Licencia CC BY 4.0</p>
                             </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Resumen Section -->
-                <section id="resumen" class="mb-32 scroll-mt-24">
-                    <h2>Resumen del Tema</h2>
-                    <div class="callout callout-info">
-                        <div class="callout-title">
-                            <span>📌</span>
-                            <span>Overview</span>
-                        </div>
-                        <p class="text-sm">Estos apuntes cubren las estrategias esenciales para el writing de la EBAU de Inglés.</p>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
-                        <div class="bg-blue-50 p-6 rounded-2xl border border-blue-200">
-                            <h4 class="font-bold text-blue-800 mb-3">📝 ¿Qué aprenderás?</h4>
-                            <ul class="space-y-2 text-sm text-blue-700">
-                                <li>✅ Estructura de 4 párrafos para essays</li>
-                                <li>✅ Conectores y linking words esenciales</li>
-                                <li>✅ Registro formal vs informal</li>
-                                <li>✅ Técnicas para EBAU</li>
-                            </ul>
-                        </div>
-                        <div class="bg-green-50 p-6 rounded-2xl border border-green-200">
-                            <h4 class="font-bold text-green-800 mb-3">🎯 Objetivos</h4>
-                            <ul class="space-y-2 text-sm text-green-700">
-                                <li>✅ Escribir 180-220 palabras</li>
-                                <li>✅ Usar 8+ conectores variados</li>
-                                <li>✅ Evitar errores gramaticales</li>
-                                <li>✅ Gestionar el tiempo (45-60 min)</li>
-                            </ul>
                         </div>
                     </div>
                 </section>
 
                 <!-- Secciones dinámicas -->
                 <div v-for="section in sections" :key="section.id">
-                    <section :id="section.id" class="mb-32 scroll-mt-24">
-                        <h2>{{ section.title }}</h2>
+                    <section :id="section.id" class="mb-2 scroll-mt-24">
                         <div v-html="getSectionContent(section.id)"></div>
                     </section>
                 </div>
-
-                <!-- Glosario -->
-                <section id="glosario" class="mb-32 scroll-mt-24">
-                    <h2>Glosario</h2>
-                    <div v-html="getSectionContent('glosario')"></div>
-                </section>
-
-                <!-- Recursos -->
-                <section id="recursos" class="mb-32 scroll-mt-24">
-                    <h2>Recursos Adicionales</h2>
-                    <div v-html="getSectionContent('recursos')"></div>
-                </section>
             </main>
 
             <!-- Licencia CC BY para impresión (solo visible en print) -->
@@ -488,7 +437,7 @@
                     <p class="text-xs">Para ver el texto completo de la licencia, visita: https://creativecommons.org/licenses/by/4.0/deed.es</p>
                     <p class="text-xs mt-2">
                         <strong>Atribución:</strong>
-                        <span v-if="studentName">{{ studentName }}</span>
+                        <span v-if="teacherName">{{ teacherName }}</span>
                         <span v-if="cycle"> - {{ cycle }} - {{ courseYear }}</span>
                     </p>
                 </div>
@@ -501,7 +450,7 @@
                         <div class="flex flex-col md:flex-row items-center gap-6">
                             <div class="flex-shrink-0">
                                 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
-                                    <img src="https://i.creativecommons.org/l/by/4.0/88x31.png" alt="CC BY 4.0" class="h-12">
+                                    <img src="./assets/cc-by-88x31.png" alt="CC BY 4.0" class="h-12">
                                 </a>
                             </div>
                             <div class="flex-1 text-center md:text-left">
@@ -534,18 +483,17 @@
                     <!-- Footer institucional -->
                     <div class="flex flex-col md:flex-row justify-between items-center gap-8">
                         <div class="flex items-center gap-4">
-                            <img :src="logoUrl" alt="IES" class="h-10 grayscale opacity-50">
+                            <img :src="logoUrl" alt="Logo" class="h-10 grayscale opacity-50">
                             <div class="text-sm text-slate-400 font-medium">
                                 <span v-if="cycle">{{ cycle }}</span>
-                                <span v-else>IES Serra Perenxisa</span>
+                                <span v-else>Plantilla Apuntes</span>
                                 <br>
                                 &copy; {{ new Date().getFullYear() }} — Material educativo abierto
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="text-right text-xs text-slate-500">
-                                <p><strong>Autor/a:</strong> {{ studentName || 'Por definir' }}</p>
-                                <p><strong>Tutor/a:</strong> {{ tutorName || 'Por definir' }}</p>
+                                <p><strong>Autor/a:</strong> {{ teacherName || 'Por definir' }}</p>
                             </div>
                             <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" class="flex-shrink-0">
                                 <img src="./assets/cc-by-80x15.png" alt="CC BY 4.0" class="h-6">
@@ -557,10 +505,11 @@
         </div>
     </div>
 
-    <!-- CARGA DE DATOS OFFLINE -->
+    <!-- CARGA DE DATOS OFFLINE (window.metadata y window.sectionsContent) -->
+    <!-- Metadatos del apunte -->
     <script src="./data/metadata.js"></script>
     
-    <!-- Secciones modulares -->
+    <!-- Secciones modulares de apuntes - WRITING STRATEGIES -->
     <script src="./sections/01-portada-introduccion.js"></script>
     <script src="./sections/02-estructura-ensayo.js"></script>
     <script src="./sections/03-conectores.js"></script>
@@ -571,7 +520,177 @@
     <script src="./sections/08-glosario.js"></script>
     <script src="./sections/09-recursos.js"></script>
 
-    <!-- Lógica de la aplicación -->
-    <script src="./index.js"></script>
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    activeSection: 'inicio',
+                    sidebarOpen: true,
+                    projectTitle: window.metadata?.projectTitle || 'Apuntes Educativos',
+                    teacherName: window.metadata?.teacherName || '',
+                    cycle: window.metadata?.cycle || '',
+                    cycleName: window.metadata?.cycleName || '',
+                    cycleLevel: window.metadata?.cycleLevel || '',
+                    courseYear: window.metadata?.courseYear || '',
+                    subject: window.metadata?.subject || '',
+                    topic: window.metadata?.topic || '',
+                    projectImage: window.metadata?.projectImage || './images/hero.jpg',
+                    currentDate: new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
+                    logoUrl: './logo.png',
+                    sections: [
+                        { id: 'portada-introduccion', title: '1. Introducción' },
+                        { id: 'estructura-ensayo', title: '2. Estructura del ensayo' },
+                        { id: 'conectores', title: '3. Conectores esenciales' },
+                        { id: 'registro-formal-informal', title: '4. Registro formal e informal' },
+                        { id: 'modelos-ensayos', title: '5. Modelos de ensayos' },
+                        { id: 'ejercicios', title: '6. Ejercicios' },
+                        { id: 'autoevaluacion', title: '7. Autoevaluación' },
+                        { id: 'glosario', title: '8. Glosario' },
+                        { id: 'recursos', title: '9. Recursos' }
+                    ],
+                    sectionsContent: window.sectionsContent || {}
+                }
+            },
+            methods: {
+                getSectionIcon(id) {
+                    const icons = {
+                        'portada-introduccion': '👋', 'estructura-ensayo': '📐', 'conectores': '🔗',
+                        'registro-formal-informal': '🎭', 'modelos-ensayos': '📝', 'ejercicios': '✏️',
+                        'autoevaluacion': '✅', 'glosario': '📖', 'recursos': '🔗'
+                    };
+                    return icons[id] || '📄';
+                },
+                getSectionContent(id) {
+                    const section = this.sectionsContent[id];
+                    if (section && section.content) {
+                        return section.content;
+                    }
+                    return '<div class="callout callout-warning">Contenido no encontrado en sections/' + id + '.js</div>';
+                },
+                printProject() {
+                    window.print();
+                },
+                exportWord() {
+                    const element = document.getElementById("export-content");
+                    const clone = element.cloneNode(true);
+
+                    const originalImgs = element.querySelectorAll("img");
+                    const clonedImgs = clone.querySelectorAll("img");
+
+                    // Esperar a que todas las imágenes estén cargadas
+                    Promise.all(
+                        [...originalImgs].map(img =>
+                            img.complete
+                                ? Promise.resolve()
+                                : new Promise(resolve => { img.onload = resolve; })
+                        )
+                    ).then(() => {
+                        for (let i = 0; i < originalImgs.length; i++) {
+                            const base64 = this.imageToBase64(originalImgs[i]);
+                            clonedImgs[i].src = base64;
+
+                            // Copiar tamaño visual real
+                            const rect = originalImgs[i].getBoundingClientRect();
+                            clonedImgs[i].setAttribute("width", rect.width);
+                            clonedImgs[i].setAttribute("height", rect.height);
+                            clonedImgs[i].style.display = "block";
+                        }
+
+                        const styles = `
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            padding: 20px;
+        }
+
+        h1,h2,h3 {
+            color:#2563eb;
+        }
+
+        img{
+            max-width:100%;
+        }
+
+        .callout{
+            padding:15px;
+            border:1px solid #e2e8f0;
+            border-radius:10px;
+            background:#f8fafc;
+            margin:20px 0;
+        }
+    </style>
+    `;
+
+                        const header = `
+    <html xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:w="urn:schemas-microsoft-com:office:word"
+          xmlns="http://www.w3.org/TR/REC-html40">
+    <head>
+        <meta charset="utf-8">
+        ${styles}
+    </head>
+    <body>
+    `;
+
+                        const footer = `</body></html>`;
+
+                        const sourceHTML = header + clone.innerHTML + footer;
+
+                        const blob = new Blob(['\ufeff', sourceHTML], {
+                            type: 'application/msword'
+                        });
+
+                        const url = URL.createObjectURL(blob);
+
+                        const link = document.createElement("a");
+                        link.href = url;
+                        link.download = this.projectTitle.replace(/ /g, "_") + ".doc";
+
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    });
+                },
+
+                imageToBase64(img) {
+                    try {
+                        const canvas = document.createElement("canvas");
+                        const ctx = canvas.getContext("2d");
+
+                        canvas.width = img.naturalWidth || img.width || 100;
+                        canvas.height = img.naturalHeight || img.height || 100;
+
+                        ctx.drawImage(img, 0, 0);
+                        return canvas.toDataURL("image/png");
+                    } catch (e) {
+                        return img.src || 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+                    }
+                }
+            },
+            mounted() {
+                // Colapsar sidebar en móviles por defecto
+                if (window.innerWidth < 1024) {
+                    this.sidebarOpen = false;
+                }
+
+                // Actualizar título de la página una vez cargado
+                if (window.metadata?.projectTitle) {
+                    this.projectTitle = window.metadata.projectTitle;
+                    document.title = window.metadata.projectTitle || 'Apuntes Educativos';
+                }
+                
+                // Inicializar observador de secciones
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) this.activeSection = entry.target.id;
+                    });
+                }, { rootMargin: '-20% 0px -70% 0px' });
+
+                document.querySelectorAll('section[id], #inicio').forEach((section) => observer.observe(section));
+            }
+        }).mount('#app');
+    </script>
 </body>
 </html>

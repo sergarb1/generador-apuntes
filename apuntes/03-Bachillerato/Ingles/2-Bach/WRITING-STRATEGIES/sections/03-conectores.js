@@ -5,7 +5,9 @@
  */
 
 window.sectionsContent = window.sectionsContent || {};
-window.sectionsContent["conectores"] = `
+window.sectionsContent['conectores'] = {
+  title: "3. Conectores esenciales",
+  content: `
 
 <h2>3. Linking words - Conectores esenciales</h2>
 
@@ -202,4 +204,5 @@ window.sectionsContent["conectores"] = `
     <p class="text-sm">No uses siempre el mismo conector. Si ya has usado "however", la próxima vez prueba con "nevertheless" o "nonetheless". Esto demuestra riqueza de vocabulario y te acerca al nivel C1.</p>
 </div>
 
-`;
+`
+};

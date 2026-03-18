@@ -13,7 +13,7 @@ Este sistema te guiará paso a paso para crear apuntes educativos profesionales.
    - FP (Formación Profesional)
 
 2. **Asignatura:**
-   - Lengua, Matemáticas, Ciencias, Inglés, etc.
+   - Lengua, Matemáticas, Ciencias, Inglés, Economía, etc.
 
 3. **Curso Específico:**
    - Ej: 3º ESO, 2º Bachillerato, 1º FP
@@ -21,35 +21,403 @@ Este sistema te guiará paso a paso para crear apuntes educativos profesionales.
 4. **Tema/Unidad:**
    - El contenido concreto que quieres desarrollar
 
-### Proceso de Generación:
+5. **Profesor/a Autor:**
+   - Nombre del profesor que crea los apuntes (aparece como autor)
 
-1. El sistema te hará preguntas una por una
-2. Responde de forma clara y concisa
-3. El agente orquestador coordinará la creación
-4. Se generará la estructura de carpetas automáticamente
-5. Los apuntes se guardarán en: `apuntes/[NIVEL]/[ASIGNATURA]/[CURSO]/[TEMA]/`
+---
 
-### Ejemplo de Uso:
+## 📋 Proceso de Generación Paso a Paso
+
+### Paso 1: Recopilación de Datos
+El sistema te hará 5 preguntas en orden:
+1. Nivel educativo
+2. Asignatura
+3. Curso específico
+4. Tema/unidad
+5. Nombre del profesor autor
+
+### Paso 2: Creación de Estructura
+Se crea automáticamente la carpeta en:
+```
+apuntes/[CODIGO_NIVEL]/[ASIGNATURA]/[CURSO]/[TEMA]/
+```
+
+### Paso 3: Generación de Contenido
+1. Se copian los assets desde `plantilla/assets/`
+2. Se copia el logo desde `plantilla/logo.png`
+3. Se generan las secciones en `sections/*.js`
+4. Se genera `data/metadata.js`
+5. Se genera `index.html` personalizado
+
+### Paso 4: Verificación
+- Los IDs de `sections` en Vue coinciden con los archivos reales
+- Los `<script src="...">` cargan los archivos correctos
+- Los metadatos están completos
+
+---
+
+## 📁 Estructura de Ficheros - DETALLADA
+
+### Estructura del Proyecto Completo:
 
 ```
-Usuario: Bachillerato
-Sistema: ¿Qué asignatura quieres desarrollar?
-Usuario: Inglés
-Sistema: ¿Qué curso específico?
-Usuario: 2
-Sistema: ¿Qué tema quieres desarrollar?
-Usuario: Estrategias para el writing
+generador-apuntes/
+│
+├── agents/                         # Agentes especializados
+│   ├── 00-orchestrator-apuntes.md  # Orquestador principal
+│   ├── 10-experto-lengua.md        # Experto en Lengua
+│   ├── 11-experto-matematicas.md   # Experto en Matemáticas
+│   ├── 15-experto-ingles.md        # Experto en Inglés
+│   ├── 17-experto-administracion-empresa.md
+│   ├── 20-nivel-primaria.md        # Especialista nivel Primaria
+│   ├── 21-nivel-eso.md             # Especialista nivel ESO
+│   ├── 22-nivel-bachillerato.md    # Especialista nivel Bachillerato
+│   └── 23-nivel-fp.md              # Especialista nivel FP
+│
+├── plantilla/                      # PLANTILLA BASE (referencia)
+│   ├── index.html                  # HTML base de referencia
+│   ├── logo.png                    # Logo por defecto
+│   ├── LICENSE.md                  # Licencia CC BY 4.0
+│   ├── README.md                   # Documentación
+│   ├── assets/                     # Assets CC BY 4.0
+│   │   ├── cc-by-88x31.png
+│   │   ├── cc-by-80x15.png
+│   │   └── cc-by-120x40.png
+│   ├── data/                       # Ejemplos de metadata.js
+│   │   └── metadata.js             # Metadata de ejemplo
+│   ├── images/                     # Carpeta vacía (se rellena al generar)
+│   └── sections/                   # Ejemplos de secciones .js
+│       ├── 01-portada-introduccion.js
+│       └── ...
+│
+├── apuntes/                        # APUNTES GENERADOS (aquí se guarda todo)
+│   ├── 01-Primaria/                # Apuntes de Primaria
+│   │   └── [ASIGNATURA]/
+│   │       └── [CURSO]/
+│   │           └── [TEMA]/
+│   ├── 02-ESO/                     # Apuntes de ESO
+│   │   └── [ASIGNATURA]/
+│   │       └── [CURSO]/
+│   │           └── [TEMA]/
+│   ├── 03-Bachillerato/            # Apuntes de Bachillerato
+│   │   ├── Economia/
+│   │   │   └── 2/
+│   │   │       └── macroeconomia/
+│   │   └── Ingles/
+│   │       └── 2-Bach/
+│   │           └── WRITING-STRATEGIES/
+│   └── 04-FP/                      # Apuntes de FP
+│       └── [FAMILIA]/
+│           └── [CICLO]/
+│               └── [MODULO]/
+│
+├── index.html                      # Índice principal con enlaces a todos los apuntes
+├── README.md                       # Documentación del proyecto
+└── prompt-inicial.txt              # Este archivo
 ```
 
-### Archivos Generados:
+### Estructura de CADA APUNTE GENERADO:
 
-Cada apunte incluirá:
-- `index.html` - Archivo principal navegable
-- `logo.png` - Logo del centro
-- `assets/` - Assets de licencia CC BY
-- `images/` - Imágenes del tema
-- `sections/` - Secciones modulares del contenido
-- `data/metadata.js` - Metadatos del proyecto
+```
+apuntes/[NIVEL]/[ASIGNATURA]/[CURSO]/[TEMA]/
+│
+├── index.html                      # Archivo principal navegable
+│                                   # - Vue.js 3 (CDN)
+│                                   # - Tailwind CSS (CDN)
+│                                   # - Sidebar navegable
+│                                   # - Exportación a PDF y Word
+│
+├── logo.png                        # Logo del centro educativo
+│                                   # - Se copia desde plantilla/logo.png
+│
+├── assets/                         # Assets de licencia CC BY 4.0
+│   ├── cc-by-88x31.png             # Logo CC BY (88x31 px)
+│   ├── cc-by-80x15.png             # Logo CC BY (80x15 px)
+│   └── cc-by-120x40.png            # Logo CC BY (120x40 px)
+│
+├── images/                         # Imágenes del tema
+│   ├── hero.jpg                    # Imagen principal de portada
+│   └── [otras-imagenes.png]        # Imágenes del contenido
+│
+├── sections/                       # Secciones modulares del contenido
+│   ├── 01-introduccion.js          # Sección 1: Introducción
+│   ├── 02-teoria.js                # Sección 2: Teoría
+│   ├── 03-ejemplos.js              # Sección 3: Ejemplos
+│   ├── 04-ejercicios.js            # Sección 4: Ejercicios
+│   ├── 05-autoevaluacion.js        # Sección 5: Autoevaluación
+│   └── ...                         # Más secciones (01-20 máximo)
+│
+└── data/
+    └── metadata.js                 # Metadatos del proyecto
+                                    # Contiene: projectTitle, teacherName, cycle, etc.
+```
+
+### Ejemplo Real - Apuntes de Macroeconomía:
+
+```
+apuntes/03-Bachillerato/Economia/2/macroeconomia/
+│
+├── index.html                      # Archivo principal
+├── logo.png                        # Logo del IES
+│
+├── assets/
+│   ├── cc-by-88x31.png
+│   ├── cc-by-80x15.png
+│   └── cc-by-120x40.png
+│
+├── images/
+│   └── hero.jpg                    # Imagen de portada (gráficos, economía)
+│
+├── sections/
+│   ├── 01-introduccion.js          # Introducción a la macroeconomía
+│   ├── 02-indicadores.js           # Indicadores macroeconómicos
+│   ├── 03-pib.js                   # El Producto Interior Bruto
+│   ├── 04-inflacion.js             # La inflación
+│   ├── 05-desempleo.js             # El desempleo
+│   ├── 06-politica-fiscal.js       # Política fiscal
+│   ├── 07-politica-monetaria.js    # Política monetaria
+│   ├── 08-ejercicios.js            # Ejercicios prácticos
+│   ├── 09-autoevaluacion.js        # Test de autoevaluación
+│   └── 10-glosario.js              # Glosario de términos
+│
+└── data/
+    └── metadata.js                 # Metadatos del apunte
+```
+
+### Ejemplo Real - Apuntes de Inglés (Writing):
+
+```
+apuntes/03-Bachillerato/Ingles/2-Bach/WRITING-STRATEGIES/
+│
+├── index.html
+├── logo.png
+│
+├── assets/
+│   └── cc-by-*.png
+│
+├── images/
+│   └── hero.jpg
+│
+├── sections/
+│   ├── 01-portada-introduccion.js
+│   ├── 02-estructura-ensayo.js
+│   ├── 03-conectores.js
+│   ├── 04-registro-formal-informal.js
+│   ├── 05-modelos-ensayos.js
+│   ├── 06-ejercicios.js
+│   ├── 07-autoevaluacion.js
+│   └── 08-glosario.js
+│
+└── data/
+    └── metadata.js
+```
+
+---
+
+## 📖 Cómo Usar la Plantilla (`plantilla/`)
+
+### ⚠️ IMPORTANTE: La plantilla es una REFERENCIA, no se copia literalmente
+
+La plantilla proporciona:
+1. **Estructura base** del HTML
+2. **Estilos CSS** (Tailwind + custom)
+3. **Funcionalidad Vue.js** (sidebar, exportación, etc.)
+4. **Assets CC BY** para la licencia
+
+### Lo que SÍ debes copiar de la plantilla:
+
+| Archivo | Acción | Destino |
+|---------|--------|---------|
+| `plantilla/assets/cc-by-*.png` | Copiar los 3 archivos | `apuntes/.../assets/` |
+| `plantilla/logo.png` | Copiar | `apuntes/.../logo.png` |
+| `plantilla/index.html` | Usar como REFERENCIA | No copiar literal |
+| `plantilla/data/metadata.js` | Usar como EJEMPLO | Adaptar contenido |
+
+### Lo que NO debes hacer:
+
+```
+❌ Copiar plantilla/index.html sin modificar
+❌ Usar secciones genéricas que no existen (teoria-01, teoria-02)
+❌ Hardcodear IDs que no coinciden con los archivos reales
+❌ Olvidar actualizar el array `sections` en Vue data
+❌ Usar studentName - los apuntes son de PROFESORES, no estudiantes
+```
+
+### Lo que SÍ debes hacer:
+
+```
+✅ Leer plantilla/index.html para entender la estructura
+✅ Copiar el <head> completo (estilos, CDNs, fuentes)
+✅ Copiar la estructura del <body> (sidebar, header, main, footer)
+✅ ADAPTAR el array `sections` en Vue data a tus secciones reales
+✅ ADAPTAR los <script src="./sections/..."> a tus archivos reales
+✅ ADAPTAR la función `getSectionIcon()` con tus IDs
+✅ Generar data/metadata.js con los datos reales del apunte
+```
+
+---
+
+## 🔧 Flujo de Generación - Paso a Paso
+
+### Paso 1: Leer la plantilla como referencia
+```
+Acción: Leer plantilla/index.html
+Propósito: Entender la estructura HTML/Vue/Tailwind
+```
+
+### Paso 2: Crear el directorio del apunte
+```
+Ruta: apuntes/[NIVEL]/[ASIGNATURA]/[CURSO]/[TEMA]/
+Ejemplo: apuntes/03-Bachillerato/Economia/2/macroeconomia/
+```
+
+### Paso 3: Crear subcarpetas
+```
+mkdir sections/
+mkdir images/
+mkdir assets/
+mkdir data/
+```
+
+### Paso 4: Copiar assets desde la plantilla
+```
+copy plantilla/assets/cc-by-88x31.png → apuntes/.../assets/
+copy plantilla/assets/cc-by-80x15.png → apuntes/.../assets/
+copy plantilla/assets/cc-by-120x40.png → apuntes/.../assets/
+```
+
+### Paso 5: Copiar el logo
+```
+copy plantilla/logo.png → apuntes/.../logo.png
+```
+
+### Paso 6: Generar las secciones de contenido (FORMATO CORRECTO)
+
+**IMPORTANTE:** Cada sección debe usar el formato `window.sectionsContent` con el ID como clave:
+
+```javascript
+// sections/01-introduccion.js
+window.sectionsContent = window.sectionsContent || {};
+window.sectionsContent['introduccion'] = {
+  title: "1. Introducción",
+  content: `
+    <h2>1. Introducción</h2>
+    <p>Contenido HTML...</p>
+  `
+};
+```
+
+**❌ NO usar `window.sectionContent` (singular) - esto causa errores**
+
+Generar: sections/01-introduccion.js, sections/02-indicadores.js, etc.
+
+### Paso 7: Generar data/metadata.js
+```javascript
+window.metadata = {
+    projectTitle: 'Macroeconomía: Indicadores, Política Fiscal y Monetaria',
+    teacherName: 'Juan García',  // PROFESOR AUTOR
+    cycle: '2º Bachillerato',
+    cycleName: 'Bachillerato',
+    cycleLevel: '2º',
+    courseYear: '2024-2025',
+    subject: 'Economía',
+    topic: 'Macroeconomía',
+    projectImage: './images/hero.jpg'
+};
+```
+
+### Paso 8: Generar index.html PERSONALIZADO
+
+**⚠️ VERIFICACIÓN CRÍTICA:** Antes de generar, revisa que:
+
+1. **Las secciones existen:** Lista todos los archivos en `sections/`
+   ```
+   01-introduccion.js → ID: 'introduccion'
+   02-indicadores.js → ID: 'indicadores'
+   03-pib.js → ID: 'pib'
+   ```
+
+2. **El formato de las secciones es correcto:** Cada archivo debe empezar con:
+   ```javascript
+   window.sectionsContent = window.sectionsContent || {};
+   window.sectionsContent['ID_SECCION'] = { ... };
+   ```
+
+3. **Los IDs coinciden en 3 lugares:**
+   - Nombre del archivo: `sections/01-introduccion.js`
+   - Array `sections` en Vue: `{ id: 'introduccion', title: '...' }`
+   - Script tag: `<script src="./sections/01-introduccion.js"></script>`
+
+**Array `sections` en Vue data (DEBE COINCIDIR con los archivos reales):**
+```javascript
+sections: [
+    { id: 'introduccion', title: '1. Introducción a la macroeconomía' },
+    { id: 'indicadores', title: '2. Indicadores macroeconómicos' },
+    { id: 'pib', title: '3. El Producto Interior Bruto (PIB)' },
+    { id: 'inflacion', title: '4. La inflación' },
+    { id: 'desempleo', title: '5. El desempleo' },
+    { id: 'politica-fiscal', title: '6. La política fiscal' },
+    { id: 'politica-monetaria', title: '7. La política monetaria' },
+    { id: 'ejercicios', title: '8. Ejercicios prácticos' },
+    { id: 'autoevaluacion', title: '9. Autoevaluación' },
+    { id: 'glosario', title: '10. Glosario' }
+]
+```
+
+**Scripts cargados (DEBEN COINCIDIR con los archivos reales):**
+```html
+<script src="./sections/01-introduccion.js"></script>
+<script src="./sections/02-indicadores.js"></script>
+<script src="./sections/03-pib.js"></script>
+<script src="./sections/04-inflacion.js"></script>
+<script src="./sections/05-desempleo.js"></script>
+<script src="./sections/06-politica-fiscal.js"></script>
+<script src="./sections/07-politica-monetaria.js"></script>
+<script src="./sections/08-ejercicios.js"></script>
+<script src="./sections/09-autoevaluacion.js"></script>
+<script src="./sections/10-glosario.js"></script>
+```
+
+**Función `getSectionIcon()` (DEBE COINCIDIR con los IDs reales):**
+```javascript
+getSectionIcon(id) {
+    const icons = {
+        'introduccion': '👋',
+        'indicadores': '📊',
+        'pib': '📈',
+        'inflacion': '💰',
+        'desempleo': '👥',
+        'politica-fiscal': '🏛️',
+        'politica-monetaria': '🏦',
+        'ejercicios': '📝',
+        'autoevaluacion': '✅',
+        'glosario': '📚'
+    };
+    return icons[id] || '📄';
+}
+```
+
+### Paso 9: Verificación FINAL (¡NO OLVIDAR!)
+
+Antes de terminar, verifica ESTO:
+
+```
+✅ VERIFICAR FORMATO SECCIONES:
+   - Cada archivo en sections/ empieza con:
+     `window.sectionsContent = window.sectionsContent || {};`
+   - Cada sección usa su ID: `window.sectionsContent['id_seccion'] = {...}`
+
+✅ VERIFICAR COINCIDENCIAS:
+   - IDs en sections[] = Nombres de archivos en sections/*.js (sin número)
+   - Scripts <script src="..."> = Archivos que existen
+   - getSectionIcon() tiene iconos para todos los IDs
+
+✅ VERIFICAR METADATOS:
+   - teacherName está definido (profesor autor)
+   - projectTitle es correcto
+```
+
+**Si las secciones muestran "Contenido no encontrado en sections/..." → Revisa el formato de las secciones**
 
 ---
 
@@ -62,7 +430,25 @@ Cada apunte incluirá:
 3. **Validar datos:** Asegúrate de que el nivel, asignatura y curso son correctos
 4. **Crear estructura:** Genera las carpetas necesarias antes de crear contenido
 5. **Copiar assets:** Usa los assets de `plantilla/assets/` para la licencia CC BY
-6. **Usar plantillas:** Basa el contenido en `plantilla/index.html`
+6. **GENERAR index.html PERSONALIZADO:** NO copies la plantilla tal cual
+
+### ⚠️ CRÍTICO: Generación del index.html Personalizado
+
+**NO HAGAS ESTO:**
+```
+❌ Copiar plantilla/index.html sin cambios
+❌ Usar secciones genéricas (teoria-01, teoria-02) que no existen
+❌ Hardcodear IDs que no coinciden con sections/*.js
+❌ Usar studentName - los apuntes son de PROFESORES, no estudiantes
+```
+
+**DEBES HACER ESTO:**
+```
+✅ Generar index.html personalizado basado en tus secciones reales
+✅ Mapear los IDs de sections/*.js exactamente en Vue data
+✅ Asegurar que TODOS los IDs coincidan con archivos reales
+✅ Usar teacherName para el autor (profesor)
+```
 
 ### Agentes a Utilizar:
 
@@ -76,7 +462,54 @@ Cada apunte incluirá:
 - **Mayúsculas correctas:** Solo primera palabra en títulos (español)
 - **Callouts visuales:** Usar para conceptos clave, advertencias, consejos
 - **Iconos:** FontAwesome y emojis para apoyo visual
+- **Portada optimizada:** Título, logo, imagen hero, **profesor/a autor**, nivel, fecha y licencia CC BY en una página
+- **Espaciado compacto:** Márgenes y espacios reducidos para impresión eficiente
+- **Mapeo de secciones correcto:** IDs de sections/*.js coinciden EXACTAMENTE con Vue data
+
+### metadata.js - Campos Requeridos:
+
+```javascript
+window.metadata = {
+    projectTitle: 'Título del Tema',
+    teacherName: 'Nombre del Profesor/a',  // AUTOR del apunte (PROFESOR)
+    cycle: 'Bachillerato',
+    cycleName: 'Bachillerato - Ciencias y Humanidades',
+    cycleLevel: '2º',
+    courseYear: '2024-2025',
+    subject: 'Economía',
+    topic: 'Macroeconomía',
+    projectImage: './images/hero.jpg'
+};
+```
+
+### En index.html - Vue data:
+
+```javascript
+data() {
+    return {
+        projectTitle: window.metadata?.projectTitle || 'Apuntes Educativos',
+        teacherName: window.metadata?.teacherName || '',  // Profesor autor
+        cycle: window.metadata?.cycle || '',
+        // ... resto de campos
+    }
+}
+```
+
+### En la Portada:
+
+```html
+<div class="grid grid-cols-2 gap-2">
+    <div>
+        <span>Autor/a (Profesor)</span>
+        <span>{{ teacherName || 'Por definir' }}</span>
+    </div>
+    <div>
+        <span>Fecha</span>
+        <span>{{ currentDate }}</span>
+    </div>
+</div>
+```
 
 ---
 
-*Versión: 2.0 - Multi-Agente con IA*
+*Versión: 3.1 - Estructura Detallada + Profesor como Autor + Flujo Paso a Paso*

@@ -109,4 +109,4 @@ Cada sección puede contener:
 ---
 
 **Licencia**: CC BY 4.0
-**Plantilla**: Generador de Apuntes Educativos - IES Serra Perenxisa
+**Plantilla**: Generador de Apuntes Educativos

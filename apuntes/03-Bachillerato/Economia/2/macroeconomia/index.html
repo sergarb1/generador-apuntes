@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto Intermodular - IES Serra Perenxisa</title>
+    <title>Macroeconomía: Indicadores, Política Fiscal y Monetaria - 2º Bachillerato Economía</title>
 
     <!-- Librerías Externas (CDNs) -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
@@ -17,7 +17,7 @@
     <style>
         /* Ocultar contenido hasta que Vue se cargue */
         [v-cloak] { display: none; }
-        
+
         :root {
             --primary: #2563eb;
             --primary-hover: #1d4ed8;
@@ -50,7 +50,7 @@
         h2 { font-size: 1.75rem; margin-top: 0.75rem; margin-bottom: 0.5rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem; color: var(--primary); }
         h3 { font-size: 1.25rem; margin-top: 0.5rem; margin-bottom: 0.5rem; color: #1e293b; display: flex; align-items: center; gap: 0.5rem; }
         h3::before { content: ''; width: 4px; height: 1rem; background: var(--primary); border-radius: 4px; display: inline-block; }
-        
+
         p { margin-bottom: 0.5rem; color: #475569; text-align: justify; }
 
         /* Callouts Premium */
@@ -86,11 +86,11 @@
             left: 0;
             overflow-y: auto;
         }
-        
+
         .sidebar-collapsed {
             transform: translateX(-100%);
         }
-        
+
         .nav-item {
             display: flex;
             align-items: center;
@@ -310,8 +310,8 @@
                         <img :src="logoUrl" alt="Logo" class="max-h-full">
                     </div>
                     <div>
-                        <div class="font-extrabold text-sm leading-none">{{ projectTitle || 'Plantilla Apuntes' }}</div>
-                        <div class="text-[10px] text-slate-400 mt-1 uppercase tracking-wider font-bold">{{ cycle }}</div>
+                        <div class="font-extrabold text-sm leading-none">{{ projectTitle || 'Apuntes de Economía' }}</div>
+                        <div class="text-[10px] text-slate-400 mt-1 uppercase tracking-wider font-bold">2º Bachillerato</div>
                     </div>
                 </div>
             </div>
@@ -325,7 +325,7 @@
                 <div class="my-6 border-t border-slate-100 mx-6"></div>
                 <div v-for="section in sections" :key="section.id">
                     <a :href="'#' + section.id" class="nav-item" :class="{ active: activeSection === section.id }" @click="activeSection = section.id">
-                        <span class="text-lg">{{ getSectionIcon(section.id) }}</span> 
+                        <span class="text-lg">{{ getSectionIcon(section.id) }}</span>
                         <span class="ml-3">{{ section.title }}</span>
                     </a>
                 </div>
@@ -367,7 +367,7 @@
                         <svg v-if="sidebarOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7"/></svg>
                         <svg v-else class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
                     </button>
-                    <h1 class="text-lg font-bold m-0 border-none truncate max-w-md" :title="projectTitle">{{ projectTitle || 'Apuntes Educativos' }}</h1>
+                    <h1 class="text-lg font-bold m-0 border-none truncate max-w-md" :title="projectTitle">{{ projectTitle || 'Macroeconomía' }}</h1>
                 </div>
                 <div class="flex gap-3">
                     <button @click="printProject" class="btn btn-secondary text-slate-600" title="Imprimir (Ctrl+P)">
@@ -397,6 +397,21 @@
                         <img :src="projectImage" alt="Hero" class="rounded-[0.75rem] shadow-md w-full border border-slate-100 h-64 object-cover">
                     </div>
 
+                    <div class="grid grid-cols-3 gap-2 text-left mt-2 max-w-2xl mx-auto">
+                        <div class="p-2 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="text-[7px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Asignatura</span>
+                            <span class="text-xs font-bold text-slate-800">{{ subject || 'Economía' }}</span>
+                        </div>
+                        <div class="p-2 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="text-[7px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Curso</span>
+                            <span class="text-xs font-bold text-slate-800">{{ courseYear || '2º Bachillerato' }}</span>
+                        </div>
+                        <div class="p-2 bg-slate-50 rounded-lg border border-slate-100">
+                            <span class="text-[7px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Tema</span>
+                            <span class="text-xs font-bold text-slate-800">{{ topic || 'Macroeconomía' }}</span>
+                        </div>
+                    </div>
+
                     <div class="grid grid-cols-2 gap-2 text-left mt-2 max-w-2xl mx-auto">
                         <div class="p-2 bg-slate-50 rounded-lg border border-slate-100">
                             <span class="text-[7px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Autor/a (Profesor)</span>
@@ -407,7 +422,7 @@
                             <span class="text-xs font-bold text-slate-800">{{ currentDate }}</span>
                         </div>
                     </div>
-                    
+
                     <!-- Licencia CC BY en portada -->
                     <div class="mt-2 p-2 bg-green-50 rounded-lg border-2 border-green-200 inline-block text-center">
                         <div class="flex items-center gap-1 justify-center">
@@ -416,6 +431,46 @@
                                 <p class="text-[10px] font-bold text-green-800">Licencia CC BY 4.0</p>
                             </div>
                         </div>
+                    </div>
+                </section>
+
+                <!-- Resumen -->
+                <section id="resumen" class="mb-2 scroll-mt-24">
+                    <h2>Resumen ejecutivo</h2>
+                    <div class="callout callout-info">
+                        <div class="callout-title">
+                            <span>📊</span>
+                            <span>Vista rápida del tema</span>
+                        </div>
+                        <p>Estos apuntes cubren los conceptos fundamentales de <strong>macroeconomía</strong> para 2º de Bachillerato:</p>
+                        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 my-4">
+                            <div class="bg-blue-50 p-3 rounded-lg border border-blue-200 text-center">
+                                <div class="text-2xl mb-1">📈</div>
+                                <p class="text-xs font-bold">PIB</p>
+                                <p class="text-[10px]">Producto Interior Bruto</p>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg border border-green-200 text-center">
+                                <div class="text-2xl mb-1">💰</div>
+                                <p class="text-xs font-bold">Inflación</p>
+                                <p class="text-[10px]">IPC y precios</p>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg border border-purple-200 text-center">
+                                <div class="text-2xl mb-1">👥</div>
+                                <p class="text-xs font-bold">Desempleo</p>
+                                <p class="text-[10px]">Mercado laboral</p>
+                            </div>
+                            <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-center">
+                                <div class="text-2xl mb-1">🏛️</div>
+                                <p class="text-xs font-bold">Política Fiscal</p>
+                                <p class="text-[10px]">Impuestos y gasto</p>
+                            </div>
+                            <div class="bg-red-50 p-3 rounded-lg border border-red-200 text-center">
+                                <div class="text-2xl mb-1">🏦</div>
+                                <p class="text-xs font-bold">Política Monetaria</p>
+                                <p class="text-[10px]">BCE y tipos de interés</p>
+                            </div>
+                        </div>
+                        <p class="text-sm">Ideal para preparar la <strong>EBAU/EvAU</strong> de Economía.</p>
                     </div>
                 </section>
 
@@ -486,7 +541,7 @@
                             <img :src="logoUrl" alt="Logo" class="h-10 grayscale opacity-50">
                             <div class="text-sm text-slate-400 font-medium">
                                 <span v-if="cycle">{{ cycle }}</span>
-                                <span v-else>Plantilla Apuntes</span>
+                                <span v-else>Apuntes de Economía</span>
                                 <br>
                                 &copy; {{ new Date().getFullYear() }} — Material educativo abierto
                             </div>
@@ -508,29 +563,18 @@
     <!-- CARGA DE DATOS OFFLINE (window.metadata y window.sectionsContent) -->
     <!-- Metadatos del apunte -->
     <script src="./data/metadata.js"></script>
-    
-    <!-- Secciones modulares de apuntes (01-20) -->
-    <!-- Los agentes pueden añadir, eliminar o modificar secciones según el contenido -->
-    <script src="./sections/01-portada-introduccion.js"></script>
-    <script src="./sections/02-teoria-01.js"></script>
-    <script src="./sections/03-teoria-02.js"></script>
-    <script src="./sections/04-teoria-03.js"></script>
-    <script src="./sections/05-ejemplos.js"></script>
-    <script src="./sections/06-ejercicios.js"></script>
-    <script src="./sections/07-actividades.js"></script>
-    <script src="./sections/08-resumen.js"></script>
+
+    <!-- Secciones modulares de apuntes (01-10) -->
+    <script src="./sections/01-introduccion.js"></script>
+    <script src="./sections/02-indicadores.js"></script>
+    <script src="./sections/03-pib.js"></script>
+    <script src="./sections/04-inflacion.js"></script>
+    <script src="./sections/05-desempleo.js"></script>
+    <script src="./sections/06-politica-fiscal.js"></script>
+    <script src="./sections/07-politica-monetaria.js"></script>
+    <script src="./sections/08-ejercicios.js"></script>
     <script src="./sections/09-autoevaluacion.js"></script>
     <script src="./sections/10-glosario.js"></script>
-    <script src="./sections/11-recursos.js"></script>
-    <script src="./sections/12-ampliacion-01.js"></script>
-    <script src="./sections/13-ampliacion-02.js"></script>
-    <script src="./sections/14-curiosidades.js"></script>
-    <script src="./sections/15-laboratorio.js"></script>
-    <script src="./sections/16-infografia.js"></script>
-    <script src="./sections/17-timeline.js"></script>
-    <script src="./sections/18-faq.js"></script>
-    <script src="./sections/19-bibliografia.js"></script>
-    <script src="./sections/20-anexos.js"></script>
 
     <script>
         const { createApp } = Vue;
@@ -540,32 +584,28 @@
                 return {
                     activeSection: 'inicio',
                     sidebarOpen: true,
-                    projectTitle: window.metadata?.projectTitle || 'Apuntes Educativos',
+                    projectTitle: window.metadata?.projectTitle || 'Macroeconomía: Indicadores, Política Fiscal y Monetaria',
                     teacherName: window.metadata?.teacherName || '',
-                    cycle: window.metadata?.cycle || '',
-                    cycleName: window.metadata?.cycleName || '',
-                    cycleLevel: window.metadata?.cycleLevel || '',
-                    courseYear: window.metadata?.courseYear || '',
-                    subject: window.metadata?.subject || '',
-                    topic: window.metadata?.topic || '',
+                    cycle: window.metadata?.cycle || '2º Bachillerato',
+                    cycleName: window.metadata?.cycleName || 'Bachillerato',
+                    cycleLevel: window.metadata?.cycleLevel || '2º',
+                    courseYear: window.metadata?.courseYear || '2024-2025',
+                    subject: window.metadata?.subject || 'Economía',
+                    topic: window.metadata?.topic || 'Macroeconomía',
                     projectImage: window.metadata?.projectImage || './images/hero.jpg',
                     currentDate: new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }),
                     logoUrl: './logo.png',
                     sections: [
-                        { id: 'portada-introduccion', title: '1. Introducción' },
-                        { id: 'teoria-01', title: '2. Teoría - Parte 1' },
-                        { id: 'teoria-02', title: '3. Teoría - Parte 2' },
-                        { id: 'teoria-03', title: '4. Teoría - Parte 3' },
-                        { id: 'ejemplos', title: '5. Ejemplos Resueltos' },
-                        { id: 'ejercicios', title: '6. Ejercicios' },
-                        { id: 'actividades', title: '7. Actividades' },
-                        { id: 'resumen', title: '8. Resumen' },
+                        { id: 'introduccion', title: '1. Introducción a la macroeconomía' },
+                        { id: 'indicadores', title: '2. Indicadores macroeconómicos' },
+                        { id: 'pib', title: '3. El Producto Interior Bruto (PIB)' },
+                        { id: 'inflacion', title: '4. La inflación' },
+                        { id: 'desempleo', title: '5. El desempleo' },
+                        { id: 'politica-fiscal', title: '6. La política fiscal' },
+                        { id: 'politica-monetaria', title: '7. La política monetaria' },
+                        { id: 'ejercicios', title: '8. Ejercicios prácticos' },
                         { id: 'autoevaluacion', title: '9. Autoevaluación' },
-                        { id: 'glosario', title: '10. Glosario' },
-                        { id: 'recursos', title: '11. Recursos' },
-                        { id: 'ampliacion-01', title: '12. Ampliación' },
-                        { id: 'bibliografia', title: 'Bibliografía' },
-                        { id: 'anexos', title: 'Anexos' }
+                        { id: 'glosario', title: '10. Glosario' }
                     ],
                     sectionsContent: window.sectionsContent || {}
                 }
@@ -573,9 +613,16 @@
             methods: {
                 getSectionIcon(id) {
                     const icons = {
-                        'introduccion': '👋', 'estado-arte': '🌐', 'viabilidad': '📈',
-                        'requisitos': '📋', 'diseno': '🎨', 'implementacion': '💻',
-                        'administracion': '⚙️', 'herramientas': '🛠️', 'conclusiones': '🏁'
+                        'introduccion': '👋',
+                        'indicadores': '📊',
+                        'pib': '📈',
+                        'inflacion': '💰',
+                        'desempleo': '👥',
+                        'politica-fiscal': '🏛️',
+                        'politica-monetaria': '🏦',
+                        'ejercicios': '📝',
+                        'autoevaluacion': '✅',
+                        'glosario': '📚'
                     };
                     return icons[id] || '📄';
                 },
@@ -695,9 +742,9 @@
                 // Actualizar título de la página una vez cargado
                 if (window.metadata?.projectTitle) {
                     this.projectTitle = window.metadata.projectTitle;
-                    document.title = window.metadata.projectTitle || 'Apuntes Educativos';
+                    document.title = window.metadata.projectTitle || 'Macroeconomía - 2º Bachillerato';
                 }
-                
+
                 // Inicializar observador de secciones
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {

@@ -134,14 +134,61 @@ Según el nivel educativo:
 | FP | `agents/23-nivel-fp.md` |
 
 ### Paso 4: Generar Contenido
-1. **Portada:** Título, asignatura, nivel, fecha
-2. **Índice:** Navegación por secciones
-3. **Objetivos:** 3-5 objetivos claros y medibles
-4. **Contenido principal:** Dividido en secciones numeradas
-5. **Ejercicios:** Diferenciados por dificultad
-6. **Autoevaluación:** Test de 5-10 preguntas
-7. **Glosario:** Términos clave con definición
-8. **Recursos:** Enlaces y material complementario
+
+**⚠️ ATENCIÓN AL FORMATO DE LAS SECCIONES:**
+
+1. **Secciones reales:** Planifica exactamente cuántas secciones vas a generar y sus nombres
+   - Ejemplo: introduccion, indicadores, pib, inflacion, desempleo, politica-fiscal, politica-monetaria, ejercicios, autoevaluacion, glosario
+
+2. **Generar archivos sections/:** Crea 01-nombre.js, 02-nombre.js, etc. con el contenido
+
+3. **FORMATO OBLIGATORIO de cada sección:**
+   ```javascript
+   // sections/01-introduccion.js
+   window.sectionsContent = window.sectionsContent || {};
+   window.sectionsContent['introduccion'] = {
+     title: "1. Introducción",
+     content: `<h2>1. Introducción</h2><p>Contenido HTML...</p>`
+   };
+   ```
+   **❌ NO usar `window.sectionContent` (singular)**
+
+4. **Portada:** Título, logo, asignatura, nivel, **profesor/a autor**, fecha, licencia CC BY 4.0 (todo en una página)
+
+5. **index.html PERSONALIZADO:** Genera un HTML que cargue exactamente tus secciones reales
+
+6. **Vue data dinámico:** El array `sections` debe coincidir EXACTAMENTE con tus archivos:
+   ```javascript
+   sections: [
+       { id: 'introduccion', title: '1. Introducción' },
+       { id: 'indicadores', title: '2. Indicadores' },
+       { id: 'pib', title: '3. El PIB' },
+       ...
+   ]
+   ```
+
+7. **Scripts cargados:** Asegúrate de cargar los archivos sections/ reales:
+   ```html
+   <script src="./sections/01-introduccion.js"></script>
+   <script src="./sections/02-indicadores.js"></script>
+   ...
+   ```
+
+8. **metadata.js:** Usa `teacherName` para el profesor autor (NO uses studentName):
+   ```javascript
+   window.metadata = {
+       projectTitle: 'Título del Tema',
+       teacherName: 'Nombre del Profesor/a',  // AUTOR del apunte
+       cycle: 'Bachillerato',
+       subject: 'Economía',
+       topic: 'Macroeconomía'
+   };
+   ```
+
+### Paso 5: Exportación
+- **Imprimir (Ctrl+P):** Genera PDF optimizado con portada en una página
+- **Exportar a Word:** Descarga .doc con imágenes en base64 (sin errores CORS)
+- **Interfaz:** Sidebar navegable, contenido responsive, botones accesibles
 
 ## Reglas de Formato CRÍTICAS
 
@@ -224,6 +271,7 @@ def funcion():
 
 ## Checklist Final de Calidad
 
+### Verificación de Contenido
 - [ ] ¿El lenguaje está adaptado al nivel?
 - [ ] ¿Los objetivos son claros y medibles?
 - [ ] ¿El contenido sigue una progresión lógica?
@@ -231,12 +279,39 @@ def funcion():
 - [ ] ¿Los ejercicios tienen diferentes niveles?
 - [ ] ¿Incluye autoevaluación?
 - [ ] ¿El glosario cubre los términos clave?
+
+### Verificación de Formato
 - [ ] ¿El formato HTML es correcto (sin Markdown)?
 - [ ] ¿Las imágenes son locales (no URLs externas)?
 - [ ] ¿Es visualmente atractivo (callouts, grids, tablas)?
 
+### Verificación Técnica de Secciones (¡CRÍTICO!)
+- [ ] ¿Cada archivo en `sections/*.js` empieza con `window.sectionsContent = window.sectionsContent || {};`?
+- [ ] ¿Cada sección usa su ID correctamente: `window.sectionsContent['id_seccion'] = {...}`?
+- [ ] ¿Los IDs de `sections` en Vue coinciden con los archivos reales en `sections/*.js` (sin el número)?
+- [ ] ¿Los `<script src="...">` cargan archivos que existen realmente?
+- [ ] ¿La función `getSectionIcon()` tiene iconos para todos los IDs definidos?
+- [ ] ¿La función `getSectionContent()` devuelve `section.content` (NO el objeto completo)?
+  - ❌ INCORRECTO: `return this.sectionsContent[id]` → Muestra `[object Object]`
+  - ✅ CORRECTO: `return this.sectionsContent[id].content` → Muestra el HTML
+- [ ] ¿El index.html NO tiene `<h2>{{ section.title }}</h2>`? (el título va dentro del contenido de cada sección)
+  - ❌ INCORRECTO: Título en index.html + título en contenido = DUPLICADO
+  - ✅ CORRECTO: Solo el título dentro del contenido de cada sección
+
+### Verificación de Metadatos
+- [ ] ¿`teacherName` está usado en lugar de `studentName`? (los apuntes son del PROFESOR)
+- [ ] ¿La portada muestra "Autor/a (Profesor)" con el nombre del profesor?
+- [ ] ¿Todos los campos requeridos en metadata.js están completos?
+
+### Si algo falla:
+**"Contenido no encontrado en sections/..."** → Revisa que cada sección use `window.sectionsContent['id']` en lugar de `window.sectionContent`
+
 ---
 
-**Versión:** 1.0 (Generador de Apuntes)
+**Versión:** 2.0 - Profesor como Autor + Estructura Clarificada + Mapeo Dinámico
 **Niveles:** Primaria, ESO, Bachillerato, FP
-**Objetivo:** Excelencia pedagógica + Diseño premium
+**Objetivo:** Excelencia pedagógica + Diseño premium + Exportación sin errores
+**Cambios Recientes:** 
+- `teacherName` reemplaza a `studentName` (el profesor es el autor)
+- Estructura de carpetas: `apuntes/[NIVEL]/[ASIGNATURA]/[CURSO]/[TEMA]/`
+- Mapeo dinámico de secciones en index.html

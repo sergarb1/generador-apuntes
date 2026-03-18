@@ -1,7 +1,6 @@
 window.metadata = {
     projectTitle: 'Writing Strategies - Estrategias para el Writing',
-    studentName: 'Por definir',
-    tutorName: 'Por definir',
+    teacherName: 'Por definir',
     cycle: 'Bachillerato',
     cycleName: 'Bachillerato - Ciencias y Humanidades',
     cycleLevel: 'Bachillerato',
