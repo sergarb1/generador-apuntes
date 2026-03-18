@@ -4,7 +4,7 @@ window.sectionsContent['glosario'] = {
   content: `
     <h2>8. Glosario de términos de Química para la EBAU</h2>
 
-    <p>diccionario de los <strong>términos clave de Química</strong> que debes dominar para la EBAU.</p>
+    <p>Diccionario de los <strong>términos clave de Química</strong> que debes dominar para la EBAU.</p>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
         <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
