@@ -84,10 +84,10 @@ window.sectionsContent['contenidos-frecuentes'] = {
             <span>Errores comunes en equilibrio</span>
         </div>
         <ul>
-            <li>olvidar elevar las concentraciones a sus <strong>coeficientes estequiométricos</strong></li>
-            <li>incluir <strong>sólidos y líquidos puros</strong> en la expresión de K</li>
-            <li>confundir <strong>Q (cociente de reacción)</strong> con K</li>
-            <li>no usar <strong>unidades de presión consistentes</strong> en Kp</li>
+            <li><strong>Olvidar elevar las concentraciones</strong> a sus coeficientes estequiométricos</li>
+            <li><strong>Incluir sólidos y líquidos puros</strong> en la expresión de K</li>
+            <li><strong>Confundir Q (cociente de reacción)</strong> con K</li>
+            <li><strong>No usar unidades de presión consistentes</strong> en Kp</li>
         </ul>
     </div>
 
@@ -107,11 +107,11 @@ window.sectionsContent['contenidos-frecuentes'] = {
         <div class="bg-orange-50 p-5 rounded-xl border border-orange-200">
             <h4 class="font-bold text-orange-800 mb-3">🧪 Problemas típicos</h4>
             <ul class="space-y-2">
-                <li>cálculo de pH de ácidos/bases fuertes</li>
-                <li>cálculo de pH de ácidos/bases débiles</li>
-                <li>valoraciones ácido-base</li>
-                <li>indicadores y zona de viraje</li>
-                <li>disoluciones reguladoras (tampón)</li>
+                <li>Cálculo de pH de ácidos/bases fuertes</li>
+                <li>Cálculo de pH de ácidos/bases débiles</li>
+                <li>Valoraciones ácido-base</li>
+                <li>Indicadores y zona de viraje</li>
+                <li>Disoluciones reguladoras (tampón)</li>
             </ul>
         </div>
     </div>
