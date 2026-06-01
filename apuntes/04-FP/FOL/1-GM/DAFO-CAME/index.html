@@ -200,6 +200,78 @@
             transition: all 0.2s;
         }
         .toggle-btn:hover { background: #f1f5f9; color: var(--primary); }
+
+        /* === COOL ENHANCEMENTS === */
+
+        .card-gradient {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            transition: all 0.3s ease;
+        }
+        .card-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(37, 99, 235, 0.1);
+        }
+
+        .card-fortalezas { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #86efac; }
+        .card-debilidades { background: linear-gradient(135deg, #fef2f2, #fecaca); border-color: #fca5a5; }
+        .card-oportunidades { background: linear-gradient(135deg, #eff6ff, #bfdbfe); border-color: #93c5fd; }
+        .card-amenazas { background: linear-gradient(135deg, #fffbeb, #fde68a); border-color: #fcd34d; }
+
+        .badge-cool {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .badge-f { background: #dcfce7; color: #166534; }
+        .badge-d { background: #fecaca; color: #991b1b; }
+        .badge-o { background: #bfdbfe; color: #1e40af; }
+        .badge-a { background: #fde68a; color: #92400e; }
+
+        .step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .dafo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .dafo-grid > div {
+            padding: 1.25rem;
+            border-radius: 1rem;
+            border: 2px solid;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.5s ease;
+        }
+
+        hr.divider-cool {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #2563eb, transparent);
+            margin: 2rem 0;
+        }
     </style>
 </head>
 <body>
