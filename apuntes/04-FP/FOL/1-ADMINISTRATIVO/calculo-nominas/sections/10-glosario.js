@@ -93,6 +93,42 @@ window.sectionsContent['glosario'] = {
         <h4 class="font-bold text-blue-800">Tope de cotización</h4>
         <p>Límites mínimo y máximo de la base de cotización para cada grupo profesional. Si la base calculada está fuera del rango, se cotiza por el tope correspondiente.</p>
       </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-blue-800">AT y EP (Accidente de Trabajo y Enfermedad Profesional)</h4>
+        <p>Contingencias profesionales cubiertas por la Seguridad Social. La base de cotización para AT y EP incluye las horas extraordinarias y tiene tipos específicos según la actividad de la empresa.</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-blue-800">Base reguladora</h4>
+        <p>Es el resultado de dividir la base de cotización entre 30 (si el salario es mensual). Sirve para calcular prestaciones como la incapacidad temporal (IT), maternidad, etc.</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-blue-800">Comisiones</h4>
+        <p>Retribución variable vinculada a los resultados del trabajador (ventas, objetivos, producción). Tienen naturaleza salarial y cotizan a la Seguridad Social.</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-blue-800">Embargo de salario</h4>
+        <p>Retención judicial sobre el salario del trabajador. El SMI es inembargable. Sobre el exceso se aplican porcentajes progresivos del 30% al 75% según la cuantía.</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-blue-800">Fogasa (Fondo de Garantía Salarial)</h4>
+        <p>Organismo autónomo que garantiza a los trabajadores el cobro de salarios e indemnizaciones en caso de insolvencia o concurso de la empresa. Se financia con las cotizaciones empresariales (0,20%).</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-blue-800">Incapacidad temporal (IT)</h4>
+        <p>Prestación de la Seguridad Social que cubre la pérdida de ingresos del trabajador durante una baja médica. Puede ser por contingencias comunes (enfermedad común, accidente no laboral) o profesionales (AT y EP).</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-blue-800">Retención a cuenta</h4>
+        <p>Cantidad que la empresa descuenta mensualmente del salario del trabajador en concepto de IRPF y entrega a Hacienda. Es un pago a cuenta del impuesto que se regulariza anualmente.</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-blue-800">Salario en especie</h4>
+        <p>Retribución no dineraria que recibe el trabajador: uso de vivienda, vehículo de empresa, seguros médicos, cheques restaurante, etc. Tiene naturaleza salarial y cotiza a la SS.</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-slate-200">
+        <h4 class="font-bold text-blue-800">Salario mínimo interprofesional (SMI)</h4>
+        <p>Cuantía mínima legal que puede percibir un trabajador por su jornada laboral. Se fija anualmente por el Gobierno. Para 2025: 1.184 €/mes (14 pagas) o 1.381,33 €/mes (12 pagas).</p>
+      </div>
     </div>
   `
 };

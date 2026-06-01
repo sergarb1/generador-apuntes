@@ -177,5 +177,55 @@ window.sectionsContent['deducciones'] = {
         </tbody>
       </table>
     </div>
+
+    <h3>4.6. Ejemplo comparativo: contrato indefinido vs temporal</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+      <div class="bg-green-50 p-5 rounded-xl border border-green-200">
+        <h4 class="font-bold text-green-800 mb-3">✅ Contrato indefinido</h4>
+        <p class="text-sm mb-2">Base de cotización: 1.800 €</p>
+        <table class="text-xs">
+          <tr><td>Contingencias comunes</td><td class="text-right">4,70%</td><td class="text-right">84,60 €</td></tr>
+          <tr><td>Desempleo</td><td class="text-right">1,55%</td><td class="text-right">27,90 €</td></tr>
+          <tr><td>Formación profesional</td><td class="text-right">0,10%</td><td class="text-right">1,80 €</td></tr>
+          <tr class="font-bold"><td>Total SS</td><td class="text-right">6,35%</td><td class="text-right">114,30 €</td></tr>
+        </table>
+      </div>
+      <div class="bg-amber-50 p-5 rounded-xl border border-amber-200">
+        <h4 class="font-bold text-amber-800 mb-3">⚠️ Contrato temporal</h4>
+        <p class="text-sm mb-2">Base de cotización: 1.800 €</p>
+        <table class="text-xs">
+          <tr><td>Contingencias comunes</td><td class="text-right">4,70%</td><td class="text-right">84,60 €</td></tr>
+          <tr><td>Desempleo</td><td class="text-right">1,60%</td><td class="text-right">28,80 €</td></tr>
+          <tr><td>Formación profesional</td><td class="text-right">0,10%</td><td class="text-right">1,80 €</td></tr>
+          <tr class="font-bold"><td>Total SS</td><td class="text-right">6,40%</td><td class="text-right">115,20 €</td></tr>
+        </table>
+      </div>
+    </div>
+    <p class="text-sm text-slate-500">Diferencia: 0,90 €/mes más para el trabajador temporal en desempleo.</p>
+
+    <h3>4.7. Ejemplo de embargo de salario</h3>
+    <div class="bg-red-50 p-6 rounded-2xl border border-red-200 my-6">
+      <h4 class="font-bold text-red-800 mb-3">⚖️ Embargo judicial sobre la nómina</h4>
+      <p class="mb-3">El SMI (1.184 €/mes en 14 pagas) es <strong>inembargable</strong>. Sobre el exceso se aplican tramos progresivos:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Tramo (sobre exceso)</th>
+            <th class="text-right">% Embargo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Hasta el doble del SMI (0 - 1.184 € extra)</td><td class="text-right">30%</td></tr>
+          <tr><td>Del doble al triple (1.184 - 2.368 € extra)</td><td class="text-right">50%</td></tr>
+          <tr><td>Del triple al cuádruple (2.368 - 3.552 € extra)</td><td class="text-right">60%</td></tr>
+          <tr><td>Del cuádruple en adelante</td><td class="text-right">75%</td></tr>
+        </tbody>
+      </table>
+      <div class="bg-white p-4 rounded-lg mt-4">
+        <p class="font-bold">Ejemplo: trabajador con nómina líquida de 1.800 €</p>
+        <p class="text-sm">SMI inembargable: 1.184 € · Exceso: 616 € · Embargo: 30% × 616 = <strong>184,80 €</strong></p>
+        <p class="text-sm">Líquido a percibir tras embargo: 1.800 - 184,80 = <strong>1.615,20 €</strong></p>
+      </div>
+    </div>
   `
 };

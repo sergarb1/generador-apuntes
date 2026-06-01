@@ -102,5 +102,86 @@ window.sectionsContent['bases-cotizacion'] = {
         <p>✅ La base CC (1.560 €) está dentro del rango del grupo 5 (mín: 1.327,80 / máx: 4.720,50)</p>
       </div>
     </div>
+
+    <h3>5.5. Ejemplo con topes: base mínima</h3>
+    <div class="bg-amber-50 p-6 rounded-2xl border border-amber-200 my-6">
+      <h4 class="font-bold text-amber-800 mb-3">⚠️ Cuando la base está por debajo del mínimo</h4>
+      <p><strong>Datos:</strong> Trabajador grupo 10 (peón), media jornada</p>
+      <ul class="mb-4">
+        <li>Salario base (media jornada): 600 €</li>
+        <li>Sin complementos</li>
+        <li>Pagas extra prorrateadas: 100 €</li>
+        <li>Base CC calculada: 600 + 100 = 700 €</li>
+      </ul>
+      <div class="bg-white p-4 rounded-lg">
+        <p><strong>Mínimo grupo 10:</strong> 1.327,80 €/mes</p>
+        <p class="text-red-600 font-bold">Base calculada (700 €) &lt; Mínimo (1.327,80 €)</p>
+        <p>Solución: se cotiza por el mínimo → <strong>Base CC = 1.327,80 €</strong></p>
+        <p class="text-sm text-slate-500 mt-2">Aunque el trabajador cobre menos, la cotización se hace sobre la base mínima de su grupo.</p>
+      </div>
+    </div>
+
+    <h3>5.6. Ejemplo con topes: base máxima</h3>
+    <div class="bg-purple-50 p-6 rounded-2xl border border-purple-200 my-6">
+      <h4 class="font-bold text-purple-800 mb-3">📈 Cuando la base supera el máximo</h4>
+      <p><strong>Datos:</strong> Directivo grupo 1, con altos ingresos</p>
+      <ul class="mb-4">
+        <li>Salario base: 3.500 €</li>
+        <li>Complementos: 1.000 €</li>
+        <li>Prorrateo pagas: 800 €</li>
+        <li>Base CC calculada: 3.500 + 1.000 + 800 = <strong>5.300 €</strong></li>
+      </ul>
+      <div class="bg-white p-4 rounded-lg">
+        <p><strong>Máximo general 2025:</strong> 4.720,50 €/mes</p>
+        <p class="text-red-600 font-bold">Base calculada (5.300 €) &gt; Máximo (4.720,50 €)</p>
+        <p>Solución: se cotiza por el máximo → <strong>Base CC = 4.720,50 €</strong></p>
+        <p class="text-sm text-slate-500 mt-2">El resto (579,50 €) no cotiza a la SS. El IRPF sí se aplica sobre el total devengado real.</p>
+      </div>
+    </div>
+
+    <h3>5.7. Ejemplo: pagas no prorrateadas</h3>
+    <div class="bg-blue-50 p-6 rounded-2xl border border-blue-200 my-6">
+      <h4 class="font-bold text-blue-800 mb-3">📅 Mes sin paga extra (no prorrateadas)</h4>
+      <p><strong>Datos:</strong> Oficial administrativo grupo 5, pagas no prorrateadas</p>
+      <ul>
+        <li>Salario base: 1.300 €</li>
+        <li>Plus convenio: 100 €</li>
+      </ul>
+      <p class="mt-3"><strong>Base CC = 1.300 + 100 = 1.400 €</strong></p>
+      <p class="text-sm text-slate-500">(No se incluye prorrateo porque las pagas extra se pagan en julio y diciembre)</p>
+      <div class="bg-white p-3 rounded-lg mt-3">
+        <p class="font-bold">En julio (mes de paga extra):</p>
+        <p>Base CC = 1.400 (salario) + 1.300 (paga extra) = <strong>2.700 €</strong></p>
+        <p class="text-sm text-slate-500">En ese mes la base será mucho mayor, y también las deducciones.</p>
+      </div>
+    </div>
+
+    <h3>5.8. Resumen visual: esquema de cálculo de bases</h3>
+    <div class="bg-white p-6 rounded-2xl border border-slate-300 my-6">
+      <div class="text-center space-y-3">
+        <div class="bg-blue-100 p-3 rounded-xl border-2 border-blue-300 max-w-md mx-auto">
+          <span class="font-bold">Retribución mensual total</span>
+          <p class="text-xs">Salario base + complementos salariales</p>
+        </div>
+        <div class="text-2xl">⬇️</div>
+        <div class="bg-blue-100 p-3 rounded-xl border-2 border-blue-300 max-w-md mx-auto">
+          <span class="font-bold">➕ Prorrateo de pagas extra</span>
+          <p class="text-xs">(Pagas anuales / 12) solo si están prorrateadas</p>
+        </div>
+        <div class="text-2xl">⬇️</div>
+        <div class="bg-green-100 p-4 rounded-xl border-2 border-green-400 max-w-md mx-auto">
+          <span class="font-bold text-green-800">= Base de cotización CC</span>
+          <p class="text-xs">Aplicar topes mínimo/máximo del grupo</p>
+        </div>
+        <div class="text-2xl">⬇️</div>
+        <div class="bg-amber-100 p-3 rounded-xl border-2 border-amber-300 max-w-md mx-auto">
+          <span class="font-bold">➕ Horas extra del mes</span>
+        </div>
+        <div class="text-2xl">⬇️</div>
+        <div class="bg-purple-100 p-4 rounded-xl border-2 border-purple-400 max-w-md mx-auto">
+          <span class="font-bold text-purple-800">= Base de cotización AT y EP</span>
+        </div>
+      </div>
+    </div>
   `
 };

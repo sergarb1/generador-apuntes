@@ -114,6 +114,56 @@ window.sectionsContent['ejercicios'] = {
       </ol>
     </div>
 
+    <h3>Ejercicio 6: Nómina de un jefe de taller (grupo 3)</h3>
+    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 my-6">
+      <p><strong>Datos:</strong></p>
+      <ul>
+        <li>Categoría: Jefe de taller (Grupo 3)</li>
+        <li>Salario base: 1.800 €/mes</li>
+        <li>Plus de responsabilidad: 300 €/mes</li>
+        <li>Plus de antigüedad (3 trienios al 5%): 270 €</li>
+        <li>Horas extra: 150 €</li>
+        <li>Vehículo de empresa (uso particular): 200 €/mes (en especie)</li>
+        <li>Pagas extra: 2 prorrateadas</li>
+        <li>IRPF: 18%</li>
+        <li>Contrato indefinido</li>
+      </ul>
+      <p class="mt-4"><strong>Calcula:</strong></p>
+      <ol>
+        <li>Total devengado (incluye especie)</li>
+        <li>Base de cotización CC (recuerda: las retribuciones en especie también cotizan)</li>
+        <li>Base AT y EP</li>
+        <li>Deducciones de Seguridad Social e IRPF</li>
+        <li>Líquido a percibir</li>
+      </ol>
+    </div>
+
+    <h3>Ejercicio 7: Nómina de un peón (grupo 10) con baja por IT</h3>
+    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 my-6">
+      <p><strong>Datos:</strong></p>
+      <ul>
+        <li>Categoría: Peón (Grupo 10)</li>
+        <li>Salario base: 1.100 €/mes</li>
+        <li>Plus de toxicidad: 150 €/mes</li>
+        <li>Pagas extra: 2 prorrateadas (base 1.100 €)</li>
+        <li>Trabajador está de <strong>baja por enfermedad común desde el día 8</strong></li>
+        <li>Ha trabajado 7 días del mes</li>
+        <li>IRPF: 7%</li>
+        <li>Contrato indefinido</li>
+      </ul>
+      <p class="mt-4"><strong>Recuerda las reglas de IT por enfermedad común:</strong></p>
+      <ul class="text-sm text-slate-600">
+        <li>Días 1-3: no cobra</li>
+        <li>Días 4-15: 60% de la base reguladora</li>
+        <li>Días 16-20: 60% de la base reguladora</li>
+        <li>A partir del día 21: 75%</li>
+      </ul>
+      <p class="mt-4"><strong>Calcula el líquido a percibir del mes.</strong></p>
+      <div class="callout callout-info mt-3">
+        <p>💡 <strong>Pista:</strong> Base reguladora diaria = (Salario base + complementos + prorrateo pagas) / 30</p>
+      </div>
+    </div>
+
     <hr class="my-8">
 
     <div class="callout callout-success">
@@ -126,6 +176,8 @@ window.sectionsContent['ejercicios'] = {
       <p><strong>Ejercicio 3:</strong> Total devengado: 1.360 € · Base CC: 1.300 € · SS: 82,55 € · IRPF: 108,80 € · <strong>Líquido: 1.168,65 €</strong></p>
       <p><strong>Ejercicio 4:</strong> Total devengado: 1.888 € · Base CC: 1.788 € · Base AT/EP: 1.956 € · SS: 125,20 € · IRPF: 245,44 € · <strong>Líquido: 1.517,36 €</strong></p>
       <p><strong>Ejercicio 5:</strong> Base retención: 26.222 € · Cuota: 4.994,58 € · <strong>% Retención: 17,84%</strong></p>
+      <p><strong>Ejercicio 6:</strong> Total devengado: 2.720 € · Base CC: 2.720 € · Base AT/EP: 2.870 € · SS: 170,38 € · IRPF: 489,60 € · <strong>Líquido: 2.060,02 €</strong></p>
+      <p><strong>Ejercicio 7:</strong> Días trabajados: 7 × 41,67 = 291,69 € · Días IT 60% (4-20): 17 × 25,00 = 425,00 € · Días IT 75% (21-31): 0 (no llega) · Total devengado: 716,69 € · Base CC: 1.250,10 € · SS: 79,38 € · IRPF: 50,17 € · <strong>Líquido: 587,14 €</strong></p>
     </div>
   `
 };
