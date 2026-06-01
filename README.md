@@ -89,16 +89,16 @@ Sistema para crear **apuntes educativos profesionales** para **Primaria, ESO, Ba
 | **Sociales** | Economía, Matemáticas CCSS |
 
 ### Formación Profesional
-| Familia | Ciclos |
-|---------|--------|
-| **Informática** | SMR, ASIR, DAM, DAW |
-| **Administración** | Gestión Administrativa |
-| **Comercio** | Comercio y Marketing |
-| **Hostelería** | Cocina, Restaurante |
-| **Sanidad** | Enfermería, Farmacia |
-| **Imagen Personal** | Peluquería, Estética |
-| **Electricidad** | Electricidad y Electrónica |
-| **Edificación** | Construcción y Obra Civil |
+| Familia | Ciclos | Módulos transversales |
+|---------|--------|----------------------|
+| **Informática** | SMR, ASIR, DAM, DAW | FOL, EIE |
+| **Administración** | Gestión Administrativa | FOL, EIE |
+| **Comercio** | Comercio y Marketing | FOL, EIE |
+| **Hostelería** | Cocina, Restaurante | FOL, EIE |
+| **Sanidad** | Enfermería, Farmacia | FOL, EIE |
+| **Imagen Personal** | Peluquería, Estética | FOL, EIE |
+| **Electricidad** | Electricidad y Electrónica | FOL, EIE |
+| **Edificación** | Construcción y Obra Civil | FOL, EIE |
 
 ---
 
@@ -128,7 +128,11 @@ generador-apuntes-agentes/
 │   ├── 01-Primaria/
 │   ├── 02-ESO/
 │   ├── 03-Bachillerato/
+│   │   ├── Economia/2/macroeconomia/
+│   │   ├── Ingles/2-Bach/WRITING-STRATEGIES/
+│   │   └── Quimica/2/consejos-ebau/
 │   └── 04-FP/
+│       └── FOL/1-GM/DAFO-CAME/
 └── README.md
 ```
 
@@ -148,6 +152,27 @@ apuntes/03-Bachillerato/Ingles/2-Bach/WRITING-STRATEGIES/
 ├── images/
 ├── sections/
 └── data/
+```
+
+**Ejemplo FP:**
+```
+apuntes/04-FP/FOL/1-GM/DAFO-CAME/
+├── index.html
+├── logo.png
+├── assets/
+├── images/
+├── sections/
+│   ├── 01-introduccion.js
+│   ├── 02-dafo.js
+│   ├── 03-componentes-dafo.js
+│   ├── 04-came.js
+│   ├── 05-paso-a-paso.js
+│   ├── 06-ejemplos.js
+│   ├── 07-ejercicios.js
+│   ├── 08-autoevaluacion.js
+│   └── 09-glosario.js
+└── data/
+    └── metadata.js
 ```
 
 ### 4. Visualizar
@@ -285,7 +310,28 @@ Todo el material generado usa **CC BY 4.0**:
 
 ## 📖 Ejemplos de Uso
 
-### Ejemplo 1: Apuntes de Inglés - Writing Strategies
+### Ejemplo 1: Apuntes de FOL - DAFO y CAME (FP)
+```
+Nivel: Formación Profesional - Grado Medio
+Asignatura: FOL (Formación y Orientación Laboral)
+Curso: 1º GM
+Tema: Análisis DAFO y método CAME
+Autor/a: Silvia
+```
+
+**Contenido generado:**
+- Introducción al análisis estratégico y conceptos clave
+- Componentes del DAFO (debilidades, amenazas, fortalezas, oportunidades)
+- El método CAME (corregir, adaptarse, mantener, explotar)
+- 7 pasos para realizar un DAFO con análisis PESTEL
+- Casos prácticos: cafetería de barrio y taller mecánico
+- Ejercicios en 4 niveles de dificultad
+- Test de autoevaluación con 8 preguntas y soluciones
+- Glosario completo con 14 términos clave
+
+📁 [Ver apuntes](apuntes/04-FP/FOL/1-GM/DAFO-CAME/)
+
+### Ejemplo 2: Apuntes de Inglés - Writing Strategies
 ```
 Nivel: Bachillerato
 Asignatura: Inglés
@@ -303,7 +349,7 @@ Tema: Estrategias para el Writing
 
 📁 [Ver ejemplo](apuntes/03-Bachillerato/Ingles/2-Bach/WRITING-STRATEGIES/)
 
-### Ejemplo 2: Apuntes de Biología - La Célula
+### Ejemplo 3: Apuntes de Biología - La Célula
 ```
 Nivel: ESO
 Asignatura: Biología y Geología
